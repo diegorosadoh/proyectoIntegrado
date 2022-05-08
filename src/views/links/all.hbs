@@ -1,0 +1,19 @@
+<div class="container">
+    {{#each links}}
+        <div class="link">
+            <div>
+                <div>
+                    <a href="{{enlace}}" target="_blank">
+                        <h3>{{titulo}}</h3>
+                    </a>
+                    <p>{{fecha}}</p>
+                    <a href="/links/delete/{{id}}">Eliminar link</a>
+                    <a href="/links/edit/{{id}}">Editar link</a>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <p>No hay enlaces guardados</p>
+        <a href="/links/add">Crea uno</a>
+    {{/each}}
+</div>

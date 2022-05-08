@@ -1,0 +1,15 @@
+<div class="container">
+    <form action="/links/edit/{{links.id}}" method="POST">
+        <div>
+            <input type="url" name="enlace" placeholder="Enlace" value="{{links.enlace}}" autofocus>
+        </div>
+
+        <div>
+            <input type="text" name="titulo" placeholder="Título" value="{{links.titulo}}">
+        </div>
+
+        <div>
+            <button>Guardar</button>
+        </div>
+    </form>
+</div>
