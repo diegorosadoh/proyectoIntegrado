@@ -1,4 +1,3 @@
-const { DEC8_BIN } = require('mysql/lib/protocol/constants/charsets');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 
