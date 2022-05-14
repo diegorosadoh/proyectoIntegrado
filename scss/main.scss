@@ -1,0 +1,20 @@
+@import "abstracts/variables";
+@import "base/base";
+
+@import "layout/header";
+@import "layout/navbar";
+
+@import "components/form";
+@import "components/links";
+
+.container{
+    margin-left: 25%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.box{
+    width: 100%;
+    display: flex;
+}
+

@@ -1,0 +1,23 @@
+nav ul {
+    list-style-type: none;
+    width: 25%;
+    background-color: color(tertiary);
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100%;
+    overflow: auto;
+
+    li a {
+        display: block;
+        color: #000;
+        font-size: 1.5em;
+        padding: 1em 2em;
+        text-decoration: none;
+
+        &:hover:not(.active) {
+            background-color: color(secondary);
+            color: white;
+        }
+    } 
+}

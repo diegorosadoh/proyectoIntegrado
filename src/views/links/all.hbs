@@ -1,16 +1,27 @@
-<div class="container">
+<div class="box alllinks">
     {{#each links}}
         <div class="link">
-            <div>
-                <div>
-                    <a href="{{enlace}}" target="_blank">
-                        <h3>{{titulo}}</h3>
-                    </a>
-                    <p>{{fecha}}</p>
-                    <a href="/links/delete/{{id}}">Eliminar link</a>
-                    <a href="/links/edit/{{id}}">Editar link</a>
-                </div>
+            <a class="title" href="{{enlace}}" target="_blank">
+                <h3>{{titulo}}</h3>
+            </a>
+
+            <div class="date">
+                <p>{{fecha}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{hora}}</p>
             </div>
+
+            <div class="functions">
+                <a class="edit" href="/links/edit/{{id}}">
+                    <i class="fa-solid fa-pen-to-square">
+                        <p>Editar link</p>
+                    </i>
+                </a>
+
+                <a class="delete" href="/links/delete/{{id}}">
+                    <i class="fa-solid fa-trash-can"></i>
+                </a>
+            </div>
+            
+            
         </div>
     {{else}}
         <p>No hay enlaces guardados</p>

@@ -9,10 +9,25 @@ const { userLog } = require('../lib/helpers');
 
 // Renderizado de vistas
     // Lista de links
-    router.get('/', helpers.userLog, async(req, res) => {
-        const links = await db.query('SELECT * FROM links WHERE usuario = ?', [req.user.email]);
-        res.render('links/all', {links: links});
+router.get('/', helpers.userLog, async(req, res) => {
+    const links = await db.query('SELECT * FROM links WHERE usuario = ?', [req.user.email]);
+    links.forEach(link => {
+        let fecha = link.fecha;
+
+        let day = (fecha.getDate() < 10 ? '0' : '') + fecha.getDate();
+        let month = (fecha.getMonth() < 10 ? '0' : '') + fecha.getMonth();
+        let year = (fecha.getFullYear() < 10 ? '0' : '') + fecha.getFullYear();
+
+        let hour = (fecha.getHours() < 10 ? '0' : '') + fecha.getHours();
+        let mins = (fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes();
+        let secs = (fecha.getSeconds() < 10 ? '0' : '') + fecha.getSeconds();
+
+        link.fecha = day+'/'+month+'/'+year;
+        link.hora = hour+':'+mins+':'+secs;
     });
+
+    res.render('links/all', {links: links});
+});
 
     // Añadir link
 router.get('/add', helpers.userLog, (req, res) => {

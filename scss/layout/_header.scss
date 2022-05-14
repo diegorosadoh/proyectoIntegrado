@@ -1,0 +1,41 @@
+header{
+    width: 100%;
+    padding: 1em 2em;
+    margin-bottom: 1em;
+
+    h1{
+        text-align:center; 
+        font-size:4em; 
+        text-transform:uppercase; color:#222;
+        letter-spacing:1px;
+        font-weight:500;
+        color:color(primary);
+        text-shadow: 1px 1px 1px color(secondary);
+
+        span {
+            font-size: 1.5rem;
+            margin-top: 0.2em;
+            color: color(secondary);
+            word-spacing:1px; 
+            font-weight:normal; 
+            letter-spacing:2px;
+            text-transform: uppercase;
+            font-weight:300;
+      
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+            grid-gap: 2rem;
+            align-items: center;
+
+            &:before,
+            &:after {
+                content: " ";
+                display: block;
+                border-bottom: 1px solid darken(color(aux1), 25%);
+                border-top: 1px solid darken(color(aux1), 25%);
+                height: 0.5rem;
+                background-color: color(aux1);
+            }
+        }
+    }
+}
