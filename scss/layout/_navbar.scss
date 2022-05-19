@@ -19,5 +19,19 @@ nav ul {
             background-color: color(secondary);
             color: white;
         }
-    } 
+
+        &[href="/logout"]{
+            position: fixed;
+            bottom: 0;
+            width:25%;
+        }
+    }
+
+    .folders{
+        border-top: 2px solid color(secondary);
+        border-bottom: 2px solid color(secondary);
+        padding: 0.5em 0;
+        background-color: color(primary);
+        color: white;
+    }
 }

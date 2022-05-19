@@ -1,20 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 /* paleta de colores */
-* {
+:root {
+  font-size: 62.5%; }
+
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif; }
 
+body,
 html {
-  font-size: 62.5%; }
+  height: 100%; }
 
 body {
   background-color: #f1f1f1;
-  margin: 0;
   font-size: 1.2em; }
 
+a:link,
+a:visited {
+  text-decoration: none;
+  color: inherit; }
+
 header {
+  grid-rows: 1/2;
   width: 100%;
   padding: 1em 2em;
   margin-bottom: 1em; }
@@ -66,6 +77,16 @@ nav ul {
     nav ul li a:hover:not(.active) {
       background-color: #754547;
       color: white; }
+    nav ul li a[href="/logout"] {
+      position: fixed;
+      bottom: 0;
+      width: 25%; }
+  nav ul .folders {
+    border-top: 2px solid #754547;
+    border-bottom: 2px solid #754547;
+    padding: 0.5em 0;
+    background-color: #F69094;
+    color: white; }
 
 .box {
   display: flex;
@@ -107,6 +128,7 @@ nav ul {
     .box form div.btn {
       display: flex;
       justify-content: flex-end;
+      align-items: center;
       width: 50%;
       margin: 1em 0; }
       .box form div.btn button {
@@ -128,11 +150,10 @@ nav ul {
           cursor: pointer;
           font-weight: 500; }
 
-.alllinks {
+.box.alllinks {
   display: grid;
-  grid-template-columns: repeat(3, 30%);
-  grid-gap: 3%; }
-  .alllinks .link {
+  grid-template-columns: repeat(3, 1fr); }
+  .box.alllinks .link {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -141,59 +162,101 @@ nav ul {
     background-color: #ffd5d6;
     margin: 1em;
     padding: 1em; }
-    .alllinks .link:hover {
+    .box.alllinks .link:hover {
       border: 3px solid #ffd5d6;
       background-color: #f1f1f1; }
-    .alllinks .link .title {
+    .box.alllinks .link .title {
       width: 100%;
       text-decoration: none;
       color: #754547; }
-      .alllinks .link .title h3 {
+      .box.alllinks .link .title h3 {
         width: 100%;
+        font-weight: 500;
         text-align: center;
         margin: 0; }
-      .alllinks .link .title:hover {
-        color: #F69094;
-        font-size: 1.2em; }
-    .alllinks .link .date {
-      color: #756869; }
-    .alllinks .link .functions {
+      .box.alllinks .link .title:hover {
+        color: #F69094; }
+    .box.alllinks .link .date {
+      color: #756869;
+      margin-bottom: 0.5em; }
+      .box.alllinks .link .date p span {
+        display: none;
+        position: relative;
+        left: -5em;
+        opacity: 0; }
+      .box.alllinks .link .date p:hover span {
+        display: inline;
+        left: 0.5em;
+        opacity: 1; }
+    .box.alllinks .link .functions {
       width: 100%;
+      border-top: 1px dashed #756869;
+      padding-top: 0.5em;
       display: grid;
-      grid-template-columns: repeat(2, 50%);
+      grid-template-columns: 10% 70% 10%;
+      grid-gap: 1em;
       text-decoration: none; }
-      .alllinks .link .functions .edit {
+      .box.alllinks .link .functions .edit {
+        grid-column: 1/2;
         display: flex; }
-        .alllinks .link .functions .edit i {
+        .box.alllinks .link .functions .edit i {
           color: #756869;
           font-size: 2em;
           margin: 0.25em; }
-          .alllinks .link .functions .edit i p {
-            font-size: 0.5em;
-            font-weight: 300;
-            color: #756869;
-            text-decoration: none;
-            display: none; }
-          .alllinks .link .functions .edit i:hover {
+          .box.alllinks .link .functions .edit i:hover {
             color: #754547; }
-            .alllinks .link .functions .edit i:hover p {
-              display: inline;
-              text-decoration: none; }
-      .alllinks .link .functions .delete {
+      .box.alllinks .link .functions div.desc {
+        grid-column: 2/3;
+        text-align: center;
+        margin: auto;
+        padding: 0 1em;
+        height: 3em;
+        overflow-y: scroll; }
+      .box.alllinks .link .functions .delete {
+        grid-column: 3/4;
         display: flex;
         justify-content: flex-end; }
-        .alllinks .link .functions .delete i {
+        .box.alllinks .link .functions .delete i {
           color: #ff000066;
           font-size: 2em;
           margin: 0.25em; }
-          .alllinks .link .functions .delete i:hover {
+          .box.alllinks .link .functions .delete i:hover {
             color: rgba(255, 0, 0, 0.85); }
+  .box.alllinks .nolinks {
+    grid-column: 1/4;
+    text-align: center;
+    color: #756869; }
+    .box.alllinks .nolinks h4 {
+      font-size: 3em;
+      font-weight: 300;
+      margin-bottom: 1em; }
+    .box.alllinks .nolinks a {
+      font-size: 2em;
+      color: #754547;
+      background-color: #F7DBDC;
+      padding: 0.5em 1em;
+      border-radius: 1.2em;
+      box-shadow: 0 5px 15px #756869;
+      cursor: pointer; }
+      .box.alllinks .nolinks a:hover {
+        background-color: #F69094;
+        box-shadow: 0 15px 20px #F7DBDC;
+        color: #fff;
+        transform: translateY(-20px); }
 
-.container {
+.main {
   margin-left: 25%;
-  display: flex;
-  flex-flow: row wrap; }
+  display: grid;
+  grid-template-rows: 12rem auto;
+  height: 100%; }
 
 .box {
   width: 100%;
   display: flex; }
+
+.folder {
+  margin-right: auto;
+  width: 30%;
+  height: 80%;
+  font-size: 1.5em;
+  text-align: center; }

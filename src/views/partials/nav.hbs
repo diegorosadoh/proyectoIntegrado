@@ -5,6 +5,18 @@
             <li><a href="/links">Links</a></li>
             <li><a href="/profile">Perfil</a></li>
             <li><a href="/logout">Cerrar sesión</a></li>
+            {{#if folders }}
+                <div class="folders">
+                    {{#each folders }}
+                        <li>
+                            <i class="mdi mdi-home"></i>
+                            <a href="/links/{{id}}">{{nombre}}</a>
+                        </li>
+                    {{else }}
+                        <li><a href="#">Sin carpetas</a></li>
+                    {{/each }}
+                </div>
+            {{/if }}
         {{else }}
             <li><a href="/register">Registro</a></li>
             <li><a href="/login">Inicio de sesión</a></li>

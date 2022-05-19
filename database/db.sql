@@ -20,7 +20,8 @@ CREATE TABLE carpetas(
 CREATE TABLE links(
     id INT(9) NOT NULL AUTO_INCREMENT,
     enlace VARCHAR(255) NOT NULL,
-    titulo VARCHAR(40) NOT NULL,
+    titulo VARCHAR(15) NOT NULL,
+    descripcion VARCHAR(255) NULL,
     fecha TIMESTAMP NOT NULL DEFAULT current_timestamp,
     usuario VARCHAR(40) NOT NULL,
     carpeta INT(9) NULL,

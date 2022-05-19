@@ -10,39 +10,31 @@ const { userLog } = require('../lib/helpers');
 // Renderizado de vistas
     // Lista de links
 router.get('/', helpers.userLog, async(req, res) => {
-    const links = await db.query('SELECT * FROM links WHERE usuario = ?', [req.user.email]);
-    links.forEach(link => {
-        let fecha = link.fecha;
-
-        let day = (fecha.getDate() < 10 ? '0' : '') + fecha.getDate();
-        let month = (fecha.getMonth() < 10 ? '0' : '') + fecha.getMonth();
-        let year = (fecha.getFullYear() < 10 ? '0' : '') + fecha.getFullYear();
-
-        let hour = (fecha.getHours() < 10 ? '0' : '') + fecha.getHours();
-        let mins = (fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes();
-        let secs = (fecha.getSeconds() < 10 ? '0' : '') + fecha.getSeconds();
-
-        link.fecha = day+'/'+month+'/'+year;
-        link.hora = hour+':'+mins+':'+secs;
-    });
-
+    let links = await db.query('SELECT * FROM links WHERE usuario = ?', [req.user.email]);
+    links = helpers.dateFormat(links);
     res.render('links/all', {links: links});
 });
 
-    // Añadir link
+// Añadir link
 router.get('/add', helpers.userLog, (req, res) => {
     res.render('./links/add');
-});
+}); 
+
+router.get('/:id', helpers.userLog, async(req, res) => {
+    let links = await db.query('SELECT * FROM links WHERE usuario = ? AND carpeta = ?', [req.user.email, req.params.id]);
+    links = helpers.dateFormat(links);
+    res.render('links/all', {links: links});
+});   
 
     // Editar link
 router.get('/edit/:id', helpers.userLog, async (req, res) => {
-    const links = await db.query('SELECT * FROM links WHERE ID= ?', [req.params.id]);
+    const links = await db.query('SELECT * FROM links WHERE id = ?', [req.params.id]);
     res.render('links/edit', {links: links[0]});
 });
 
     //Eliminar link
 router.get('/delete/:id', helpers.userLog, async (req, res) => {
-    await db.query('DELETE FROM links WHERE ID= ?', [req.params.id]);
+    await db.query('DELETE FROM links WHERE id = ?', [req.params.id]);
     res.redirect('/links');
 });
 
@@ -51,11 +43,14 @@ router.get('/delete/:id', helpers.userLog, async (req, res) => {
 router.post('/add', helpers.userLog, async (req, res) => {
     const newLink = {
         enlace: req.body.enlace,
-        titulo: req.body.titulo,
+        titulo: (req.body.titulo) ? req.body.titulo : req.body.enlace,
+        descripcion: req.body.descripcion,
         usuario: req.user.email
     }
 
-    await db.query('INSERT INTO links set ?', [newLink]);
+    if(Number.isInteger(req.body.carpeta)) newLink.carpeta = req.body.carpeta;
+
+    await db.query('INSERT INTO links SET ?', [newLink]);
     req.flash('ok', 'Link añadido');
     res.redirect('/links');
 });
@@ -64,8 +59,11 @@ router.post('/add', helpers.userLog, async (req, res) => {
 router.post('/edit/:id', helpers.userLog, async (req, res) => {
     const editLink = {
         enlace: req.body.enlace,
-        titulo: req.body.titulo
+        titulo: req.body.titulo,
+        descripcion: req.body.descripcion
     }
+
+    if(Number.isInteger(req.body.carpeta)) newLink.carpeta = req.body.carpeta;
 
     await db.query('UPDATE links SET ? WHERE id = ?', [editLink, req.params.id]);
     res.redirect('/links');

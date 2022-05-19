@@ -10,7 +10,17 @@
             <input type="text" name="titulo" placeholder="Título" value="{{links.titulo}}">
         </div>
 
+        <div class="input">
+            <input type="text" name="descripcion" placeholder="Descripción">
+        </div>
+
         <div class="btn">
+            <select class="folder" name="carpeta" id="carpeta">
+                <option value="" selected>Carpeta</option>
+                {{#each folders }}
+                    <option value="{{id}}">{{nombre}}</option>
+                {{/each }}
+            </select>
             <button>Guardar</button>
         </div>
     </form>

@@ -1,13 +1,17 @@
 // Módulos
 const express = require('express');
-const exphbs = require('express-handlebars');
-const path = require('path');
-const flash = require('connect-flash');
 const expsession = require('express-session');
 const sqlsession = require('express-mysql-session');
+const exphbs = require('express-handlebars');
+
+const flash = require('connect-flash');
+const path = require('path');
 const passport = require('passport');
 
 const { database } = require('./utils');
+
+// Conexión con la base de datos
+const db = require('./database');
 
 // Inicialización
 const app = express();
@@ -32,20 +36,31 @@ app.use(expsession({
     resave: false,
     saveUninitialized: false,
     store: new sqlsession(database)
-}))
-app.use(flash());
+}));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // Variables globales
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
     app.locals.ok = req.flash('ok');
     app.locals.fail = req.flash('fail');
     app.locals.user = req.user;
+
+    if(app.locals.user){
+        await (async ()=>{
+            app.locals.folders = await getFolders(req.user.email);
+        })();
+    }
+
     next();
-})
+});
+
+async function getFolders(user){
+    return await db.query('SELECT * FROM carpetas WHERE usuario = ?', [user]);
+}
 
 // Rutas
 app.use(require('./routes'));

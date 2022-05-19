@@ -3,6 +3,9 @@ const router = express.Router();
 const passport = require('passport');
 const helpers = require('../lib/helpers');
 
+// Conexión con la base de datos
+const db = require('../database');
+
 router.get('/register', (req, res) => {
     res.render('users/register');
 });
@@ -16,7 +19,7 @@ router.get('/logout', (req, res) => {
     res.redirect('/login');
 });
 
-router.get('/profile', helpers.userLog, (req, res) => {
+router.get('/profile', helpers.userLog, async (req, res) => {
     res.render('users/profile');
 });
 

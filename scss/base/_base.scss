@@ -1,17 +1,28 @@
+:root{
+    font-size: 62.5%;
+}
 
-*{
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
 
+body,
 html{
-    font-size: 62.5%;
+    height: 100%;
 }
 
 body{
     background-color: color(aux1);
-    margin: 0;
     font-size: 1.2em;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: inherit;
 }

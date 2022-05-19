@@ -1,7 +1,6 @@
-.alllinks{
+.box.alllinks{
     display: grid;
-    grid-template-columns: repeat(3, 30%);
-    grid-gap: 3%;
+    grid-template-columns: repeat(3, 1fr);
 
     .link{
         display: flex;
@@ -26,55 +25,75 @@
 
             h3{
                 width: 100%;
+                font-weight: 500;
                 text-align: center;
                 margin: 0;
             }
 
             &:hover{
                 color: color(primary);
-                font-size: 1.2em;
             }
         }
 
         .date{
             color: color(aux2);
+            margin-bottom: 0.5em;
+
+            p{
+                span{
+                    display: none;
+                    position: relative;
+                    left: -5em;
+                    opacity: 0;
+                }
+
+                &:hover{
+                    & span{
+                        display: inline;
+                        left: 0.5em;
+                        opacity: 1;
+                    }
+                }
+            }
         }
 
         .functions{
             width:100%;
+            border-top: 1px dashed color(aux2);
+            padding-top: 0.5em;
+
             display: grid;
-            grid-template-columns: repeat(2, 50%);
+            grid-template-columns: 10% 70% 10%;
+            grid-gap: 1em;
 
             text-decoration: none;
 
             .edit{
+                grid-column: 1/2;
                 display: flex;
 
                 i{
                     color: color(aux2);
                     font-size: 2em;
                     margin: 0.25em;
-
-                    & p{
-                        font-size: 0.5em;
-                        font-weight: 300;
-                        color: color(aux2);
-                        text-decoration: none;
-                        display: none;
-                    }
     
                     &:hover{
                         color:color(secondary);
-
-                        & p{
-                            display: inline;
-                            text-decoration: none;
-                        }
                     }
                 }
             }
+            
+            div.desc{
+                grid-column: 2/3;
+                text-align: center;
+                margin: auto;
+                padding: 0 1em;
+                height: 3em;
+                overflow-y: scroll;
+            }
 
             .delete{
+                grid-column: 3/4;
                 display: flex;
                 justify-content: flex-end;
     
@@ -87,6 +106,35 @@
                         color:rgba(255, 0, 0, 0.85);
                     }
                 }
+            }
+        }
+    }
+
+    .nolinks{
+        grid-column: 1/4;
+        text-align: center;
+        color: color(aux2);
+
+        h4{
+            font-size: 3em;
+            font-weight: 300;
+            margin-bottom: 1em;
+        }
+
+        a{
+            font-size: 2em;
+            color: color(secondary);
+            background-color: color(tertiary);
+            padding: 0.5em 1em;
+            border-radius: 1.2em;
+            box-shadow: 0 5px 15px color(aux2);
+            cursor: pointer;
+
+            &:hover {
+                background-color: color(primary);
+                box-shadow: 0 15px 20px color(tertiary);
+                color: #fff;
+                transform: translateY(-20px);
             }
         }
     }

@@ -6,25 +6,31 @@
             </a>
 
             <div class="date">
-                <p>{{fecha}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{hora}}</p>
+                <p>{{fecha}}
+                    <span>{{hora}}</span>
+                </p>
             </div>
 
             <div class="functions">
                 <a class="edit" href="/links/edit/{{id}}">
-                    <i class="fa-solid fa-pen-to-square">
-                        <p>Editar link</p>
-                    </i>
+                    <i class="fa-solid fa-pen-to-square"></i>
                 </a>
 
+                <div class="desc">
+                    {{descripcion}}
+                </div>
+
                 <a class="delete" href="/links/delete/{{id}}">
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i class="fa-solid fa-trash-alt"></i>
                 </a>
-            </div>
-            
-            
+            </div>            
         </div>
     {{else}}
-        <p>No hay enlaces guardados</p>
-        <a href="/links/add">Crea uno</a>
+        <div class="nolinks">
+            <h4>
+                No hay enlaces guardados
+            </h4>
+            <a href="/links/add">¡Crea uno!</a>
+        </div>
     {{/each}}
 </div>
