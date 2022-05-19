@@ -69,4 +69,16 @@ router.post('/edit/:id', helpers.userLog, async (req, res) => {
     res.redirect('/links');
 });
 
+    //Añadir carpeta
+router.post('/folders', helpers.userLog, async (req, res) => {
+    const newFolder = {
+        nombre: req.body.carpeta,
+        usuario: req.user.email
+    }
+
+    await db.query('INSERT INTO carpetas (nombre, usuario) VALUES (?, ?)', [newFolder.nombre, newFolder.usuario]);
+    req.flash('ok', 'Carpeta creada');
+    res.redirect('/links');
+});
+
 module.exports = router;

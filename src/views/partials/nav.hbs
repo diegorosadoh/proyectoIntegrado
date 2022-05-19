@@ -8,13 +8,14 @@
             {{#if folders }}
                 <div class="folders">
                     {{#each folders }}
-                        <li>
-                            <i class="mdi mdi-home"></i>
-                            <a href="/links/{{id}}">{{nombre}}</a>
-                        </li>
-                    {{else }}
-                        <li><a href="#">Sin carpetas</a></li>
+                        <li><a href="/links/{{id}}">{{nombre}}</a></li>
                     {{/each }}
+                    <li><a class="create" href="#">
+                        <form action="/links/folders" method="POST">
+                            <input type="text" name="carpeta" placeholder="Nueva carpeta">
+                            <button>Crear</button>
+                        </form>
+                    </a></li>
                 </div>
             {{/if }}
         {{else }}

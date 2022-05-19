@@ -33,5 +33,32 @@ nav ul {
         padding: 0.5em 0;
         background-color: color(primary);
         color: white;
+
+        .create{
+            cursor:auto;
+            padding: 1em 2em;
+
+            form{
+                width: 100%;
+                height: 2em;
+
+                input{
+                    width: 75%;
+                    border: none;
+                    outline: none;
+                    height: 100%;
+                    background-color: inherit;
+                    padding: 0.5em;
+                    font-size: inherit;
+
+                    &:focus{
+                        background-color: color(tertiary);
+                    }
+                }
+            }
+            
+        }
+
+        
     }
 }
