@@ -30,10 +30,10 @@ CREATE TABLE links(
     CONSTRAINT FK_carpetaLink FOREIGN KEY (carpeta) REFERENCES carpetas(id)
 );
 
-CREATE TABLE funcInteligente(
+/* CREATE TABLE funcInteligente(
     id INT(9) NOT NULL AUTO_INCREMENT,
     enlace VARCHAR(4255) NOT NULL,
     carpeta INT(9) NOT NULL,
     CONSTRAINT PK_funcInteligente PRIMARY KEY (id),
     CONSTRAINT FK_carpetaFuncinteligente FOREIGN KEY (carpeta) REFERENCES carpetas(id)
-);
+); */
