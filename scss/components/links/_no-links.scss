@@ -1,0 +1,33 @@
+.nolinks{
+    grid-column: 1/4;
+    text-align: center;
+    color: color(aux2);
+
+    h4{
+        font-size: 3em;
+        font-weight: 300;
+        margin-bottom: 1em;
+        
+        span{
+            font-weight: 400;
+            color: darken(color(aux2), 50%);
+        }
+    }
+
+    a{
+        font-size: 2em;
+        color: color(secondary);
+        background-color: color(tertiary);
+        padding: 0.5em 1em;
+        border-radius: 1.2em;
+        box-shadow: 0 5px 15px color(aux2);
+        cursor: pointer;
+
+        &:hover {
+            background-color: color(primary);
+            box-shadow: 0 15px 20px color(tertiary);
+            color: #fff;
+            transform: translateY(-20px);
+        }
+    }
+}

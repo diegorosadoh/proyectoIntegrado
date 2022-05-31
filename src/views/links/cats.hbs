@@ -1,0 +1,47 @@
+<div class="box">
+    {{#each cats}}
+        <div class="cat">
+            <div class="folder-title">
+                <span class="icon-folder-open">
+                    <i class="fa-solid fa-bullseye"></i>
+                </span>
+                <h3>{{cat}}</h3>
+            </div>
+            {{#each links}}
+                <div class="inline">
+
+                
+                    <div class="link">
+                        <a class="title" href="{{this.enlace}}" target="_blank">
+                            <h3>{{this.titulo}}</h3>
+                        </a>
+
+                        <div class="date">
+                            <p>{{this.fecha}}
+                                <span>{{this.hora}}</span>
+                            </p>
+                        </div>
+
+                        <div class="functions">
+                            <a class="edit" href="/links/edit/{{this.id}}">
+                                <span class="icon-edit">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </span>
+                            </a>
+
+                            <div class="desc">
+                                {{this.descripcion}}
+                            </div>
+
+                            <a class="delete" href="/links/delete/{{this.id}}">
+                                <span class="icon-delete">
+                                    <i class="fa-solid fa-trash-alt"></i>
+                                </span>
+                            </a>
+                        </div>            
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{/each}}
+</div>

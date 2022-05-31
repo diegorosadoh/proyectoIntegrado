@@ -1,26 +1,62 @@
 <nav>
     <ul>
         {{#if user }}
-            <li><a href="/links/add">Nuevo link</a></li>
+            <li><a class="newlink" href="/links/add">
+                <span class="icon-plus">
+                    <i class="fa-solid fa-circle-plus"></i>
+                </span>
+                &nbsp;Nuevo link
+            </a></li>
+
             <li><a href="/links">Links</a></li>
-            <li><a href="/profile">Perfil</a></li>
-            <li><a href="/logout">Cerrar sesión</a></li>
+            <li><a href="/links/categories">Categorías</a></li>
+
             {{#if folders }}
                 <div class="folders">
                     {{#each folders }}
-                        <li><a href="/links/{{id}}">{{nombre}}</a></li>
+                        <li>
+                            <a class="folder" href="/links/{{id}}">
+                                <span class="icon-folder">
+                                    <i class="fa-solid fa-folder"></i>
+                                </span>
+                                
+                                {{nombre}}
+
+                                <form action="/links/folders/delete/{{id}}" method="POST">
+                                    <button>
+                                        <span class="icon-xmark">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </span>
+                                    </button>
+                                </form>
+                            </a>
+                        </li>
                     {{/each }}
-                    <li><a class="create" href="#">
-                        <form action="/links/folders" method="POST">
-                            <input type="text" name="carpeta" placeholder="Nueva carpeta">
-                            <button>Crear</button>
-                        </form>
-                    </a></li>
+                    <li>
+                        <div class="create">
+                            <form action="/links/folders/add" method="POST">
+                                <input type="text" name="carpeta" placeholder="Nueva carpeta"/>
+                                <button>
+                                    <span class="icon-check">
+                                        <i class="fa-solid fa-check"></i>
+                                    </span>
+                                </button>
+                            </form>
+                        </div>
+                    </li>
                 </div>
             {{/if }}
+            <li><a href="/profile">Mi perfil</a></li>
         {{else }}
             <li><a href="/register">Registro</a></li>
             <li><a href="/login">Inicio de sesión</a></li>
         {{/if }}
     </ul>
+
+
+    <div class="logout">
+        {{#if user }}
+            <a href="/logout">Cerrar sesión</a>
+        {{/if }}
+    </div>
 </nav>

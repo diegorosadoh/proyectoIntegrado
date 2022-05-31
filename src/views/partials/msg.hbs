@@ -1,19 +1,23 @@
 <div class="msg">
     {{#if ok }}
-        <div class="container">
-            {{ok}}
-            <button>
-                <span>&times;</span>
-            </button>
+        <div class="msg-ok">
+            <div class="msg-text">
+                {{ok}}
+                <span class="icon-check">
+                    <i class="fa-solid fa-check fa-beat-fade"></i>
+                </span>
+            </div>
         </div>
     {{/if }}
 
     {{#if fail }}
-        <div class="container">
-            {{fail}}
-            <button>
-                <span>&times;</span>
-            </button>
+        <div class="msg-fail">
+            <div class="msg-text">
+                {{fail}}
+                <span class="icon-xmark">
+                    <i class="fa-solid fa-xmark-large fa-beat-fade"></i>
+                </span>
+            </div>
         </div>
     {{/if }}
 </div>

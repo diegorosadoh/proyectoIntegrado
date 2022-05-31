@@ -1,64 +1,52 @@
-nav ul {
-    list-style-type: none;
-    width: 25%;
-    background-color: color(tertiary);
+nav{ 
     position: fixed;
     top:0;
     left:0;
+    width: 25%;
     height: 100%;
     overflow: auto;
-
-    li a {
-        display: block;
-        color: #000;
-        font-size: 1.5em;
-        padding: 1em 2em;
-        text-decoration: none;
-
-        &:hover:not(.active) {
-            background-color: color(secondary);
-            color: white;
-        }
-
-        &[href="/logout"]{
-            position: fixed;
-            bottom: 0;
-            width:25%;
-        }
-    }
-
-    .folders{
-        border-top: 2px solid color(secondary);
-        border-bottom: 2px solid color(secondary);
-        padding: 0.5em 0;
-        background-color: color(primary);
-        color: white;
-
-        .create{
-            cursor:auto;
-            padding: 1em 2em;
-
-            form{
-                width: 100%;
-                height: 2em;
-
-                input{
-                    width: 75%;
-                    border: none;
-                    outline: none;
-                    height: 100%;
-                    background-color: inherit;
-                    padding: 0.5em;
-                    font-size: inherit;
-
-                    &:focus{
-                        background-color: color(tertiary);
-                    }
-                }
-            }
-            
-        }
-
+    
+    ul {
+        height: 90%;
+        list-style-type: none;
+        background-color: color(tertiary);
+        overflow: scroll;
         
+        li a,
+        li div {
+            display: block;
+            color: #000;
+            font-size: 1.5em;
+            padding: 1em 2em;
+            text-decoration: none;
+
+            &:hover {
+                background-color: color(secondary);
+                color: white;
+            }
+
+            &[href="/logout"]{
+                position: fixed;
+                bottom: 0;
+                width:25%;
+                z-index: 1000;
+            }
+        }
+
+        li a.newlink{
+            background-color: color(prim-mod);
+            border-bottom: solid 2px color(secondary);
+            box-shadow: 0 0 15px 5px white;
+            font-weight: 600;
+
+            &:hover{
+                background-color: #000;
+            }
+        }
+
+        @import "../components/navbar/folders";
     }
+
+    @import "../components/navbar/modal";
+    @import "../components/navbar/logout";
 }

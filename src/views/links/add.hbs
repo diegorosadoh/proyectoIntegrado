@@ -14,8 +14,10 @@
         </div>
 
         <div class="btn">
-            <select class="folder" name="carpeta" id="carpeta">
-                <option value="" selected>Carpeta</option>
+            <select class="select" name="carpeta" id="carpeta">
+                <option value="" selected>
+                    Carpeta
+                </option>
                 {{#each folders }}
                     <option value="{{id}}">{{nombre}}</option>
                 {{/each }}

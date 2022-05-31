@@ -1,0 +1,108 @@
+.folders{
+    border-top: 2px solid color(secondary);
+    border-bottom: 2px solid color(secondary);
+    padding: 0.5em 0;
+    background-color: color(primary);
+    box-shadow: 0 0 15px 5px white;
+    color: white;
+
+    li a.folder{
+        display: flex;
+        align-items: center;
+        padding: 0.5em 2em;
+
+        .icon-folder{
+            margin-right: 1em;
+            color: color(prim-mod)
+        }
+
+        form{
+            margin-left: auto;
+            visibility: hidden;
+
+            button{
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 1.5em;
+                margin-left: auto;
+
+                &:hover{
+                    animation:spin 0.25s linear;
+                    color:rgba(255, 0, 0, 0.85);
+                }
+            }
+        }
+        
+        &:hover form{
+            visibility: visible;
+        }
+    }
+
+    .create{
+        cursor:auto;
+        padding: 1em 2em;
+
+        &:hover input:not(:focus){
+            color: white;
+
+            &::placeholder{
+                color: white;
+            }
+        }
+
+        form{
+            width: 100%;
+            height: 2em;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+
+            input{
+                width: 75%;
+                border: none;
+                outline: none;
+                height: 100%;
+                background-color: inherit;
+                padding: 0.5em;
+                font-size: inherit;
+
+                &:focus{
+                    background-color: color(tertiary);
+
+                    & + button{
+                        visibility: visible;
+                    }
+                }
+            }
+
+            button{
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 1.5em;
+                margin-left: auto;
+
+                .icon-check{
+                    color: color(secondary);
+                    background-color: color(prim-mod);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 50%;
+
+                    &:hover{
+                        color: color(prim-mod);
+                        background-color: color(primary);
+                        box-shadow: 0 0 10px color(tertiary);
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+@keyframes spin {
+    100% { 
+        transform:rotate(90deg);
+    }
+}

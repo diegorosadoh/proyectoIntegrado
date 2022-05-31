@@ -1,0 +1,10 @@
+@import "../components/links/folder-title";
+
+.alllinks{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    @import "../components/links/item";
+
+    @import "../components/links/no-links";
+}

@@ -1,0 +1,32 @@
+{
+    "videos": [
+        "youtube.com",
+        "vimeo.com",
+        "dailymotion.com",
+        "videoshub.com",
+        "veoh.com",
+        "vevo.com",
+        "vidlii.com"
+    ],
+
+    "news": [
+        "elpais.com",
+        "elmundo.es",
+        "clarin.com",
+        "bbc.com",
+        "hola.com",
+        "20minutos.es",
+        "abc.es",
+        "elconfidencial.com",
+        "lavanguardia.com",
+        "as.com",
+        "espanadiario.net",
+        "marca.com"
+    ],
+
+    "academics": [
+        "dialnet.unirioja.es",
+        "academia.edu",
+        "researchgate.net"
+    ]
+}

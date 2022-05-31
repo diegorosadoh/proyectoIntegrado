@@ -1,16 +1,17 @@
 @import "abstracts/variables";
 @import "base/base";
 
+@import "layout/msg";
 @import "layout/header";
 @import "layout/navbar";
+@import "layout/links";
+@import "layout/cats";
 
 @import "components/form";
-@import "components/links";
 
 .main{
     margin-left: 25%;
     display: grid;
-    //flex-flow: row wrap;
     grid-template-rows: 12rem auto;
     height: 100%;
 }
@@ -18,12 +19,10 @@
 .box{
     width: 100%;
     display: flex;
-}
+    flex-flow: row wrap;
+    justify-content: center;
 
-.folder{
-    margin-right: auto;
-    width: 30%; 
-    height: 80%;
-    font-size: 1.5em;
-    text-align: center;
+    & *{
+        transition: all 0.5s;
+    }
 }

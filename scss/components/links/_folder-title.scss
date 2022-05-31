@@ -1,0 +1,19 @@
+.folder-title{
+    width: 100%;
+    margin-right: auto;
+    margin-left: 3em;
+    display:flex;
+    flex-flow: row wrap;
+
+    .icon-folder-open{
+        font-size: 2.5em;
+        color: color(primary);
+        margin-right: 0.5em;
+    }
+
+    h3{
+        font-size: 2em;
+        width: fit-content;
+        margin: 0;
+    }
+}

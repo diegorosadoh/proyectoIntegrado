@@ -13,7 +13,8 @@
 
 body,
 html {
-  height: 100%; }
+  height: 100%;
+  width: 100vw; }
 
 body {
   background-color: #f1f1f1;
@@ -23,6 +24,82 @@ a:link,
 a:visited {
   text-decoration: none;
   color: inherit; }
+
+.msg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 100vh;
+  pointer-events: none; }
+  .msg .msg-ok,
+  .msg .msg-fail {
+    width: 100%;
+    height: 100%; }
+    .msg .msg-ok::before,
+    .msg .msg-fail::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      transform: scaleX(0);
+      animation: leftright 3.5s ease-in-out; }
+    .msg .msg-ok .msg-text,
+    .msg .msg-fail .msg-text {
+      opacity: 0;
+      z-index: -100;
+      color: white;
+      font-weight: 100;
+      text-align: center;
+      font-size: 8rem;
+      animation: fadeinout 3.5s ease-in-out; }
+  .msg .msg-ok::before {
+    background-color: rgba(51, 194, 29, 0.75); }
+  .msg .msg-ok .icon-check {
+    color: rgba(16, 61, 9, 0.75); }
+  .msg .msg-fail::before {
+    background-color: rgba(194, 29, 29, 0.75); }
+  .msg .msg-fail .icon-xmark {
+    color: rgba(61, 9, 9, 0.75); }
+
+.login h3 .msg-side {
+  font-weight: 300;
+  font-size: 0.7em;
+  color: rgba(194, 29, 29, 0.75); }
+  .login h3 .msg-side .icon-exclamation {
+    color: rgba(105, 16, 16, 0.75);
+    font-size: 0.9em; }
+
+@keyframes leftright {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left; }
+  35% {
+    transform: scaleX(1);
+    transform-origin: left; }
+  36% {
+    transform-origin: right; }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right; } }
+
+@keyframes fadeinout {
+  0% {
+    opacity: 0;
+    z-index: 100; }
+  35% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 
 header {
   grid-rows: 1/2;
@@ -59,117 +136,220 @@ header {
         height: 0.5rem;
         background-color: #f1f1f1; }
 
-nav ul {
-  list-style-type: none;
-  width: 25%;
-  background-color: #F7DBDC;
+nav {
   position: fixed;
   top: 0;
   left: 0;
+  width: 25%;
   height: 100%;
-  overflow: auto; }
-  nav ul li a {
-    display: block;
-    color: #000;
-    font-size: 1.5em;
-    padding: 1em 2em;
-    text-decoration: none; }
-    nav ul li a:hover:not(.active) {
-      background-color: #754547;
-      color: white; }
-    nav ul li a[href="/logout"] {
-      position: fixed;
-      bottom: 0;
-      width: 25%; }
-  nav ul .folders {
-    border-top: 2px solid #754547;
-    border-bottom: 2px solid #754547;
-    padding: 0.5em 0;
-    background-color: #F69094;
-    color: white; }
-    nav ul .folders .create {
-      cursor: auto;
-      padding: 1em 2em; }
-      nav ul .folders .create form {
-        width: 100%;
-        height: 2em; }
-        nav ul .folders .create form input {
-          width: 75%;
-          border: none;
-          outline: none;
-          height: 100%;
-          background-color: inherit;
-          padding: 0.5em;
-          font-size: inherit; }
-          nav ul .folders .create form input:focus {
-            background-color: #F7DBDC; }
-
-.box {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center; }
-  .box * {
-    transition: all 0.5s; }
-  .box h3 {
-    width: 50%;
-    text-align: left;
-    margin-left: 3em;
-    font-size: 2em; }
-  .box form {
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-    align-items: center; }
-    .box form div.input {
+  overflow: auto;
+  /* Set a style for all buttons */
+  /* Float cancel and delete buttons and add an equal width */
+  /* Add a color to the cancel button */
+  /* Add a color to the delete button */
+  /* Add padding and center-align text to the container */
+  /* The Modal (background) */
+  /* Modal Content/Box */
+  /* Style the horizontal ruler */
+  /* The Modal Close Button (x) */
+  /* Clear floats */ }
+  nav ul {
+    height: 90%;
+    list-style-type: none;
+    background-color: #F7DBDC;
+    overflow: scroll; }
+    nav ul li a,
+    nav ul li div {
       display: block;
-      width: 50%; }
-      .box form div.input input {
-        border: 2px solid black;
-        border-radius: 4em;
-        padding: 0 3em;
-        margin: 0.5em auto;
-        width: 100%;
-        align-self: center;
-        height: 7em;
-        text-align: center; }
-        .box form div.input input::placeholder {
-          font-size: 2.5em;
-          color: lightgray;
-          text-shadow: 1px 1px 1px #754547; }
-        .box form div.input input:focus {
-          outline: 0.5em solid #F7DBDC; }
-          .box form div.input input:focus::placeholder {
-            font-size: 2.2em;
-            text-shadow: none; }
-    .box form div.btn {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      width: 50%;
-      margin: 1em 0; }
-      .box form div.btn button {
-        width: 50%;
-        display: block;
-        height: 5em;
-        background-color: #ffd5d6;
-        border: 0.2em solid #FFFFFF;
-        border-radius: 1em;
-        text-decoration: none;
-        color: #FFFFFF;
-        text-shadow: -1px 1px 2px #754547;
-        text-align: center;
-        font-size: 1.5em; }
-        .box form div.btn button:hover {
-          color: #000000;
-          background-color: #FFFFFF;
-          text-shadow: none;
-          cursor: pointer;
-          font-weight: 500; }
+      color: #000;
+      font-size: 1.5em;
+      padding: 1em 2em;
+      text-decoration: none; }
+      nav ul li a:hover,
+      nav ul li div:hover {
+        background-color: #754547;
+        color: white; }
+      nav ul li a[href="/logout"],
+      nav ul li div[href="/logout"] {
+        position: fixed;
+        bottom: 0;
+        width: 25%;
+        z-index: 1000; }
+    nav ul li a.newlink {
+      background-color: #ffd5d6;
+      border-bottom: solid 2px #754547;
+      box-shadow: 0 0 15px 5px white;
+      font-weight: 600; }
+      nav ul li a.newlink:hover {
+        background-color: #000; }
+    nav ul .folders {
+      border-top: 2px solid #754547;
+      border-bottom: 2px solid #754547;
+      padding: 0.5em 0;
+      background-color: #F69094;
+      box-shadow: 0 0 15px 5px white;
+      color: white; }
+      nav ul .folders li a.folder {
+        display: flex;
+        align-items: center;
+        padding: 0.5em 2em; }
+        nav ul .folders li a.folder .icon-folder {
+          margin-right: 1em;
+          color: #ffd5d6; }
+        nav ul .folders li a.folder form {
+          margin-left: auto;
+          visibility: hidden; }
+          nav ul .folders li a.folder form button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5em;
+            margin-left: auto; }
+            nav ul .folders li a.folder form button:hover {
+              animation: spin 0.25s linear;
+              color: rgba(255, 0, 0, 0.85); }
+        nav ul .folders li a.folder:hover form {
+          visibility: visible; }
+      nav ul .folders .create {
+        cursor: auto;
+        padding: 1em 2em; }
+        nav ul .folders .create:hover input:not(:focus) {
+          color: white; }
+          nav ul .folders .create:hover input:not(:focus)::placeholder {
+            color: white; }
+        nav ul .folders .create form {
+          width: 100%;
+          height: 2em;
+          display: flex;
+          flex-flow: row wrap;
+          align-items: center; }
+          nav ul .folders .create form input {
+            width: 75%;
+            border: none;
+            outline: none;
+            height: 100%;
+            background-color: inherit;
+            padding: 0.5em;
+            font-size: inherit; }
+            nav ul .folders .create form input:focus {
+              background-color: #F7DBDC; }
+              nav ul .folders .create form input:focus + button {
+                visibility: visible; }
+          nav ul .folders .create form button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5em;
+            margin-left: auto; }
+            nav ul .folders .create form button .icon-check {
+              color: #754547;
+              background-color: #ffd5d6;
+              padding: 0.25rem 0.75rem;
+              border-radius: 50%; }
+              nav ul .folders .create form button .icon-check:hover {
+                color: #ffd5d6;
+                background-color: #F69094;
+                box-shadow: 0 0 10px #F7DBDC; }
 
-.box.alllinks {
+@keyframes spin {
+  100% {
+    transform: rotate(90deg); } }
+  nav .delfolder {
+    opacity: 0.9; }
+    nav .delfolder:hover {
+      opacity: 1; }
+  nav .cancelbtn, nav .deletebtn {
+    float: left;
+    width: 50%; }
+  nav .cancelbtn {
+    background-color: #ccc;
+    color: black; }
+  nav .deletebtn {
+    background-color: #f44336; }
+  nav .container {
+    padding: 16px;
+    text-align: center; }
+  nav .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px; }
+  nav .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */ }
+  nav hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px; }
+  nav .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1; }
+  nav .close:hover,
+  nav .close:focus {
+    color: #f44336;
+    cursor: pointer; }
+  nav .clearfix::after {
+    content: "";
+    clear: both;
+    display: table; }
+  nav div.logout {
+    position: fixed;
+    bottom: 0;
+    width: 25%;
+    height: 10%;
+    z-index: 1000;
+    background-color: #F7DBDC;
+    display: flex;
+    align-items: center; }
+    nav div.logout a {
+      width: 100%;
+      height: 100%;
+      display: block;
+      color: #000;
+      font-size: 1.5em;
+      padding: 1em 2em; }
+      nav div.logout a:hover {
+        background-color: #754547;
+        color: white; }
+
+.folder-title {
+  width: 100%;
+  margin-right: auto;
+  margin-left: 3em;
+  display: flex;
+  flex-flow: row wrap; }
+  .folder-title .icon-folder-open {
+    font-size: 2.5em;
+    color: #F69094;
+    margin-right: 0.5em; }
+  .folder-title h3 {
+    font-size: 2em;
+    width: fit-content;
+    margin: 0; }
+
+.alllinks {
   display: grid;
   grid-template-columns: repeat(3, 1fr); }
-  .box.alllinks .link {
+  .alllinks .link {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -178,33 +358,34 @@ nav ul {
     background-color: #ffd5d6;
     margin: 1em;
     padding: 1em; }
-    .box.alllinks .link:hover {
+    .alllinks .link:hover {
       border: 3px solid #ffd5d6;
       background-color: #f1f1f1; }
-    .box.alllinks .link .title {
+    .alllinks .link .title {
       width: 100%;
       text-decoration: none;
       color: #754547; }
-      .box.alllinks .link .title h3 {
+      .alllinks .link .title h3 {
         width: 100%;
         font-weight: 500;
         text-align: center;
-        margin: 0; }
-      .box.alllinks .link .title:hover {
+        margin: 0;
+        font-size: 2em; }
+      .alllinks .link .title:hover {
         color: #F69094; }
-    .box.alllinks .link .date {
+    .alllinks .link .date {
       color: #756869;
       margin-bottom: 0.5em; }
-      .box.alllinks .link .date p span {
+      .alllinks .link .date p span {
         display: none;
         position: relative;
         left: -5em;
         opacity: 0; }
-      .box.alllinks .link .date p:hover span {
+      .alllinks .link .date p:hover span {
         display: inline;
         left: 0.5em;
         opacity: 1; }
-    .box.alllinks .link .functions {
+    .alllinks .link .functions {
       width: 100%;
       border-top: 1px dashed #756869;
       padding-top: 0.5em;
@@ -212,41 +393,44 @@ nav ul {
       grid-template-columns: 10% 70% 10%;
       grid-gap: 1em;
       text-decoration: none; }
-      .box.alllinks .link .functions .edit {
+      .alllinks .link .functions .edit {
         grid-column: 1/2;
         display: flex; }
-        .box.alllinks .link .functions .edit i {
-          color: #756869;
+        .alllinks .link .functions .edit .icon-edit {
+          color: #a79c9d;
           font-size: 2em;
           margin: 0.25em; }
-          .box.alllinks .link .functions .edit i:hover {
+          .alllinks .link .functions .edit .icon-edit:hover {
             color: #754547; }
-      .box.alllinks .link .functions div.desc {
+      .alllinks .link .functions div.desc {
         grid-column: 2/3;
         text-align: center;
         margin: auto;
         padding: 0 1em;
         height: 3em;
         overflow-y: scroll; }
-      .box.alllinks .link .functions .delete {
+      .alllinks .link .functions .delete {
         grid-column: 3/4;
         display: flex;
         justify-content: flex-end; }
-        .box.alllinks .link .functions .delete i {
+        .alllinks .link .functions .delete .icon-delete {
           color: #ff000066;
           font-size: 2em;
           margin: 0.25em; }
-          .box.alllinks .link .functions .delete i:hover {
+          .alllinks .link .functions .delete .icon-delete:hover {
             color: rgba(255, 0, 0, 0.85); }
-  .box.alllinks .nolinks {
+  .alllinks .nolinks {
     grid-column: 1/4;
     text-align: center;
     color: #756869; }
-    .box.alllinks .nolinks h4 {
+    .alllinks .nolinks h4 {
       font-size: 3em;
       font-weight: 300;
       margin-bottom: 1em; }
-    .box.alllinks .nolinks a {
+      .alllinks .nolinks h4 span {
+        font-weight: 400;
+        color: black; }
+    .alllinks .nolinks a {
       font-size: 2em;
       color: #754547;
       background-color: #F7DBDC;
@@ -254,11 +438,191 @@ nav ul {
       border-radius: 1.2em;
       box-shadow: 0 5px 15px #756869;
       cursor: pointer; }
-      .box.alllinks .nolinks a:hover {
+      .alllinks .nolinks a:hover {
         background-color: #F69094;
         box-shadow: 0 15px 20px #F7DBDC;
         color: #fff;
         transform: translateY(-20px); }
+
+.cat {
+  width: 100%;
+  height: 20rem;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap; }
+  .cat .inline {
+    display: inline-block;
+    width: 20rem; }
+    .cat .inline .link {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      border: 4px solid white;
+      border-radius: 2em;
+      background-color: #ffd5d6;
+      margin: 1em;
+      padding: 1em; }
+      .cat .inline .link:hover {
+        border: 3px solid #ffd5d6;
+        background-color: #f1f1f1; }
+      .cat .inline .link .title {
+        width: 100%;
+        text-decoration: none;
+        color: #754547; }
+        .cat .inline .link .title h3 {
+          width: 100%;
+          font-weight: 500;
+          text-align: center;
+          margin: 0;
+          font-size: 2em; }
+        .cat .inline .link .title:hover {
+          color: #F69094; }
+      .cat .inline .link .date {
+        color: #756869;
+        margin-bottom: 0.5em; }
+        .cat .inline .link .date p span {
+          display: none;
+          position: relative;
+          left: -5em;
+          opacity: 0; }
+        .cat .inline .link .date p:hover span {
+          display: inline;
+          left: 0.5em;
+          opacity: 1; }
+      .cat .inline .link .functions {
+        width: 100%;
+        border-top: 1px dashed #756869;
+        padding-top: 0.5em;
+        display: grid;
+        grid-template-columns: 10% 70% 10%;
+        grid-gap: 1em;
+        text-decoration: none; }
+        .cat .inline .link .functions .edit {
+          grid-column: 1/2;
+          display: flex; }
+          .cat .inline .link .functions .edit .icon-edit {
+            color: #a79c9d;
+            font-size: 2em;
+            margin: 0.25em; }
+            .cat .inline .link .functions .edit .icon-edit:hover {
+              color: #754547; }
+        .cat .inline .link .functions div.desc {
+          grid-column: 2/3;
+          text-align: center;
+          margin: auto;
+          padding: 0 1em;
+          height: 3em;
+          overflow-y: scroll; }
+        .cat .inline .link .functions .delete {
+          grid-column: 3/4;
+          display: flex;
+          justify-content: flex-end; }
+          .cat .inline .link .functions .delete .icon-delete {
+            color: #ff000066;
+            font-size: 2em;
+            margin: 0.25em; }
+            .cat .inline .link .functions .delete .icon-delete:hover {
+              color: rgba(255, 0, 0, 0.85); }
+
+.login h3,
+.register h3,
+.addlink h3,
+.editlink h3 {
+  width: 50%;
+  text-align: left;
+  margin-left: 3em;
+  font-size: 2em; }
+
+.login form,
+.register form,
+.addlink form,
+.editlink form {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center; }
+  .login form div.input,
+  .register form div.input,
+  .addlink form div.input,
+  .editlink form div.input {
+    display: block;
+    width: 50%; }
+    .login form div.input input,
+    .register form div.input input,
+    .addlink form div.input input,
+    .editlink form div.input input {
+      border: 2px solid black;
+      border-radius: 4em;
+      padding: 0 3em;
+      margin: 0.5em auto;
+      width: 100%;
+      align-self: center;
+      height: 7em;
+      text-align: center; }
+      .login form div.input input::placeholder,
+      .register form div.input input::placeholder,
+      .addlink form div.input input::placeholder,
+      .editlink form div.input input::placeholder {
+        font-size: 2.5em;
+        color: lightgray;
+        text-shadow: 1px 1px 1px #754547; }
+      .login form div.input input:focus,
+      .register form div.input input:focus,
+      .addlink form div.input input:focus,
+      .editlink form div.input input:focus {
+        outline: 0.5em solid #F7DBDC; }
+        .login form div.input input:focus::placeholder,
+        .register form div.input input:focus::placeholder,
+        .addlink form div.input input:focus::placeholder,
+        .editlink form div.input input:focus::placeholder {
+          font-size: 2.2em;
+          text-shadow: none; }
+  .login form div.btn,
+  .register form div.btn,
+  .addlink form div.btn,
+  .editlink form div.btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    margin: 1em 0; }
+    .login form div.btn .select,
+    .register form div.btn .select,
+    .addlink form div.btn .select,
+    .editlink form div.btn .select {
+      border-radius: 1.5rem;
+      border: none;
+      background-color: #d8d8d8;
+      margin-right: auto;
+      margin-left: 3rem;
+      width: 30%;
+      height: 80%;
+      font-size: 1.5em;
+      text-align: center; }
+    .login form div.btn button,
+    .register form div.btn button,
+    .addlink form div.btn button,
+    .editlink form div.btn button {
+      width: 50%;
+      display: block;
+      height: 5em;
+      background-color: #ffd5d6;
+      border: 0.2em solid #FFFFFF;
+      border-radius: 1em;
+      text-decoration: none;
+      color: #FFFFFF;
+      text-shadow: -1px 1px 2px #754547;
+      text-align: center;
+      font-size: 1.5em; }
+      .login form div.btn button:hover,
+      .register form div.btn button:hover,
+      .addlink form div.btn button:hover,
+      .editlink form div.btn button:hover {
+        color: #000000;
+        background-color: #FFFFFF;
+        text-shadow: none;
+        cursor: pointer;
+        font-weight: 500; }
 
 .main {
   margin-left: 25%;
@@ -268,11 +632,8 @@ nav ul {
 
 .box {
   width: 100%;
-  display: flex; }
-
-.folder {
-  margin-right: auto;
-  width: 30%;
-  height: 80%;
-  font-size: 1.5em;
-  text-align: center; }
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center; }
+  .box * {
+    transition: all 0.5s; }

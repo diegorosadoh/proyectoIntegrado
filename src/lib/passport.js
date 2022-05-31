@@ -5,25 +5,8 @@ const Strategy = require('passport-local').Strategy;
 const db = require('../database');
 const helpers = require('../lib/helpers');
 
-passport.use('local.login', new Strategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true
-}, async (req, email, password, done) => {
-    let user = await db.query('SELECT * FROM usuarios WHERE email = ?', [email]);
-    if (user.length === 1) {
-        user = user[0];
-        if (await helpers.matchPass(password, user.password)) {
-            done(null, user, req.flash('ok', 'Bienvenid@'));
-        } else {
-            done(null, false, req.flash('fail', 'Contraseña incorrecta'));
-        }
-    } else {
-        return done(null, false, req.flash('fail', 'Usuario no registrado'));
-    }
-}));
-
-passport.use('local.register', new Strategy({
+// Registro
+passport.use('register', new Strategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
@@ -39,6 +22,27 @@ passport.use('local.register', new Strategy({
     return done(null, newUser);
 }));
 
+// Login
+passport.use('login', new Strategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+}, async (req, email, password, done) => {
+    let user = await db.query('SELECT * FROM usuarios WHERE email = ?', [email]);
+
+    if (user.length === 1) {
+        user = user[0];
+        if (await helpers.matchPass(password, user.password)) {
+            done(null, user, req.flash('ok', 'Bienvenid@, '+user.nombre));
+        } else {
+            done(null, false, req.flash('fail', 'Contraseña incorrecta'));
+        }
+    } else {
+        return done(null, false, req.flash('fail', 'Usuario no registrado'));
+    }
+}));
+
+// Serialización y deserialización del usuario
 passport.serializeUser((user, done) => {
     done(null, user.email);
 });

@@ -1,0 +1,51 @@
+.functions{
+    width:100%;
+    border-top: 1px dashed color(aux2);
+    padding-top: 0.5em;
+
+    display: grid;
+    grid-template-columns: 10% 70% 10%;
+    grid-gap: 1em;
+
+    text-decoration: none;
+
+    .edit{
+        grid-column: 1/2;
+        display: flex;
+
+        .icon-edit{
+            color: lighten(color(aux2), 20%);
+            font-size: 2em;
+            margin: 0.25em;
+
+            &:hover{
+                color:color(secondary);
+            }
+        }
+    }
+    
+    div.desc{
+        grid-column: 2/3;
+        text-align: center;
+        margin: auto;
+        padding: 0 1em;
+        height: 3em;
+        overflow-y: scroll;
+    }
+
+    .delete{
+        grid-column: 3/4;
+        display: flex;
+        justify-content: flex-end;
+
+        .icon-delete{
+            color: color(quaternary);
+            font-size: 2em;
+            margin: 0.25em;
+
+            &:hover{
+                color:rgba(255, 0, 0, 0.85);
+            }
+        }
+    }
+}

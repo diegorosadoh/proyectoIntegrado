@@ -1,36 +1,59 @@
-<div class="box alllinks">
-    {{#each links}}
-        <div class="link">
-            <a class="title" href="{{enlace}}" target="_blank">
-                <h3>{{titulo}}</h3>
-            </a>
+<div class="box">
 
-            <div class="date">
-                <p>{{fecha}}
-                    <span>{{hora}}</span>
-                </p>
-            </div>
+    {{#if carpeta }} {{#if links }}
+        <div class="folder-title">
+            <span class="icon-folder-open">
+                <i class="fa-solid fa-folder-open"></i>
+            </span>
+            <h3>{{carpeta.nombre}}</h3>
+        </div>
+    {{/if }} {{/if }}
 
-            <div class="functions">
-                <a class="edit" href="/links/edit/{{id}}">
-                    <i class="fa-solid fa-pen-to-square"></i>
+    <div class="alllinks">
+        {{#each links}}
+            <div class="link">
+                <a class="title" href="{{enlace}}" target="_blank">
+                    <h3>{{titulo}}</h3>
                 </a>
 
-                <div class="desc">
-                    {{descripcion}}
+                <div class="date">
+                    <p>{{fecha}}
+                        <span>{{hora}}</span>
+                    </p>
                 </div>
 
-                <a class="delete" href="/links/delete/{{id}}">
-                    <i class="fa-solid fa-trash-alt"></i>
-                </a>
-            </div>            
-        </div>
-    {{else}}
-        <div class="nolinks">
-            <h4>
-                No hay enlaces guardados
-            </h4>
-            <a href="/links/add">¡Crea uno!</a>
-        </div>
-    {{/each}}
+                <div class="functions">
+                    <a class="edit" href="/links/edit/{{id}}">
+                        <span class="icon-edit">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </span>
+                    </a>
+
+                    <div class="desc">
+                        {{descripcion}}
+                    </div>
+
+                    <a class="delete" href="/links/delete/{{id}}">
+                        <span class="icon-delete">
+                            <i class="fa-solid fa-trash-alt"></i>
+                        </span>
+                    </a>
+                </div>            
+            </div>
+        {{else}}
+            <div class="nolinks">
+                <h4>
+                    No hay enlaces guardados
+                    {{#if carpeta}}
+                        en '<span>{{carpeta.nombre}}</span>'
+                    {{/if }}
+                </h4>
+                {{#if carpeta}}
+                    <a href="/links/add/{{carpeta.id}}">¡Crea uno!</a>
+                {{else}}
+                    <a href="/links/add">¡Crea uno!</a>
+                {{/if}}
+            </div>
+        {{/each}}
+    </div>
 </div>

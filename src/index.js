@@ -7,20 +7,20 @@ const exphbs = require('express-handlebars');
 const flash = require('connect-flash');
 const path = require('path');
 const passport = require('passport');
+require('./lib/passport');
 
 const { database } = require('./utils');
 
 // Conexión con la base de datos
 const db = require('./database');
 
-// Inicialización
+// Inicialización de express
 const app = express();
-require('./lib/passport');
 
-// Localización del puerto
+// Puerto
 app.set('port', process.env.PORT || 4000);
 
-// Localización de la carpeta de vistas
+// Configuración de las vistas (handlebars)
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs.engine ({
     defaultLayout: 'main',
@@ -30,7 +30,7 @@ app.engine('.hbs', exphbs.engine ({
 }));
 app.set('view engine', '.hbs');
 
-//Middlewares
+//Inicialización y configuración de middlewares
 app.use(expsession({
     secret: 'proyectosession',
     resave: false,
@@ -45,15 +45,16 @@ app.use(flash());
 
 // Variables globales
 app.use(async (req, res, next) => {
-    app.locals.ok = req.flash('ok');
-    app.locals.fail = req.flash('fail');
-    app.locals.user = req.user;
+    app.locals.user = req.user; // Usuario
 
     if(app.locals.user){
         await (async ()=>{
-            app.locals.folders = await getFolders(req.user.email);
+            app.locals.folders = await getFolders(req.user.email); // Carpetas del usuario
         })();
     }
+
+    app.locals.ok = req.flash('ok'); // Mensaje OK
+    app.locals.fail = req.flash('fail'); // Mensaje de error
 
     next();
 });
@@ -67,10 +68,20 @@ app.use(require('./routes'));
 app.use(require('./routes/users'));
 app.use('/links', require('./routes/links'));
 
-// Arrancar servidor
+// Arranque del servidor
 app.listen(app.get('port'), ()=>{
     console.log('Servidor iniciado en el puerto', app.get('port'));
 })
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));
+
+/* let hbs = exphbs.create({});
+
+hbs.handlebars.registerHelper('isAnd', function(cond1, cond2, options) {
+    return (cond1 && cond2) ? options.fn(this) : options.inverse(this);
+});
+
+hbs.handlebars.registerHelper('eq', function(cond1, cond2, options) {
+    return (cond1 == cond2) ? options.fn(this) : options.inverse(this);
+}); */

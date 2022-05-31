@@ -1,0 +1,110 @@
+.msg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height:100vh;
+    pointer-events: none;
+
+    .msg-ok,
+    .msg-fail{
+        width: 100%;
+        height: 100%;
+
+        &::before{
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transform: scaleX(0);
+
+            animation: leftright 3.5s ease-in-out;
+        }
+
+        .msg-text{
+            opacity: 0;
+            z-index: -100;
+            color: white;
+            font-weight: 100;
+            text-align: center;
+            font-size: 8rem;
+            animation: fadeinout 3.5s ease-in-out;
+        }
+    }
+
+    .msg-ok{
+        &::before{
+            background-color: color(msgok);
+        }
+
+        .icon-check{
+            color: darken(color(msgok), 30%);
+        }
+    }
+
+    .msg-fail{
+        &::before{
+            background-color: color(msgfail);
+        }
+
+        .icon-xmark{
+            color: darken(color(msgfail), 30%);
+        }
+    }
+}
+
+.login h3 .msg-side{
+    font-weight: 300;
+    font-size: 0.7em;
+    color: color(msgfail);
+
+    .icon-exclamation{
+        color: darken(color(msgfail), 20%);
+        font-size: 0.9em;
+    }
+}
+
+@keyframes leftright{
+    0%{
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    35%{
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    36%{
+        transform-origin: right;
+    }
+
+    100%{
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+}
+
+@keyframes fadeinout{
+    0%{
+        opacity: 0;
+        z-index: 100;
+    }
+
+    35%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
