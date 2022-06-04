@@ -52,33 +52,33 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 100vh;
+  /* line-height:100vh; */
   pointer-events: none; }
-  .msg .msg-ok,
-  .msg .msg-fail {
+  .msg .msg-ok::before,
+  .msg .msg-fail::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%; }
-    .msg .msg-ok::before,
-    .msg .msg-fail::before {
-      content: " ";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      transform: scaleX(0);
-      animation: leftright 3.5s ease-in-out; }
-    .msg .msg-ok .msg-text,
-    .msg .msg-fail .msg-text {
-      opacity: 0;
-      z-index: -100;
-      color: white;
-      font-weight: 100;
-      text-align: center;
-      font-size: 8rem;
-      animation: fadeinout 3.5s ease-in-out; }
+    height: 100%;
+    z-index: -1;
+    transform: scaleX(0);
+    animation: leftright 3.5s ease-in-out; }
+  .msg .msg-ok .msg-text,
+  .msg .msg-fail .msg-text {
+    opacity: 0;
+    z-index: -100;
+    color: white;
+    font-weight: 100;
+    text-align: center;
+    font-size: 8rem;
+    animation: fadeinout 3.5s ease-in-out; }
+    @media (max-widtH: 920px) {
+      .msg .msg-ok .msg-text,
+      .msg .msg-fail .msg-text {
+        font-size: 5rem; } }
   .msg .msg-ok::before {
     background-color: rgba(51, 194, 29, 0.75); }
   .msg .msg-ok .icon-check {
@@ -191,6 +191,8 @@ nav {
       font-weight: 600; }
       nav ul li a.newlink:hover {
         background-color: #000; }
+    nav ul li.title {
+      display: none; }
     nav ul .folders {
       border-top: 2px solid #754547;
       border-bottom: 2px solid #754547;
@@ -290,7 +292,19 @@ nav {
     nav {
       width: 100vw;
       text-align: center;
-      display: none; } }
+      display: none; }
+      nav ul li.title {
+        height: 7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #754547; }
+        nav ul li.title h2 {
+          font-size: 3rem;
+          letter-spacing: 1px;
+          font-weight: 500;
+          color: #ffd5d6;
+          text-shadow: 1px 1px 1px #F69094; } }
 
 .folder-title {
   width: 100%;
@@ -404,6 +418,10 @@ nav {
         box-shadow: 0 15px 20px #F7DBDC;
         color: #fff;
         transform: translateY(-20px); }
+  @media (max-widtH: 920px) {
+    .alllinks {
+      display: flex;
+      flex-flow: column; } }
 
 .cat {
   width: 100%;
@@ -562,6 +580,12 @@ nav {
         .editlink form div.input input:focus::placeholder {
           font-size: 2.2em;
           text-shadow: none; }
+    @media (max-widtH: 920px) {
+      .login form div.input,
+      .register form div.input,
+      .addlink form div.input,
+      .editlink form div.input {
+        width: 75%; } }
   .login form div.btn,
   .register form div.btn,
   .addlink form div.btn,
@@ -608,6 +632,12 @@ nav {
         text-shadow: none;
         cursor: pointer;
         font-weight: 500; }
+    @media (max-widtH: 920px) {
+      .login form div.btn,
+      .register form div.btn,
+      .addlink form div.btn,
+      .editlink form div.btn {
+        width: 75%; } }
 
 input#burger {
   display: none; }
@@ -624,10 +654,9 @@ label.burger {
   width: 5rem;
   height: 5rem;
   position: fixed;
-  top: 2rem;
-  left: 3rem;
+  top: 1rem;
+  left: 1rem;
   cursor: pointer;
-  z-index: -100;
   display: none;
   flex-flow: column;
   justify-content: space-around;
@@ -635,11 +664,16 @@ label.burger {
   background-color: #F69094;
   padding: 1rem;
   border-radius: 50%;
-  z-index: 100; }
+  z-index: 100;
+  transition: all 0.1s; }
+  label.burger:hover {
+    background-color: #ffd5d6; }
+    label.burger:hover .line {
+      background-color: #754547; }
   label.burger .line {
     width: 100%;
     height: 0.3rem;
-    background: white;
+    background-color: white;
     border-radius: 0.2rem;
     transition: all 0.4s ease-in-out; }
   @media (max-widtH: 920px) {

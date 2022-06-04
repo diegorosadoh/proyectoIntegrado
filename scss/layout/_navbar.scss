@@ -48,6 +48,10 @@ nav{
             }
         }
 
+        li.title{
+            display: none;
+        }
+
         @import "../components/navbar/folders";
     }
 
@@ -57,5 +61,21 @@ nav{
         width: 100vw;
         text-align: center;
         display:none;
+
+        ul li.title{
+            height: 7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: color(secondary);
+            
+            h2{
+                font-size: 3rem;
+                letter-spacing:1px;
+                font-weight:500;
+                color:color(prim-mod);
+                text-shadow: 1px 1px 1px color(primary);
+            }
+        }
     }
 }

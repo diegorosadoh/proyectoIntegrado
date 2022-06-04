@@ -7,4 +7,9 @@
     @import "../components/links/item";
 
     @import "../components/links/no-links";
+
+    @include response(md){
+        display: flex;
+        flex-flow: column;
+    }
 }

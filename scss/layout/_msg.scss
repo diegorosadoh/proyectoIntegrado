@@ -8,14 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    line-height:100vh;
+    /* line-height:100vh; */
     pointer-events: none;
 
     .msg-ok,
     .msg-fail{
-        width: 100%;
-        height: 100%;
-
         &::before{
             content: " ";
             display: block;
@@ -38,6 +35,8 @@
             text-align: center;
             font-size: 8rem;
             animation: fadeinout 3.5s ease-in-out;
+
+            @include response(md){ font-size: 5rem; }
         }
     }
 

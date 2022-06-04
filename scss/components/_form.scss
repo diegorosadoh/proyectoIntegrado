@@ -44,6 +44,8 @@
                     }
                 }
             }
+
+            @include response(md){ width: 75%; }
         }
 
         div.btn{
@@ -86,6 +88,8 @@
                     font-weight: 500;
                 }
             }
+            
+            @include response(md){ width: 75%; }
         }
     }
 }
