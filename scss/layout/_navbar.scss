@@ -5,6 +5,10 @@ nav{
     width: 25%;
     height: 100%;
     overflow: auto;
+
+    .burger{
+        position: absolute;
+    }
     
     ul {
         height: 90%;
@@ -47,6 +51,11 @@ nav{
         @import "../components/navbar/folders";
     }
 
-    @import "../components/navbar/modal";
     @import "../components/navbar/logout";
+
+    @include response(md){
+        width: 100vw;
+        text-align: center;
+        display:none;
+    }
 }

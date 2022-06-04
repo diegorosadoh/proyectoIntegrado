@@ -1,4 +1,6 @@
 @import "abstracts/variables";
+@import "abstracts/mixins";
+
 @import "base/base";
 
 @import "layout/msg";
@@ -6,23 +8,7 @@
 @import "layout/navbar";
 @import "layout/links";
 @import "layout/cats";
+@import "layout/error";
 
 @import "components/form";
-
-.main{
-    margin-left: 25%;
-    display: grid;
-    grid-template-rows: 12rem auto;
-    height: 100%;
-}
-
-.box{
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-
-    & *{
-        transition: all 0.5s;
-    }
-}
+@import "components/burger";

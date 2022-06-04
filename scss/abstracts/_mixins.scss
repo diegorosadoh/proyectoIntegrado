@@ -1,0 +1,7 @@
+@mixin response($breakpoint){
+    @if($breakpoint == md){
+        @media(max-widtH: 920px){
+            @content;
+        }
+    }
+}

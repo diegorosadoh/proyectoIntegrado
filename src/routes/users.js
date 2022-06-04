@@ -3,9 +3,6 @@ const router = express.Router();
 const passport = require('passport');
 const helpers = require('../lib/helpers');
 
-// Conexión con la base de datos
-const db = require('../database');
-
 /* RENDERIZADO DE VISTAS */
 // Registro
 router.get('/register', (req, res) => {

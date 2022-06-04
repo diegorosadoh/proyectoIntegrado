@@ -27,3 +27,25 @@ a:visited {
     text-decoration: none;
     color: inherit;
 }
+
+.main{
+    margin-left: 25%;
+    display: grid;
+    grid-template-rows: 12rem auto;
+    height: 100%;
+
+    @include response(md){
+        margin-left: 0;
+    }
+}
+
+.box{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    & *{
+        transition: all 0.5s;
+    }
+}

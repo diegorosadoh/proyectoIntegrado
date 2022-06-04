@@ -21,4 +21,9 @@ div.logout{
             color: white;
         }
     }
+
+    @include response(md){
+        width: 100vw;
+        text-align: center;
+    }
 }

@@ -28,7 +28,7 @@ app.engine('.hbs', exphbs.engine ({
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.hbs'
 }));
-app.set('view engine', '.hbs');
+app.set('view engine', '.hbs').use(express.static(path.join(__dirname, '/public')));
 
 //Inicialización y configuración de middlewares
 app.use(expsession({
@@ -67,6 +67,7 @@ async function getFolders(user){
 app.use(require('./routes'));
 app.use(require('./routes/users'));
 app.use('/links', require('./routes/links'));
+app.use('*', require('./routes/error'));
 
 // Arranque del servidor
 app.listen(app.get('port'), ()=>{
@@ -85,3 +86,12 @@ hbs.handlebars.registerHelper('isAnd', function(cond1, cond2, options) {
 hbs.handlebars.registerHelper('eq', function(cond1, cond2, options) {
     return (cond1 == cond2) ? options.fn(this) : options.inverse(this);
 }); */
+
+/* window.onload = () => {
+    const hamburgerContainer = document.querySelector("nav");
+    const hamburger = document.querySelector(".burger");
+
+    hamburger.addEventListener("click", () => {
+        hamburgerContainer.classList.toggle("clicked");
+    });
+} */
