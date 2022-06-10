@@ -76,22 +76,3 @@ app.listen(app.get('port'), ()=>{
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));
-
-/* let hbs = exphbs.create({});
-
-hbs.handlebars.registerHelper('isAnd', function(cond1, cond2, options) {
-    return (cond1 && cond2) ? options.fn(this) : options.inverse(this);
-});
-
-hbs.handlebars.registerHelper('eq', function(cond1, cond2, options) {
-    return (cond1 == cond2) ? options.fn(this) : options.inverse(this);
-}); */
-
-/* window.onload = () => {
-    const hamburgerContainer = document.querySelector("nav");
-    const hamburger = document.querySelector(".burger");
-
-    hamburger.addEventListener("click", () => {
-        hamburgerContainer.classList.toggle("clicked");
-    });
-} */

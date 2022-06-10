@@ -52,7 +52,6 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* line-height:100vh; */
   pointer-events: none; }
   .msg .msg-ok::before,
   .msg .msg-fail::before {
@@ -119,7 +118,6 @@ a:visited {
     opacity: 0; } }
 
 header {
-  grid-rows: 1/2;
   width: 100%;
   padding: 1em 2em;
   margin-bottom: 1em; }
