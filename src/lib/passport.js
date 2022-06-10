@@ -1,6 +1,7 @@
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const nodemailer = require('nodemailer');
+const path = require('path');
 
 // Conexión con la base de datos
 const db = require('../database');
@@ -35,7 +36,8 @@ passport.use('register', new Strategy({
         from: emailOptions.from,
         to: email,
         subject: emailOptions.subject,
-        html: '<h1>CONFIRMA TU EMAIL: </h1><a href="http://localhost:4000/verify/'+verifyCode+'">CONFIRMA</a>'
+        /* html: '<h1>CONFIRMA TU EMAIL: </h1><a href="http://localhost:4000/verify/'+verifyCode+'">CONFIRMA</a>' */
+        html: '<h1>CONFIRMA TU EMAIL: </h1><a href="https://link-organizer-proyecto.herokuapp.com/verify/'+verifyCode+'">CONFIRMA</a>'
     };
 
     let user = newUser.email + ';' + newUser.password + ';' + newUser.nombre;
