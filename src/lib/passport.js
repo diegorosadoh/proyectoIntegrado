@@ -134,7 +134,7 @@ passport.use('register', new Strategy({
                     text-decoration: none;
                     text-align: center;
                 " 
-                href="http://localhost:4000/verify/${verifyCode}">
+                href="https://link-organizer-proyecto.herokuapp.com/verify/${verifyCode}">
                     Verificar cuenta
                 </a>
             </div>`
