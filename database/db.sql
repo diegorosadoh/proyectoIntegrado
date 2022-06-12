@@ -1,5 +1,5 @@
 CREATE TABLE usuarios(
-    email VARCHAR(40) NOT NULL,
+    email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     nombre VARCHAR(40) NOT NULL,
     CONSTRAINT PK_usuarios PRIMARY KEY (email)

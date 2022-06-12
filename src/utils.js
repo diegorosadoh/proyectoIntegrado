@@ -1,3 +1,8 @@
+/**
+ * Fichero de configuración 
+ * (base de datos y envío de correo).
+ */
+
 module.exports = {
     database: {
         host: 'eu-cdbr-west-02.cleardb.net',
@@ -8,6 +13,7 @@ module.exports = {
 
     emailOptions: {
         from: 'linkinapp.confirmation@gmail.com',
-        subject: 'Confirma tu correo electrónico - LINKIN'
+        subject: 'Confirma tu correo electrónico - LINKIN',
+        auth: 'zzqwsmqpegpkgyzu'
     }
 }

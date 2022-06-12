@@ -10,7 +10,13 @@
     <script defer src="/css/fontawesome/all.js"></script>
     <script defer src="/css/fontawesome/fontawesome.js"></script>
 
-    <title>Proyecto</title>
+    <title>
+        {{#if title}}
+            {{title}} - LINKIN
+        {{else}}
+            LINKIN
+        {{/if}}
+    </title>
 </head>
 <body>
     {{> burger }}

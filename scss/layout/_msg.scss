@@ -60,17 +60,6 @@
     }
 }
 
-.login h3 .msg-side{
-    font-weight: 300;
-    font-size: 0.7em;
-    color: color(msgfail);
-
-    .icon-exclamation{
-        color: darken(color(msgfail), 20%);
-        font-size: 0.9em;
-    }
-}
-
 @keyframes leftright{
     0%{
         transform: scaleX(0);

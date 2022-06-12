@@ -3,6 +3,7 @@ input#burger{
 
     &:checked{
         & + label{
+            .line{ margin-left: 0.1rem; }
             .line1{ transform: rotateZ(-405deg) translate(-0.8rem, 0.6rem); }
             .line2{ opacity: 0; }
             .line3{ transform: rotateZ(405deg) translate(-0.8rem, -0.6rem); }
@@ -16,8 +17,8 @@ label.burger{
     width: 5rem;
     height: 5rem;
     position: fixed;
-    top: 1rem;
-    left: 1rem;
+    top: 1.5rem;
+    left: 1.5rem;
     cursor: pointer;
 
     display: none;
@@ -29,7 +30,7 @@ label.burger{
     padding: 1rem;
     border-radius: 50%;
 
-    z-index: 100;
+    z-index: 101;
 
     transition: all 0.1s;
 

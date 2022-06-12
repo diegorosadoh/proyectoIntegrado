@@ -1,12 +1,43 @@
 .login,
 .register,
 .addlink,
-.editlink{
+.editlink,
+.profile{
     h3{
         width: 50%;
         text-align: left;
         margin-left: 3em;
-        font-size: 2em;
+        font-size: 2.5rem;
+
+        @include response(md){ 
+            width: 70%;
+            margin: 0;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .msg-side{
+            display: inline-block; 
+            font-weight: 300;
+            font-size: 0.7em;
+            margin: 0;
+
+            &.ok{
+                color: color(msgok);
+            }
+
+            &.fail{
+                color: color(msgfail);
+            }
+
+            .icon-exclamation,
+            .icon-check { 
+                font-size: 0.9em; 
+            }
+
+            .icon-exclamation{ color: darken(color(msgfail), 20%); }
+            .icon-check{ color: darken(color(msgok), 20%); }
+        }
     }
 
     form{
@@ -15,7 +46,7 @@
         flex-flow: column;
         align-items: center;
 
-        div.input{
+        .input{
             display: block;
             width: 50%;
 
@@ -26,21 +57,24 @@
                 margin: 0.5em auto;
                 width: 100%;
                 align-self: center;
-                height:7em;
+                height:10rem;
+                font-size: 2rem;
                 text-align: center;
                 
                 &::placeholder{
                     font-size: 2.5rem;
-                    color: lightgray;
-                    text-shadow: 1px 1px 1px color(secondary);
+                    color: color(secondary);
                 }
     
                 &:focus{
-                    outline: 0.5em solid color(tertiary);
+                    outline: 0.5em solid lighten(color(secondary), 40%);
+                    border-color: color(aux2);
+                    background-color: lighten(color(tertiary), 5%);
                 
                     &::placeholder{
-                        font-size: 2.2em;
+                        font-size: 2rem;
                         text-shadow: none;
+                        color: color(aux2);
                     }
                 }
             }
@@ -48,12 +82,14 @@
             @include response(md){ width: 75%; }
         }
 
-        div.btn{
+        .btn{
             display: flex;
             justify-content: flex-end;
             align-items: center;
             width: 50%;
             margin: 1em 0;
+
+            @include response(md){ flex-flow: column;}
 
             .select{
                 border-radius: 1.5rem;
@@ -61,31 +97,79 @@
                 background-color: darken(color(aux1), 10%);
                 margin-right: auto;
                 margin-left: 3rem;
-                width: 30%; 
-                height: 80%;
+                width: 25%; 
+                height: 100%;
                 font-size: 1.5em;
                 text-align: center;
+                cursor: pointer;
+
+                @include response(md){
+                    margin: 0 auto 1rem auto;
+                    padding: 2rem;
+                    width: 50%;
+                }
             }
 
-            button{
-                width: 50%;
-                display: block;
-                height: 5em;
-                background-color: color(prim-mod);
-                border: 0.2em solid #FFFFFF;
-                border-radius: 1em;
-                text-decoration:none;
-                color:#FFFFFF;
-                text-shadow: -1px 1px 2px color(secondary);
-                text-align:center;
-                font-size: 1.5em;
+            button {
+                position: relative;
+                margin: auto;
+                padding: 1.5rem 2rem;
+                transition: all 0.2s ease;
+                border: none;
+                background: none;
+                cursor: pointer;
                 
-                &:hover{
-                    color:#000000;
-                    background-color:#FFFFFF;
-                    text-shadow: none;
-                    cursor: pointer;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0.75rem;
+                    left: 0;
+                    display: block;
+                    border-radius: 5rem;
+                    background: color(primary);
+                    width: 4.5rem;
+                    height: 4.5rem;
+                    transition: all 0.4s ease;
+                }
+               
+                & span {
+                    text-transform: uppercase;
+                    position: relative;
+                    font-size: 2.5rem;
                     font-weight: 500;
+                }
+               
+                & svg {
+                    position: relative;
+                    top: -0.4rem;
+                    margin-left: 2rem;
+                    fill: none;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke: color(primary);
+                    stroke-width: 2;
+                    transform: translateX(-1.5rem);
+                    transition: all 0.4s ease;
+                }
+               
+                &:hover {
+                    &::before{
+                        width: 100%;
+                        background: color(primary);
+                    }
+
+                    & span{
+                        color: white;
+                    }
+                    
+                    & svg{
+                        transform: translateX(0);
+                        stroke: color(tertiary);
+                    }
+                }
+               
+                &:active{
+                    transform: scale(0.9);
                 }
             }
 

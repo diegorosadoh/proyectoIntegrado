@@ -29,7 +29,8 @@ a:visited {
   margin-left: 25%;
   display: grid;
   grid-template-rows: 12rem auto;
-  height: 100%; }
+  height: 100%;
+  overflow-x: hidden; }
   @media (max-widtH: 920px) {
     .main {
       margin-left: 0; } }
@@ -87,14 +88,6 @@ a:visited {
   .msg .msg-fail .icon-xmark {
     color: rgba(61, 9, 9, 0.75); }
 
-.login h3 .msg-side {
-  font-weight: 300;
-  font-size: 0.7em;
-  color: rgba(194, 29, 29, 0.75); }
-  .login h3 .msg-side .icon-exclamation {
-    color: rgba(105, 16, 16, 0.75);
-    font-size: 0.9em; }
-
 @keyframes leftright {
   0% {
     transform: scaleX(0);
@@ -125,7 +118,6 @@ header {
     text-align: center;
     font-size: 4em;
     text-transform: uppercase;
-    color: #222;
     letter-spacing: 1px;
     font-weight: 500;
     color: #F69094;
@@ -157,7 +149,8 @@ nav {
   left: 0;
   width: 25%;
   height: 100%;
-  overflow: auto; }
+  overflow: auto;
+  z-index: 100; }
   nav .burger {
     position: absolute; }
   nav ul {
@@ -176,12 +169,6 @@ nav {
       nav ul li div:hover {
         background-color: #754547;
         color: white; }
-      nav ul li a[href="/logout"],
-      nav ul li div[href="/logout"] {
-        position: fixed;
-        bottom: 0;
-        width: 25%;
-        z-index: 1000; }
     nav ul li a.newlink {
       background-color: #ffd5d6;
       border-bottom: solid 2px #754547;
@@ -267,11 +254,10 @@ nav {
     position: fixed;
     bottom: 0;
     width: 25%;
-    height: 10%;
     z-index: 1000;
-    background-color: #F7DBDC;
+    background-color: #ffd5d6;
     display: flex;
-    align-items: center; }
+    align-items: flex-end; }
     nav div.logout a {
       width: 100%;
       height: 100%;
@@ -280,7 +266,7 @@ nav {
       font-size: 1.5em;
       padding: 1em 2em; }
       nav div.logout a:hover {
-        background-color: #754547;
+        background-color: #756869;
         color: white; }
     @media (max-widtH: 920px) {
       nav div.logout {
@@ -292,7 +278,7 @@ nav {
       text-align: center;
       display: none; }
       nav ul li.title {
-        height: 7rem;
+        height: 8rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -320,6 +306,7 @@ nav {
     margin: 0; }
 
 .alllinks {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr); }
   .alllinks .link {
@@ -424,12 +411,18 @@ nav {
 .cat {
   width: 100%;
   height: 20rem;
-  overflow-y: hidden;
-  overflow-x: auto;
-  white-space: nowrap; }
+  margin: 1rem 0; }
+  .cat .cat-links {
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 75vw; }
+    @media (max-widtH: 920px) {
+      .cat .cat-links {
+        width: 100vw; } }
   .cat .inline {
     display: inline-block;
-    width: 20rem; }
+    width: 25rem; }
     .cat .inline .link {
       display: flex;
       flex-flow: row wrap;
@@ -528,117 +521,257 @@ nav {
 .login h3,
 .register h3,
 .addlink h3,
-.editlink h3 {
+.editlink h3,
+.profile h3 {
   width: 50%;
   text-align: left;
   margin-left: 3em;
-  font-size: 2em; }
+  font-size: 2.5rem; }
+  @media (max-widtH: 920px) {
+    .login h3,
+    .register h3,
+    .addlink h3,
+    .editlink h3,
+    .profile h3 {
+      width: 70%;
+      margin: 0;
+      text-align: center;
+      display: inline-block; } }
+  .login h3 .msg-side,
+  .register h3 .msg-side,
+  .addlink h3 .msg-side,
+  .editlink h3 .msg-side,
+  .profile h3 .msg-side {
+    display: inline-block;
+    font-weight: 300;
+    font-size: 0.7em;
+    margin: 0; }
+    .login h3 .msg-side.ok,
+    .register h3 .msg-side.ok,
+    .addlink h3 .msg-side.ok,
+    .editlink h3 .msg-side.ok,
+    .profile h3 .msg-side.ok {
+      color: rgba(51, 194, 29, 0.75); }
+    .login h3 .msg-side.fail,
+    .register h3 .msg-side.fail,
+    .addlink h3 .msg-side.fail,
+    .editlink h3 .msg-side.fail,
+    .profile h3 .msg-side.fail {
+      color: rgba(194, 29, 29, 0.75); }
+    .login h3 .msg-side .icon-exclamation,
+    .login h3 .msg-side .icon-check,
+    .register h3 .msg-side .icon-exclamation,
+    .register h3 .msg-side .icon-check,
+    .addlink h3 .msg-side .icon-exclamation,
+    .addlink h3 .msg-side .icon-check,
+    .editlink h3 .msg-side .icon-exclamation,
+    .editlink h3 .msg-side .icon-check,
+    .profile h3 .msg-side .icon-exclamation,
+    .profile h3 .msg-side .icon-check {
+      font-size: 0.9em; }
+    .login h3 .msg-side .icon-exclamation,
+    .register h3 .msg-side .icon-exclamation,
+    .addlink h3 .msg-side .icon-exclamation,
+    .editlink h3 .msg-side .icon-exclamation,
+    .profile h3 .msg-side .icon-exclamation {
+      color: rgba(105, 16, 16, 0.75); }
+    .login h3 .msg-side .icon-check,
+    .register h3 .msg-side .icon-check,
+    .addlink h3 .msg-side .icon-check,
+    .editlink h3 .msg-side .icon-check,
+    .profile h3 .msg-side .icon-check {
+      color: rgba(28, 105, 16, 0.75); }
 
 .login form,
 .register form,
 .addlink form,
-.editlink form {
+.editlink form,
+.profile form {
   width: 100%;
   display: flex;
   flex-flow: column;
   align-items: center; }
-  .login form div.input,
-  .register form div.input,
-  .addlink form div.input,
-  .editlink form div.input {
+  .login form .input,
+  .register form .input,
+  .addlink form .input,
+  .editlink form .input,
+  .profile form .input {
     display: block;
     width: 50%; }
-    .login form div.input input,
-    .register form div.input input,
-    .addlink form div.input input,
-    .editlink form div.input input {
+    .login form .input input,
+    .register form .input input,
+    .addlink form .input input,
+    .editlink form .input input,
+    .profile form .input input {
       border: 2px solid black;
       border-radius: 4em;
       padding: 0 3em;
       margin: 0.5em auto;
       width: 100%;
       align-self: center;
-      height: 7em;
+      height: 10rem;
+      font-size: 2rem;
       text-align: center; }
-      .login form div.input input::placeholder,
-      .register form div.input input::placeholder,
-      .addlink form div.input input::placeholder,
-      .editlink form div.input input::placeholder {
+      .login form .input input::placeholder,
+      .register form .input input::placeholder,
+      .addlink form .input input::placeholder,
+      .editlink form .input input::placeholder,
+      .profile form .input input::placeholder {
         font-size: 2.5rem;
-        color: lightgray;
-        text-shadow: 1px 1px 1px #754547; }
-      .login form div.input input:focus,
-      .register form div.input input:focus,
-      .addlink form div.input input:focus,
-      .editlink form div.input input:focus {
-        outline: 0.5em solid #F7DBDC; }
-        .login form div.input input:focus::placeholder,
-        .register form div.input input:focus::placeholder,
-        .addlink form div.input input:focus::placeholder,
-        .editlink form div.input input:focus::placeholder {
-          font-size: 2.2em;
-          text-shadow: none; }
+        color: #754547; }
+      .login form .input input:focus,
+      .register form .input input:focus,
+      .addlink form .input input:focus,
+      .editlink form .input input:focus,
+      .profile form .input input:focus {
+        outline: 0.5em solid #d2b4b5;
+        border-color: #756869;
+        background-color: #fcf0f0; }
+        .login form .input input:focus::placeholder,
+        .register form .input input:focus::placeholder,
+        .addlink form .input input:focus::placeholder,
+        .editlink form .input input:focus::placeholder,
+        .profile form .input input:focus::placeholder {
+          font-size: 2rem;
+          text-shadow: none;
+          color: #756869; }
     @media (max-widtH: 920px) {
-      .login form div.input,
-      .register form div.input,
-      .addlink form div.input,
-      .editlink form div.input {
+      .login form .input,
+      .register form .input,
+      .addlink form .input,
+      .editlink form .input,
+      .profile form .input {
         width: 75%; } }
-  .login form div.btn,
-  .register form div.btn,
-  .addlink form div.btn,
-  .editlink form div.btn {
+  .login form .btn,
+  .register form .btn,
+  .addlink form .btn,
+  .editlink form .btn,
+  .profile form .btn {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     width: 50%;
     margin: 1em 0; }
-    .login form div.btn .select,
-    .register form div.btn .select,
-    .addlink form div.btn .select,
-    .editlink form div.btn .select {
+    @media (max-widtH: 920px) {
+      .login form .btn,
+      .register form .btn,
+      .addlink form .btn,
+      .editlink form .btn,
+      .profile form .btn {
+        flex-flow: column; } }
+    .login form .btn .select,
+    .register form .btn .select,
+    .addlink form .btn .select,
+    .editlink form .btn .select,
+    .profile form .btn .select {
       border-radius: 1.5rem;
       border: none;
       background-color: #d8d8d8;
       margin-right: auto;
       margin-left: 3rem;
-      width: 30%;
-      height: 80%;
+      width: 25%;
+      height: 100%;
       font-size: 1.5em;
-      text-align: center; }
-    .login form div.btn button,
-    .register form div.btn button,
-    .addlink form div.btn button,
-    .editlink form div.btn button {
-      width: 50%;
-      display: block;
-      height: 5em;
-      background-color: #ffd5d6;
-      border: 0.2em solid #FFFFFF;
-      border-radius: 1em;
-      text-decoration: none;
-      color: #FFFFFF;
-      text-shadow: -1px 1px 2px #754547;
       text-align: center;
-      font-size: 1.5em; }
-      .login form div.btn button:hover,
-      .register form div.btn button:hover,
-      .addlink form div.btn button:hover,
-      .editlink form div.btn button:hover {
-        color: #000000;
-        background-color: #FFFFFF;
-        text-shadow: none;
-        cursor: pointer;
+      cursor: pointer; }
+      @media (max-widtH: 920px) {
+        .login form .btn .select,
+        .register form .btn .select,
+        .addlink form .btn .select,
+        .editlink form .btn .select,
+        .profile form .btn .select {
+          margin: 0 auto 1rem auto;
+          padding: 2rem;
+          width: 50%; } }
+    .login form .btn button,
+    .register form .btn button,
+    .addlink form .btn button,
+    .editlink form .btn button,
+    .profile form .btn button {
+      position: relative;
+      margin: auto;
+      padding: 1.5rem 2rem;
+      transition: all 0.2s ease;
+      border: none;
+      background: none;
+      cursor: pointer; }
+      .login form .btn button:before,
+      .register form .btn button:before,
+      .addlink form .btn button:before,
+      .editlink form .btn button:before,
+      .profile form .btn button:before {
+        content: "";
+        position: absolute;
+        top: 0.75rem;
+        left: 0;
+        display: block;
+        border-radius: 5rem;
+        background: #F69094;
+        width: 4.5rem;
+        height: 4.5rem;
+        transition: all 0.4s ease; }
+      .login form .btn button span,
+      .register form .btn button span,
+      .addlink form .btn button span,
+      .editlink form .btn button span,
+      .profile form .btn button span {
+        text-transform: uppercase;
+        position: relative;
+        font-size: 2.5rem;
         font-weight: 500; }
+      .login form .btn button svg,
+      .register form .btn button svg,
+      .addlink form .btn button svg,
+      .editlink form .btn button svg,
+      .profile form .btn button svg {
+        position: relative;
+        top: -0.4rem;
+        margin-left: 2rem;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: #F69094;
+        stroke-width: 2;
+        transform: translateX(-1.5rem);
+        transition: all 0.4s ease; }
+      .login form .btn button:hover::before,
+      .register form .btn button:hover::before,
+      .addlink form .btn button:hover::before,
+      .editlink form .btn button:hover::before,
+      .profile form .btn button:hover::before {
+        width: 100%;
+        background: #F69094; }
+      .login form .btn button:hover span,
+      .register form .btn button:hover span,
+      .addlink form .btn button:hover span,
+      .editlink form .btn button:hover span,
+      .profile form .btn button:hover span {
+        color: white; }
+      .login form .btn button:hover svg,
+      .register form .btn button:hover svg,
+      .addlink form .btn button:hover svg,
+      .editlink form .btn button:hover svg,
+      .profile form .btn button:hover svg {
+        transform: translateX(0);
+        stroke: #F7DBDC; }
+      .login form .btn button:active,
+      .register form .btn button:active,
+      .addlink form .btn button:active,
+      .editlink form .btn button:active,
+      .profile form .btn button:active {
+        transform: scale(0.9); }
     @media (max-widtH: 920px) {
-      .login form div.btn,
-      .register form div.btn,
-      .addlink form div.btn,
-      .editlink form div.btn {
+      .login form .btn,
+      .register form .btn,
+      .addlink form .btn,
+      .editlink form .btn,
+      .profile form .btn {
         width: 75%; } }
 
 input#burger {
   display: none; }
+  input#burger:checked + label .line {
+    margin-left: 0.1rem; }
   input#burger:checked + label .line1 {
     transform: rotateZ(-405deg) translate(-0.8rem, 0.6rem); }
   input#burger:checked + label .line2 {
@@ -652,8 +785,8 @@ label.burger {
   width: 5rem;
   height: 5rem;
   position: fixed;
-  top: 1rem;
-  left: 1rem;
+  top: 1.5rem;
+  left: 1.5rem;
   cursor: pointer;
   display: none;
   flex-flow: column;
@@ -662,7 +795,7 @@ label.burger {
   background-color: #F69094;
   padding: 1rem;
   border-radius: 50%;
-  z-index: 100;
+  z-index: 101;
   transition: all 0.1s; }
   label.burger:hover {
     background-color: #ffd5d6; }
@@ -677,3 +810,63 @@ label.burger {
   @media (max-widtH: 920px) {
     label.burger {
       display: flex; } }
+
+.profile {
+  width: 100%; }
+  .profile h3 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-left: 0; }
+  .profile .profile-content {
+    width: 100%;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 35% 65%; }
+    @media (max-widtH: 920px) {
+      .profile .profile-content {
+        display: flex;
+        flex-flow: column;
+        padding-top: 0; } }
+    .profile .profile-content .info {
+      grid-column: 1/2; }
+      @media (max-widtH: 920px) {
+        .profile .profile-content .info {
+          margin-bottom: 3rem; } }
+      .profile .profile-content .info-content {
+        width: fit-content;
+        margin: 1rem auto;
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        font-size: 1.5rem;
+        color: white;
+        background-color: #756869; }
+        @media (max-widtH: 920px) {
+          .profile .profile-content .info-content {
+            width: 90%;
+            text-align: center; } }
+        .profile .profile-content .info-content h4 {
+          font-size: 2rem;
+          border-bottom: 2px solid white;
+          margin-bottom: 1rem; }
+        .profile .profile-content .info-content div {
+          margin-bottom: 1rem; }
+          .profile .profile-content .info-content div .info-title {
+            color: #bfb7b8;
+            font-weight: 200; }
+          .profile .profile-content .info-content div p:hover {
+            transform: scale(1.05); }
+        .profile .profile-content .info-content .info-links {
+          border-top: 1px solid #f1f1f1;
+          margin-top: 1rem;
+          padding-top: 0.5rem; }
+    .profile .profile-content .form {
+      grid-column: 2/3; }
+      .profile .profile-content .form .input {
+        width: 70%; }
+        @media (max-widtH: 920px) {
+          .profile .profile-content .form .input {
+            width: 90%; } }
+        .profile .profile-content .form .input input::placeholder {
+          font-size: 2rem; }
+      .profile .profile-content .form .btn {
+        width: 100%; }

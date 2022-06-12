@@ -28,10 +28,10 @@ helpers.dateFormat = (links) => {
         let fecha = link.fecha;
 
         let day = (fecha.getDate() < 10 ? '0' : '') + fecha.getDate();
-        let month = (fecha.getMonth() < 10 ? '0' : '') + fecha.getMonth();
+        let month = ((fecha.getMonth()+1) < 10 ? '0' : '') + (fecha.getMonth()+1);
         let year = (fecha.getFullYear() < 10 ? '0' : '') + fecha.getFullYear();
 
-        let hour = (fecha.getHours() < 10 ? '0' : '') + fecha.getHours();
+        let hour = ((fecha.getHours()+2) < 10 ? '0' : '') + (fecha.getHours()+2);
         let mins = (fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes();
 
         link.fecha = day+'/'+month+'/'+year;

@@ -2,11 +2,10 @@ div.logout{
     position: fixed;
     bottom: 0;
     width:25%;
-    height: 10%;
     z-index: 1000;
-    background-color: color(tertiary);
+    background-color: color(prim-mod);
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 
     a{
         width: 100%;
@@ -17,7 +16,7 @@ div.logout{
         padding: 1em 2em;
 
         &:hover {
-            background-color: color(secondary);
+            background-color: color(aux2);
             color: white;
         }
     }

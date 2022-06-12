@@ -5,6 +5,7 @@ nav{
     width: 25%;
     height: 100%;
     overflow: auto;
+    z-index: 100;
 
     .burger{
         position: absolute;
@@ -27,13 +28,6 @@ nav{
             &:hover {
                 background-color: color(secondary);
                 color: white;
-            }
-
-            &[href="/logout"]{
-                position: fixed;
-                bottom: 0;
-                width:25%;
-                z-index: 1000;
             }
         }
 
@@ -63,7 +57,7 @@ nav{
         display:none;
 
         ul li.title{
-            height: 7rem;
+            height: 8rem;
             display: flex;
             align-items: center;
             justify-content: center;

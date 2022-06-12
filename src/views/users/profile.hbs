@@ -1,15 +1,50 @@
 <div class="box profile">
-    <h3>Bienvenid@ a tu perfil, {{user.nombre}}</h3>
+    <h3>Mi perfil</h3>
 
-    {{!-- <form action="/users/chpass" method="POST">
-        <div class="input">
-            <input type="password" name="password" placeholder="Cambiar contraseña">
-        </div>
-    </form>
+    <div class="profile-content">
+        <div class="info">
+            <div class="info-content">
+                <h4>Mis datos</h4>
+                <div>
+                    <p class="info-title">Nombre:</p>
+                    <p>{{user.nombre}}</p>
+                </div>
 
-    <form action="/users/chname" method="POST">
-        <div class="input">
-            <input type="text" name="nombre" placeholder="Cambiar nombre" autofocus>
+                <div>
+                    <p class="info-title">Email:</p>
+                    <p>{{user.email}}</p>
+                </div>
+                
+                {{#if links}}
+                    <p class="info-links">{{links}} links guardados</p>
+                {{/if}}
+            </div>
         </div>
-    </form> --}}
+
+        <div class="form">
+            <form action="/profile" method="POST">
+                <div class="input">
+                    <input type="text" name="nombre" placeholder="Cambiar nombre" autofocus>
+                </div>
+
+                <div class="input">
+                    <input type="password" name="password" placeholder="Cambiar contraseña">
+                </div>
+
+                <div class="input">
+                    <input type="password" name="password2" placeholder="Repite la contraseña">
+                </div>
+
+                <div class="btn">
+                    <button>
+                        <span>Actualizar</span>
+                        <svg viewBox="0 0 13 10" height="10px" width="15px">
+                            <path d="M1,5 L11,5"></path>
+                            <polyline points="8 1 12 5 8 9"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

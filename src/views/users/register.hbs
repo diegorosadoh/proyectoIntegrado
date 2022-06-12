@@ -1,20 +1,49 @@
 <div class="box register"> 
-    <h3>Registro</h3>
+    <h3>Registro
+        {{#if fail }}
+            <span class="msg-side fail">
+                &nbsp;
+                <span class="icon-exclamation">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </span>
+                {{fail}}
+            </span>
+        {{/if}}
+        {{#if ok }}
+            <span class="msg-side ok">
+                &nbsp;
+                <span class="icon-check">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+                {{ok}}
+            </span>
+        {{/if}}
+    </h3>
     <form action="/register" method="POST">
         <div class="input">
-            <input type="text" name="nombre" placeholder="Nombre" autofocus>
+            <input type="text" name="nombre" placeholder="Nombre" required autofocus>
         </div>
 
         <div class="input">
-            <input type="email" name="email" placeholder="Email">
+            <input type="email" name="email" placeholder="Email" required>
         </div>
 
         <div class="input">
-            <input type="password" name="password" placeholder="Contraseña">
+            <input type="password" name="password" placeholder="Contraseña" required>
+        </div>
+
+        <div class="input">
+            <input type="password" name="password2" placeholder="Repite la contraseña" required>
         </div>
 
         <div class="btn">
-            <button>Registrar</button>
+            <button>
+                <span>Registrar</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </button>
         </div>
     </form>
 </div>

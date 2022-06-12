@@ -3,15 +3,15 @@
         <h3>Editar link</h3>    
 
         <div class="input">
-            <input type="url" name="enlace" placeholder="Enlace" value="{{links.enlace}}" autofocus>
+            <input type="url" name="enlace" placeholder="Enlace" value="{{links.enlace}}" required autofocus>
         </div>
 
         <div class="input">
-            <input type="text" name="titulo" placeholder="Título" value="{{links.titulo}}">
+            <input type="text" name="titulo" placeholder="Título" value="{{links.titulo}}" required>
         </div>
 
         <div class="input">
-            <input type="text" name="descripcion" placeholder="Descripción">
+            <input type="text" name="descripcion" placeholder="Descripción" value="{{links.descripcion}}">
         </div>
 
         <div class="btn">
@@ -21,7 +21,13 @@
                     <option value="{{id}}">{{nombre}}</option>
                 {{/each }}
             </select>
-            <button>Guardar</button>
+            <button>
+                <span>Modificar</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </button>
         </div>
     </form>
 </div>
