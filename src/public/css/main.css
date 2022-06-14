@@ -18,7 +18,7 @@ html {
 
 body {
   background-color: #f1f1f1;
-  font-size: 1.2em; }
+  font-size: 1.2rem; }
 
 a:link,
 a:visited {
@@ -40,8 +40,12 @@ a:visited {
   display: flex;
   flex-flow: row wrap;
   justify-content: center; }
-  .box * {
-    transition: all 0.5s; }
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer; }
 
 .msg {
   position: absolute;
@@ -112,19 +116,24 @@ a:visited {
 
 header {
   width: 100%;
-  padding: 1em 2em;
-  margin-bottom: 1em; }
+  padding: 1rem 2rem;
+  margin-bottom: 1rem; }
   header h1 {
     text-align: center;
-    font-size: 4em;
+    font-size: 5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 500;
     color: #F69094;
     text-shadow: 1px 1px 1px #754547; }
+    header h1 a {
+      transition: all 0.2s ease-in-out; }
+      header h1 a:hover {
+        font-size: 4.5rem;
+        color: #ffa2a4; }
     header h1 span {
       font-size: 1.5rem;
-      margin-top: 0.2em;
+      margin-top: 0.5rem;
       color: #754547;
       word-spacing: 1px;
       font-weight: normal;
@@ -150,7 +159,8 @@ nav {
   width: 25%;
   height: 100%;
   overflow: auto;
-  z-index: 100; }
+  z-index: 100;
+  box-shadow: 0 0 30px -5px #754547; }
   nav .burger {
     position: absolute; }
   nav ul {
@@ -164,20 +174,30 @@ nav {
       color: #000;
       font-size: 1.5em;
       padding: 1em 2em;
-      text-decoration: none; }
+      text-decoration: none;
+      transition: all 0.5s ease; }
       nav ul li a:hover,
       nav ul li div:hover {
-        background-color: #754547;
         color: white; }
-    nav ul li a.newlink {
-      background-color: #ffd5d6;
-      border-bottom: solid 2px #754547;
-      box-shadow: 0 0 15px 5px white;
-      font-weight: 600; }
-      nav ul li a.newlink:hover {
-        background-color: #000; }
+      nav ul li a.newlink,
+      nav ul li div.newlink {
+        background: linear-gradient(to left, #ffd5d6 50%, black 50%) right;
+        background-size: 200%;
+        border-bottom: solid 2px #754547;
+        box-shadow: 0 0 15px 5px white;
+        font-weight: 600;
+        transition: all 0.5s ease; }
+        nav ul li a.newlink:hover,
+        nav ul li div.newlink:hover {
+          background-position: left; }
     nav ul li.title {
       display: none; }
+    nav ul > li:not(.title) {
+      transition: all 0.5s ease;
+      background: linear-gradient(to left, #F7DBDC 50%, #754547 50%) right;
+      background-size: 200%; }
+      nav ul > li:not(.title):hover {
+        background-position: left; }
     nav ul .folders {
       border-top: 2px solid #754547;
       border-bottom: 2px solid #754547;
@@ -188,7 +208,9 @@ nav {
       nav ul .folders li a.folder {
         display: flex;
         align-items: center;
-        padding: 0.5em 2em; }
+        padding: 1rem 3rem;
+        background: linear-gradient(to left, #F69094 50%, #a36366 50%) right;
+        background-size: 200%; }
         nav ul .folders li a.folder .icon-folder {
           margin-right: 1em;
           color: #ffd5d6; }
@@ -196,19 +218,22 @@ nav {
           margin-left: auto;
           visibility: hidden; }
           nav ul .folders li a.folder form button {
-            background: none;
-            border: none;
-            cursor: pointer;
             font-size: 1.5em;
             margin-left: auto; }
             nav ul .folders li a.folder form button:hover {
               animation: spin 0.25s linear;
-              color: rgba(255, 0, 0, 0.85); }
-        nav ul .folders li a.folder:hover form {
-          visibility: visible; }
+              color: #ee3239; }
+          @media (max-widtH: 920px) {
+            nav ul .folders li a.folder form {
+              visibility: visible; } }
+        nav ul .folders li a.folder:hover {
+          background-position: left; }
+          nav ul .folders li a.folder:hover form {
+            visibility: visible; }
       nav ul .folders .create {
         cursor: auto;
-        padding: 1em 2em; }
+        padding: 1em 2em;
+        background-color: #f8a8ab; }
         nav ul .folders .create:hover input:not(:focus) {
           color: white; }
           nav ul .folders .create:hover input:not(:focus)::placeholder {
@@ -232,51 +257,61 @@ nav {
               nav ul .folders .create form input:focus + button {
                 visibility: visible; }
           nav ul .folders .create form button {
-            background: none;
-            border: none;
-            cursor: pointer;
             font-size: 1.5em;
             margin-left: auto; }
             nav ul .folders .create form button .icon-check {
               color: #754547;
               background-color: #ffd5d6;
               padding: 0.25rem 0.75rem;
-              border-radius: 50%; }
+              border-radius: 50%;
+              transition: all 0.3s ease; }
               nav ul .folders .create form button .icon-check:hover {
                 color: #ffd5d6;
                 background-color: #F69094;
-                box-shadow: 0 0 10px #F7DBDC; }
+                box-shadow: 0 0 15px 10px #F7DBDC; }
 
 @keyframes spin {
   100% {
     transform: rotate(90deg); } }
-  nav div.logout {
+  nav .logout {
     position: fixed;
     bottom: 0;
     width: 25%;
     z-index: 1000;
-    background-color: #ffd5d6;
+    background: linear-gradient(to left, #ffd5d6 50%, #756869 50%) right;
+    background-size: 200%;
     display: flex;
-    align-items: flex-end; }
-    nav div.logout a {
+    align-items: flex-end;
+    transition: all 0.5s ease; }
+    nav .logout a {
       width: 100%;
       height: 100%;
       display: block;
       color: #000;
       font-size: 1.5em;
-      padding: 1em 2em; }
-      nav div.logout a:hover {
-        background-color: #756869;
+      padding: 1em 2em;
+      transition: all 0.5s ease; }
+      nav .logout a:hover {
         color: white; }
+    nav .logout div {
+      height: 100%;
+      width: 100%;
+      background-color: #F7DBDC;
+      padding: 3em; }
+    nav .logout:hover {
+      background-position: left; }
     @media (max-widtH: 920px) {
-      nav div.logout {
+      nav .logout {
         width: 100vw;
-        text-align: center; } }
+        text-align: center;
+        left: -100vw;
+        transition: all 0.6s ease; } }
   @media (max-widtH: 920px) {
     nav {
       width: 100vw;
       text-align: center;
-      display: none; }
+      top: -100vh;
+      transition: all 0.8s ease; }
       nav ul li.title {
         height: 8rem;
         display: flex;
@@ -293,20 +328,41 @@ nav {
 .folder-title {
   width: 100%;
   margin-right: auto;
-  margin-left: 3em;
+  margin-left: 3rem;
   display: flex;
   flex-flow: row wrap; }
   .folder-title .icon-folder-open {
-    font-size: 2.5em;
+    font-size: 3rem;
     color: #F69094;
-    margin-right: 0.5em; }
+    margin-right: 1rem; }
   .folder-title h3 {
-    font-size: 2em;
+    font-size: 2.5rem;
     width: fit-content;
     margin: 0; }
+    .folder-title h3:hover + .delete {
+      visibility: visible; }
+  .folder-title .delete {
+    visibility: hidden;
+    margin-left: 1.5rem;
+    padding-top: 0.5rem; }
+    .folder-title .delete .icon-trash {
+      width: 100%;
+      font-size: 1.75rem;
+      color: #685c5d;
+      cursor: pointer;
+      transition: all 0.2s; }
+      .folder-title .delete .icon-trash:hover {
+        color: #f04950;
+        font-size: 2rem; }
+    .folder-title .delete:hover {
+      visibility: visible; }
+    @media (max-widtH: 920px) {
+      .folder-title .delete {
+        visibility: visible; } }
 
 .alllinks {
   width: 100%;
+  padding: 1rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr); }
   .alllinks .link {
@@ -314,10 +370,10 @@ nav {
     flex-flow: row wrap;
     justify-content: center;
     border: 4px solid white;
-    border-radius: 2em;
+    border-radius: 2rem;
     background-color: #ffd5d6;
-    margin: 1em;
-    padding: 1em; }
+    margin: 1rem;
+    padding: 1rem; }
     .alllinks .link:hover {
       border: 3px solid #ffd5d6;
       background-color: #f1f1f1; }
@@ -330,55 +386,60 @@ nav {
         font-weight: 500;
         text-align: center;
         margin: 0;
-        font-size: 2em; }
+        font-size: 2em;
+        transition: all 0.2s; }
       .alllinks .link .title:hover {
         color: #F69094; }
     .alllinks .link .date {
       color: #756869;
-      margin-bottom: 0.5em; }
+      margin-bottom: 0.5rem; }
       .alllinks .link .date p span {
         display: none;
         position: relative;
-        left: -5em;
+        left: -5rem;
         opacity: 0; }
       .alllinks .link .date p:hover span {
         display: inline;
-        left: 0.5em;
+        left: 0.5rem;
         opacity: 1; }
     .alllinks .link .functions {
       width: 100%;
       border-top: 1px dashed #756869;
-      padding-top: 0.5em;
+      padding-top: 0.5rem;
       display: grid;
       grid-template-columns: 10% 70% 10%;
-      grid-gap: 1em;
+      grid-gap: 1rem;
       text-decoration: none; }
+      .alllinks .link .functions .icon-edit,
+      .alllinks .link .functions .icon-delete {
+        font-size: 2.75rem;
+        margin: 0.5rem;
+        transition: all 0.3s; }
       .alllinks .link .functions .edit {
         grid-column: 1/2;
         display: flex; }
         .alllinks .link .functions .edit .icon-edit {
-          color: #a79c9d;
-          font-size: 2em;
-          margin: 0.25em; }
+          color: #a79c9d; }
           .alllinks .link .functions .edit .icon-edit:hover {
             color: #754547; }
-      .alllinks .link .functions div.desc {
-        grid-column: 2/3;
-        text-align: center;
-        margin: auto;
-        padding: 0 1em;
-        height: 3em;
-        overflow-y: scroll; }
       .alllinks .link .functions .delete {
         grid-column: 3/4;
         display: flex;
         justify-content: flex-end; }
         .alllinks .link .functions .delete .icon-delete {
-          color: #ff000066;
-          font-size: 2em;
-          margin: 0.25em; }
+          color: #ff000066; }
           .alllinks .link .functions .delete .icon-delete:hover {
-            color: rgba(255, 0, 0, 0.85); }
+            color: #f04950; }
+          @media (max-widtH: 920px) {
+            .alllinks .link .functions .delete .icon-delete {
+              color: #f04950; } }
+      .alllinks .link .functions .desc {
+        grid-column: 2/3;
+        margin: auto;
+        padding: 0 1rem;
+        height: 3rem;
+        overflow-y: scroll;
+        word-break: break-all; }
   .alllinks .nolinks {
     grid-column: 1/4;
     text-align: center;
@@ -397,7 +458,8 @@ nav {
       padding: 0.5em 1em;
       border-radius: 1.2em;
       box-shadow: 0 5px 15px #756869;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: all 0.5s; }
       .alllinks .nolinks a:hover {
         background-color: #F69094;
         box-shadow: 0 15px 20px #F7DBDC;
@@ -428,10 +490,10 @@ nav {
       flex-flow: row wrap;
       justify-content: center;
       border: 4px solid white;
-      border-radius: 2em;
+      border-radius: 2rem;
       background-color: #ffd5d6;
-      margin: 1em;
-      padding: 1em; }
+      margin: 1rem;
+      padding: 1rem; }
       .cat .inline .link:hover {
         border: 3px solid #ffd5d6;
         background-color: #f1f1f1; }
@@ -444,55 +506,60 @@ nav {
           font-weight: 500;
           text-align: center;
           margin: 0;
-          font-size: 2em; }
+          font-size: 2em;
+          transition: all 0.2s; }
         .cat .inline .link .title:hover {
           color: #F69094; }
       .cat .inline .link .date {
         color: #756869;
-        margin-bottom: 0.5em; }
+        margin-bottom: 0.5rem; }
         .cat .inline .link .date p span {
           display: none;
           position: relative;
-          left: -5em;
+          left: -5rem;
           opacity: 0; }
         .cat .inline .link .date p:hover span {
           display: inline;
-          left: 0.5em;
+          left: 0.5rem;
           opacity: 1; }
       .cat .inline .link .functions {
         width: 100%;
         border-top: 1px dashed #756869;
-        padding-top: 0.5em;
+        padding-top: 0.5rem;
         display: grid;
         grid-template-columns: 10% 70% 10%;
-        grid-gap: 1em;
+        grid-gap: 1rem;
         text-decoration: none; }
+        .cat .inline .link .functions .icon-edit,
+        .cat .inline .link .functions .icon-delete {
+          font-size: 2.75rem;
+          margin: 0.5rem;
+          transition: all 0.3s; }
         .cat .inline .link .functions .edit {
           grid-column: 1/2;
           display: flex; }
           .cat .inline .link .functions .edit .icon-edit {
-            color: #a79c9d;
-            font-size: 2em;
-            margin: 0.25em; }
+            color: #a79c9d; }
             .cat .inline .link .functions .edit .icon-edit:hover {
               color: #754547; }
-        .cat .inline .link .functions div.desc {
-          grid-column: 2/3;
-          text-align: center;
-          margin: auto;
-          padding: 0 1em;
-          height: 3em;
-          overflow-y: scroll; }
         .cat .inline .link .functions .delete {
           grid-column: 3/4;
           display: flex;
           justify-content: flex-end; }
           .cat .inline .link .functions .delete .icon-delete {
-            color: #ff000066;
-            font-size: 2em;
-            margin: 0.25em; }
+            color: #ff000066; }
             .cat .inline .link .functions .delete .icon-delete:hover {
-              color: rgba(255, 0, 0, 0.85); }
+              color: #f04950; }
+            @media (max-widtH: 920px) {
+              .cat .inline .link .functions .delete .icon-delete {
+                color: #f04950; } }
+        .cat .inline .link .functions .desc {
+          grid-column: 2/3;
+          margin: auto;
+          padding: 0 1rem;
+          height: 3rem;
+          overflow-y: scroll;
+          word-break: break-all; }
 
 .error {
   grid-column: 1/4;
@@ -511,7 +578,8 @@ nav {
     padding: 0.5em 1em;
     border-radius: 1.2em;
     box-shadow: 0 5px 15px #756869;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: all 0.5s; }
     .error a:hover {
       background-color: #F69094;
       box-shadow: 0 15px 20px #F7DBDC;
@@ -558,8 +626,7 @@ nav {
     .editlink h3 .msg-side.fail,
     .profile h3 .msg-side.fail {
       color: rgba(194, 29, 29, 0.75); }
-    .login h3 .msg-side .icon-exclamation,
-    .login h3 .msg-side .icon-check,
+    .login h3 .msg-side .icon-exclamation, .login h3 .msg-side .icon-check,
     .register h3 .msg-side .icon-exclamation,
     .register h3 .msg-side .icon-check,
     .addlink h3 .msg-side .icon-exclamation,
@@ -611,7 +678,8 @@ nav {
       align-self: center;
       height: 10rem;
       font-size: 2rem;
-      text-align: center; }
+      text-align: center;
+      transition: all 0.3s ease; }
       .login form .input input::placeholder,
       .register form .input input::placeholder,
       .addlink form .input input::placeholder,
@@ -691,10 +759,7 @@ nav {
       position: relative;
       margin: auto;
       padding: 1.5rem 2rem;
-      transition: all 0.2s ease;
-      border: none;
-      background: none;
-      cursor: pointer; }
+      transition: all 0.3s ease; }
       .login form .btn button:before,
       .register form .btn button:before,
       .addlink form .btn button:before,
@@ -709,7 +774,14 @@ nav {
         background: #F69094;
         width: 4.5rem;
         height: 4.5rem;
-        transition: all 0.4s ease; }
+        transition: all 0.5s ease; }
+        @media (max-widtH: 920px) {
+          .login form .btn button:before,
+          .register form .btn button:before,
+          .addlink form .btn button:before,
+          .editlink form .btn button:before,
+          .profile form .btn button:before {
+            width: 100%; } }
       .login form .btn button span,
       .register form .btn button span,
       .addlink form .btn button span,
@@ -719,6 +791,13 @@ nav {
         position: relative;
         font-size: 2.5rem;
         font-weight: 500; }
+        @media (max-widtH: 920px) {
+          .login form .btn button span,
+          .register form .btn button span,
+          .addlink form .btn button span,
+          .editlink form .btn button span,
+          .profile form .btn button span {
+            color: white; } }
       .login form .btn button svg,
       .register form .btn button svg,
       .addlink form .btn button svg,
@@ -734,13 +813,20 @@ nav {
         stroke-width: 2;
         transform: translateX(-1.5rem);
         transition: all 0.4s ease; }
+        @media (max-widtH: 920px) {
+          .login form .btn button svg,
+          .register form .btn button svg,
+          .addlink form .btn button svg,
+          .editlink form .btn button svg,
+          .profile form .btn button svg {
+            transform: translateX(0);
+            stroke: #F7DBDC; } }
       .login form .btn button:hover::before,
       .register form .btn button:hover::before,
       .addlink form .btn button:hover::before,
       .editlink form .btn button:hover::before,
       .profile form .btn button:hover::before {
-        width: 100%;
-        background: #F69094; }
+        width: 100%; }
       .login form .btn button:hover span,
       .register form .btn button:hover span,
       .addlink form .btn button:hover span,
@@ -768,6 +854,80 @@ nav {
       .profile form .btn {
         width: 75%; } }
 
+.modal {
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem; }
+  .modal h4 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem; }
+    .modal h4 strong {
+      font-weight: 700; }
+  .modal p {
+    font-size: 1.5rem;
+    color: #756869;
+    margin-bottom: 4rem; }
+  .modal div {
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+    @media (max-widtH: 920px) {
+      .modal div {
+        flex-wrap: wrap; } }
+    .modal div .delete,
+    .modal div .cancel {
+      margin: 0 2rem;
+      width: 30%; }
+      @media (max-widtH: 920px) {
+        .modal div .delete,
+        .modal div .cancel {
+          width: 50%;
+          margin-bottom: 1rem; } }
+      .modal div .delete button,
+      .modal div .cancel button {
+        width: 100%;
+        height: 100%;
+        font-size: 3rem;
+        padding: 2rem;
+        box-shadow: 1px 1px 3px black;
+        border-radius: 1rem; }
+    .modal div .delete button {
+      background-color: #f04950;
+      display: flex;
+      align-items: center;
+      color: white;
+      transition: all 0.6s ease; }
+      .modal div .delete button .icon {
+        margin-left: auto;
+        border-left: 1px solid #ac0e14;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 1.5rem;
+        transition: all 0.6s ease; }
+        .modal div .delete button .icon svg {
+          width: 1.5rem;
+          fill: #eee; }
+      .modal div .delete button:hover {
+        background-color: #ec1a22; }
+        .modal div .delete button:hover .text {
+          color: transparent; }
+        .modal div .delete button:hover .icon {
+          width: 15rem;
+          border-left: none;
+          transform: translateX(-7.5rem); }
+      .modal div .delete button:active .icon svg {
+        transform: scale(1.3); }
+    .modal div .cancel button {
+      transition: all 0.3s ease; }
+      .modal div .cancel button:hover {
+        background-color: #d8d8d8; }
+      .modal div .cancel button:active {
+        background-color: #b1b1b1;
+        color: white; }
+
 input#burger {
   display: none; }
   input#burger:checked + label .line {
@@ -779,9 +939,11 @@ input#burger {
   input#burger:checked + label .line3 {
     transform: rotateZ(405deg) translate(-0.8rem, -0.6rem); }
   input#burger:checked ~ nav {
-    display: block; }
+    top: 0; }
+    input#burger:checked ~ nav .logout {
+      left: 0; }
 
-label.burger {
+.burger {
   width: 5rem;
   height: 5rem;
   position: fixed;
@@ -791,24 +953,23 @@ label.burger {
   display: none;
   flex-flow: column;
   justify-content: space-around;
-  cursor: pointer;
   background-color: #F69094;
   padding: 1rem;
   border-radius: 50%;
   z-index: 101;
-  transition: all 0.1s; }
-  label.burger:hover {
+  transition: all 0.3s ease; }
+  .burger:hover {
     background-color: #ffd5d6; }
-    label.burger:hover .line {
+    .burger:hover .line {
       background-color: #754547; }
-  label.burger .line {
+  .burger .line {
     width: 100%;
     height: 0.3rem;
     background-color: white;
     border-radius: 0.2rem;
-    transition: all 0.4s ease-in-out; }
+    transition: background-color 0.3s ease, transform 0.5s ease-in-out, opacity 0.5s ease-in-out; }
   @media (max-widtH: 920px) {
-    label.burger {
+    .burger {
       display: flex; } }
 
 .profile {
@@ -817,6 +978,8 @@ label.burger {
     text-align: center;
     text-transform: uppercase;
     margin-left: 0; }
+    .profile h3 span {
+      text-transform: none; }
   .profile .profile-content {
     width: 100%;
     padding: 2rem;
@@ -853,8 +1016,10 @@ label.burger {
           .profile .profile-content .info-content div .info-title {
             color: #bfb7b8;
             font-weight: 200; }
-          .profile .profile-content .info-content div p:hover {
-            transform: scale(1.05); }
+          .profile .profile-content .info-content div p:not(.info-title) {
+            transition: all 0.3s ease; }
+            .profile .profile-content .info-content div p:not(.info-title):hover {
+              transform: scale(1.05); }
         .profile .profile-content .info-content .info-links {
           border-top: 1px solid #f1f1f1;
           margin-top: 1rem;
@@ -863,10 +1028,10 @@ label.burger {
       grid-column: 2/3; }
       .profile .profile-content .form .input {
         width: 70%; }
+        .profile .profile-content .form .input input::placeholder {
+          font-size: 2rem; }
         @media (max-widtH: 920px) {
           .profile .profile-content .form .input {
             width: 90%; } }
-        .profile .profile-content .form .input input::placeholder {
-          font-size: 2rem; }
       .profile .profile-content .form .btn {
         width: 100%; }

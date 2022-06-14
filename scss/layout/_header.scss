@@ -1,20 +1,28 @@
 header{
     width: 100%;
-    padding: 1em 2em;
-    margin-bottom: 1em;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
 
     h1{
         text-align:center; 
-        font-size:4em; 
+        font-size:5rem; 
         text-transform:uppercase; 
         letter-spacing:1px;
         font-weight:500;
         color:color(primary);
         text-shadow: 1px 1px 1px color(secondary);
 
+        a{
+            transition: all 0.2s ease-in-out;
+            &:hover{ 
+                font-size: 4.5rem;
+                color:darken(color(prim-mod), 10%);
+            }
+        }
+
         span {
             font-size: 1.5rem;
-            margin-top: 0.2em;
+            margin-top: 0.5rem;
             color: color(secondary);
             word-spacing:1px; 
             font-weight:normal; 
@@ -37,5 +45,7 @@ header{
                 background-color: color(aux1);
             }
         }
+
+        
     }
 }

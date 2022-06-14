@@ -5,6 +5,8 @@
         text-align: center;
         text-transform: uppercase;
         margin-left: 0;
+
+        span{ text-transform: none;}
     }
     
     .profile-content{
@@ -52,10 +54,9 @@
                         font-weight: 200;
                     }
 
-                    p{
-                        &:hover{
-                            transform: scale(1.05);
-                        }
+                    p:not(.info-title){
+                        transition: all 0.3s ease;
+                        &:hover{ transform: scale(1.05); }
                     }
                 }
 
@@ -72,16 +73,11 @@
 
             .input{
                 width: 70%;
+                & input::placeholder{ font-size: 2rem; }
                 @include response(md){ width: 90%; }
-
-                & input::placeholder{
-                    font-size: 2rem;
-                }
             }
 
-            .btn{
-                width: 100%;
-            }
+            .btn{ width: 100%; }
         }
     }
 }

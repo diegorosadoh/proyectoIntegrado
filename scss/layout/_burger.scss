@@ -9,37 +9,32 @@ input#burger{
             .line3{ transform: rotateZ(405deg) translate(-0.8rem, -0.6rem); }
         }
         
-        & ~ nav{ display: block; }
+        & ~ nav{ 
+            top: 0;
+            .logout{ left: 0;}
+        }
     }
 }
 
-label.burger{
+.burger{
     width: 5rem;
     height: 5rem;
     position: fixed;
     top: 1.5rem;
     left: 1.5rem;
     cursor: pointer;
-
     display: none;
     flex-flow: column;
     justify-content: space-around;
-
-    cursor: pointer;
     background-color: color(primary);
     padding: 1rem;
     border-radius: 50%;
-
     z-index: 101;
-
-    transition: all 0.1s;
+    transition: all 0.3s ease;
 
     &:hover{
         background-color: color(prim-mod);
-
-        .line{
-            background-color: color(secondary);
-        }
+        .line{ background-color: color(secondary); }
     }
 
     .line{
@@ -47,10 +42,8 @@ label.burger{
         height: 0.3rem;
         background-color: white;
         border-radius: 0.2rem;
-        transition: all 0.4s ease-in-out;
+        transition: background-color 0.3s ease, transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     }
 
-    @include response(md){
-        display: flex;
-    }
+    @include response(md){ display: flex; }
 }

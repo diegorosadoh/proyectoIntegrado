@@ -26,7 +26,7 @@ const db = require('../database');
 
     // Añadir link
     router.get('/add', helpers.userLog, (req, res) => {
-        res.render('./links/add', {title: 'Nuevo link'});
+        res.render('./links/add', { data: req.cookies.newLink, title: 'Nuevo link'});
     }); 
 
     // Añadir link a una carpeta
@@ -34,7 +34,7 @@ const db = require('../database');
         res.render('./links/add', {carpeta: req.params.id, title: 'Nuevo link'});
     }); 
 
-    //Lista de links de una carpeta
+    // Lista de links de una carpeta
     router.get('/:id', helpers.userLog, async(req, res) => {
         let links = await db.query('SELECT * FROM links WHERE usuario = ? AND carpeta = ? ORDER BY fecha DESC', [req.user.email, req.params.id]);
         let carpeta = await db.query('SELECT * FROM carpetas WHERE id = ?', [req.params.id]);
@@ -48,7 +48,7 @@ const db = require('../database');
         res.render('links/edit', {links: links[0], title: "Editar '"+links[0].titulo+"'"});
     });
 
-    //Eliminar link
+    // Eliminar link
     router.get('/delete/:id', helpers.userLog, async (req, res) => {
         await db.query('DELETE FROM links WHERE id = ?', [req.params.id]);
         res.redirect('/links');
@@ -58,7 +58,7 @@ const db = require('../database');
     // Añadir link
     router.post('/add', helpers.userLog, async (req, res) => {
 
-        // Datos del nuevo link
+        //Datos del nuevo link
         const newLink = {
             enlace: req.body.enlace,
             titulo: req.body.titulo,
@@ -66,29 +66,32 @@ const db = require('../database');
             usuario: req.user.email
         }
 
-        // Validación del formulario
+        res.clearCookie("newLink");
+        res.cookie("newLink", newLink, {maxAge: 5000});
+
+        //Validación del formulario
         if(newLink.enlace.length < 1){
             req.flash('fail', 'Introduce un enlace');
             res.redirect('/links/add');
         } else if (newLink.titulo.length < 1){
             req.flash('fail', 'Introduce un título');
             res.redirect('/links/add');
-        } else if (! newLink.enlace.length > 255){
+        } else if (newLink.enlace.length > 255){
             req.flash('fail', 'Enlace demasiado largo');
             res.redirect('/links/add');
-        } else if (! newLink.titulo.length > 15){
+        } else if (newLink.titulo.length > 15){
             req.flash('fail', 'Título demasiado largo');
             res.redirect('/links/add');
-        } else if (! newLink.descripcion.length > 255){
+        } else if (newLink.descripcion.length > 255){
             req.flash('fail', 'Descripción demasiado larga');
             res.redirect('/links/add');
         } else if (! newLink.enlace.match(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)){
             req.flash('fail', 'Formato de URL incorrecto');
             res.redirect('/links/add');
-        } else if (! newLink.titulo.match(/^[a-zA-ZÁÉÍÓÚáéíóú\s]*$/g)){
+        } else if (! newLink.titulo.match(/^[a-zA-ZÁÉÍÓÚáéíóú0-9\s]*$/g)){
             req.flash('fail', 'Formato de título incorrecto');
             res.redirect('/links/add');
-        } else if (! newLink.descripcion.match(/^[a-zA-ZÁÉÍÓÚáéíóú\s\,\.\:]*$/g)){
+        } else if (! newLink.descripcion.match(/^[a-zA-ZÁÉÍÓÚáéíóú0-9\s\,\.\:]*$/g)){
             req.flash('fail', 'Formato de descripción incorrecto');
             res.redirect('/links/add');
         } else {
@@ -116,31 +119,31 @@ const db = require('../database');
             descripcion: req.body.descripcion
         }
 
-        // Validación del formulario
+        //Validación del formulario
         if(editLink.enlace.length < 1){
             req.flash('fail', 'Introduce un enlace');
-            res.redirect('/links/add');
+            res.redirect('/links/edit/'+req.params.id);
         } else if (editLink.titulo.length < 1){
             req.flash('fail', 'Introduce un título');
-            res.redirect('/links/add');
-        } else if (! editLink.enlace.length > 255){
+            res.redirect('/links/edit/'+req.params.id);
+        } else if (editLink.enlace.length > 255){
             req.flash('fail', 'Enlace demasiado largo');
-            res.redirect('/links/add');
-        } else if (! editLink.titulo.length > 15){
+            res.redirect('/links/edit/'+req.params.id);
+        } else if (editLink.titulo.length > 15){
             req.flash('fail', 'Título demasiado largo');
-            res.redirect('/links/add');
-        } else if (! editLink.descripcion.length > 255){
+            res.redirect('/links/edit/'+req.params.id);
+        } else if (editLink.descripcion.length > 255){
             req.flash('fail', 'Descripción demasiado larga');
-            res.redirect('/links/add');
+            res.redirect('/links/edit/'+req.params.id);
         } else if (! editLink.enlace.match(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)){
             req.flash('fail', 'Formato de URL incorrecto');
-            res.redirect('/links/add');
-        } else if (! editLink.titulo.match(/^[a-zA-Z\s]*$/g)){
+            res.redirect('/links/edit/'+req.params.id);
+        } else if (! editLink.titulo.match(/^[a-zA-ZÁÉÍÓÚáéíóú0-9\s]*$/g)){
             req.flash('fail', 'Formato de título incorrecto');
-            res.redirect('/links/add');
-        } else if (! editLink.descripcion.match(/^[a-zA-Z\s\,\.\:]*$/g)){
+            res.redirect('/links/edit/'+req.params.id);
+        } else if (! editLink.descripcion.match(/^[a-zA-ZÁÉÍÓÚáéíóú0-9\s\,\.\:]*$/g)){
             req.flash('fail', 'Formato de descripción incorrecto');
-            res.redirect('/links/add');
+            res.redirect('/links/edit/'+req.params.id);
         } else {
 
             // Modificación del link
@@ -155,7 +158,7 @@ const db = require('../database');
         } 
     });
 
-    //Añadir carpeta
+    // Añadir carpeta
     router.post('/folders/add', helpers.userLog, async (req, res) => {
         const newFolder = {
             nombre: req.body.carpeta,
@@ -167,11 +170,29 @@ const db = require('../database');
         res.redirect('/links');
     });
 
-    //Eliminar carpeta
+    // Mostrar panel de confirmación para eliminar carpeta
+    router.post('/folders/modal1/:id', helpers.userLog, async (req, res) => {
+        let carpeta = await db.query('SELECT * FROM carpetas WHERE id = ?', [req.params.id]);
+        res.render('./links/modal1', {carpeta: carpeta[0]});
+    });
+
+    // Mostrar panel de confirmación para eliminar links de una carpeta
+    router.post('/folders/modal2/:id', helpers.userLog, async (req, res) => {
+        let carpeta = await db.query('SELECT * FROM carpetas WHERE id = ?', [req.params.id]);
+        res.render('./links/modal2', {carpeta: carpeta[0]});
+    });
+
+    // Eliminar carpeta
     router.post('/folders/delete/:id', helpers.userLog, async (req, res) => {
         await db.query('UPDATE links SET carpeta = NULL WHERE carpeta = ?', [req.params.id]);
         await db.query('DELETE FROM carpetas WHERE id = ?', [req.params.id]);
         res.redirect('/links');
+    });
+
+    // Eliminar links de una carpeta
+    router.post('/folders/delete-links/:id', helpers.userLog, async (req, res) => {
+        await db.query('DELETE FROM links WHERE carpeta = ?', [req.params.id]);
+        res.redirect('/links/'+req.params.id);
     });
 
 module.exports = router;

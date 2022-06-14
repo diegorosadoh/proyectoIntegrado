@@ -1,5 +1,6 @@
 <div class="box">
     {{#each cats}}
+    {{#if links}}
         <div class="cat">
             <div class="folder-title">
                 <span class="icon-folder-open">
@@ -43,5 +44,6 @@
             {{/each}}
             </div>
         </div>
+    {{/if}}
     {{/each}}
 </div>

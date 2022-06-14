@@ -1,5 +1,15 @@
 <div class="box profile">
-    <h3>Mi perfil</h3>
+    <h3>Mi perfil
+        {{#if fail }}
+            <span class="msg-side fail">
+                &nbsp;
+                <span class="icon-exclamation">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </span>
+                {{fail}}
+            </span>
+        {{/if}}
+    </h3>
 
     <div class="profile-content">
         <div class="info">
@@ -24,7 +34,11 @@
         <div class="form">
             <form action="/profile" method="POST">
                 <div class="input">
-                    <input type="text" name="nombre" placeholder="Cambiar nombre" autofocus>
+                    <input type="text" name="nombre" placeholder="Cambiar nombre" autofocus
+                        {{#if data}}
+                            value={{data}}
+                        {{/if}}
+                    >
                 </div>
 
                 <div class="input">

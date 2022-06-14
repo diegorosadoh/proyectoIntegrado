@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars');
 const flash = require('connect-flash');
 const path = require('path');
 const passport = require('passport');
+const cookieParser = require('cookie-parser');
 require('./lib/passport');
 
 const { database } = require('./utils');
@@ -42,6 +43,7 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(cookieParser());
 
 // Variables globales
 app.use(async (req, res, next) => {
@@ -72,7 +74,7 @@ app.use('*', require('./routes/error'));
 // Arranque del servidor
 app.listen(app.get('port'), ()=>{
     console.log('Servidor iniciado en el puerto', app.get('port'));
-})
+});
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));

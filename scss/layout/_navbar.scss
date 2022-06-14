@@ -6,44 +6,49 @@ nav{
     height: 100%;
     overflow: auto;
     z-index: 100;
+    box-shadow: 0 0 30px -5px color(secondary);
 
-    .burger{
-        position: absolute;
-    }
+    .burger{ position: absolute; }
     
     ul {
         height: 90%;
         list-style-type: none;
         background-color: color(tertiary);
         overflow: scroll;
+
+        li{
+            a,
+            div{
+                display: block;
+                color: #000;
+                font-size: 1.5em;
+                padding: 1em 2em;
+                text-decoration: none;
+                transition: all 0.5s ease;
+    
+                &:hover { color: white; }
+
+                &.newlink{
+                    background: linear-gradient(to left, color(prim-mod) 50%, black 50%) right;
+                    background-size: 200%;
+                    border-bottom: solid 2px color(secondary);
+                    box-shadow: 0 0 15px 5px white;
+                    font-weight: 600;
+                    transition: all 0.5s ease;
         
-        li a,
-        li div {
-            display: block;
-            color: #000;
-            font-size: 1.5em;
-            padding: 1em 2em;
-            text-decoration: none;
-
-            &:hover {
-                background-color: color(secondary);
-                color: white;
+                    &:hover{ background-position: left; }
+                }
             }
+
+            &.title{ display: none; }
         }
 
-        li a.newlink{
-            background-color: color(prim-mod);
-            border-bottom: solid 2px color(secondary);
-            box-shadow: 0 0 15px 5px white;
-            font-weight: 600;
+        & > li:not(.title){
+            transition: all 0.5s ease;
+            background: linear-gradient(to left, color(tertiary) 50%, color(secondary) 50%) right;
+            background-size: 200%;
 
-            &:hover{
-                background-color: #000;
-            }
-        }
-
-        li.title{
-            display: none;
+            &:hover{ background-position: left; }
         }
 
         @import "../components/navbar/folders";
@@ -54,7 +59,8 @@ nav{
     @include response(md){
         width: 100vw;
         text-align: center;
-        display:none;
+        top: -100vh;
+        transition: all 0.8s ease;
 
         ul li.title{
             height: 8rem;

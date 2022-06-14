@@ -1,19 +1,19 @@
 .date{
     color: color(aux2);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5rem;
 
     p{
         span{
             display: none;
             position: relative;
-            left: -5em;
+            left: -5rem;
             opacity: 0;
         }
 
         &:hover{
             & span{
                 display: inline;
-                left: 0.5em;
+                left: 0.5rem;
                 opacity: 1;
             }
         }

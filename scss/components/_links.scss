@@ -1,13 +1,14 @@
-@import "../components/links/folder-title";
+@import "./links/folder-title";
 
 .alllinks{
     width: 100%;
+    padding: 1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
-    @import "../components/links/item";
+    @import "./link";
 
-    @import "../components/links/no-links";
+    @import "./links/no-links";
 
     @include response(md){
         display: flex;

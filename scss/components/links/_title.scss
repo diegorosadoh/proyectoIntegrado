@@ -9,9 +9,8 @@
         text-align: center;
         margin: 0;
         font-size: 2em;
+        transition: all 0.2s;
     }
 
-    &:hover{
-        color: color(primary);
-    }
+    &:hover{ color: color(primary); }
 }

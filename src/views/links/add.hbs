@@ -14,24 +14,24 @@
     <form action="/links/add" method="POST">
         <div class="input">
             <input type="url" name="enlace" placeholder="Enlace *" required autofocus
-                {{#if link}}
-                    value={{enlace}}
+                {{#if data}}
+                    value={{data.enlace}}
                 {{/if}}
             >
         </div>
 
         <div class="input">
             <input type="text" name="titulo" placeholder="Título *" maxlength="15" required
-                {{#if link}}
-                    value={{titulo}}
+                {{#if data}}
+                    value={{data.titulo}}
                 {{/if}}
             >
         </div>
 
         <div class="input">
             <input type="text" name="descripcion" placeholder="Descripción"
-                {{#if link}}
-                    value={{descripcion}}
+                {{#if data}}
+                    value={{data.descripcion}}
                 {{/if}}
             >
         </div>

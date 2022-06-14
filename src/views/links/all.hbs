@@ -6,6 +6,14 @@
                 <i class="fa-solid fa-folder-open"></i>
             </span>
             <h3>{{carpeta.nombre}}</h3>
+            
+            <form class="delete" action="/links/folders/modal2/{{carpeta.id}}" method="POST">
+                <button>
+                    <span class="icon-trash">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </span>
+                </button>
+            </form>
         </div>
     {{/if }} {{/if }}
 

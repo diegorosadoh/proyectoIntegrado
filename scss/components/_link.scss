@@ -4,17 +4,17 @@
     justify-content: center;
 
     border: 4px solid white; 
-    border-radius: 2em;
+    border-radius: 2rem;
     background-color: color(prim-mod);
-    margin: 1em; 
-    padding: 1em;
+    margin: 1rem; 
+    padding: 1rem;
 
     &:hover{
         border: 3px solid color(prim-mod); 
         background-color: color(aux1);
     }
 
-    @import "./title";
-    @import "./date";
-    @import "./functions";
+    @import "./links/title";
+    @import "./links/date";
+    @import "./links/functions";
 }

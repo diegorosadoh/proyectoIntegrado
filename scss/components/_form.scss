@@ -22,19 +22,9 @@
             font-size: 0.7em;
             margin: 0;
 
-            &.ok{
-                color: color(msgok);
-            }
-
-            &.fail{
-                color: color(msgfail);
-            }
-
-            .icon-exclamation,
-            .icon-check { 
-                font-size: 0.9em; 
-            }
-
+            &.ok{ color: color(msgok); }
+            &.fail{ color: color(msgfail); }
+            .icon-exclamation, .icon-check { font-size: 0.9em; }
             .icon-exclamation{ color: darken(color(msgfail), 20%); }
             .icon-check{ color: darken(color(msgok), 20%); }
         }
@@ -60,6 +50,7 @@
                 height:10rem;
                 font-size: 2rem;
                 text-align: center;
+                transition: all 0.3s ease;
                 
                 &::placeholder{
                     font-size: 2.5rem;
@@ -89,7 +80,7 @@
             width: 50%;
             margin: 1em 0;
 
-            @include response(md){ flex-flow: column;}
+            @include response(md){ flex-flow: column; }
 
             .select{
                 border-radius: 1.5rem;
@@ -114,10 +105,7 @@
                 position: relative;
                 margin: auto;
                 padding: 1.5rem 2rem;
-                transition: all 0.2s ease;
-                border: none;
-                background: none;
-                cursor: pointer;
+                transition: all 0.3s ease;
                 
                 &:before {
                     content: "";
@@ -129,7 +117,8 @@
                     background: color(primary);
                     width: 4.5rem;
                     height: 4.5rem;
-                    transition: all 0.4s ease;
+                    transition: all 0.5s ease;
+                    @include response(md){ width: 100%; }
                 }
                
                 & span {
@@ -137,6 +126,7 @@
                     position: relative;
                     font-size: 2.5rem;
                     font-weight: 500;
+                    @include response(md){ color: white; }
                 }
                
                 & svg {
@@ -150,17 +140,19 @@
                     stroke-width: 2;
                     transform: translateX(-1.5rem);
                     transition: all 0.4s ease;
+
+                    @include response(md){ 
+                        transform: translateX(0);
+                        stroke: color(tertiary);
+                    }
                 }
                
                 &:hover {
                     &::before{
                         width: 100%;
-                        background: color(primary);
                     }
 
-                    & span{
-                        color: white;
-                    }
+                    & span{ color: white; }
                     
                     & svg{
                         transform: translateX(0);
@@ -168,9 +160,7 @@
                     }
                 }
                
-                &:active{
-                    transform: scale(0.9);
-                }
+                &:active{ transform: scale(0.9); }
             }
 
             @include response(md){ width: 75%; }

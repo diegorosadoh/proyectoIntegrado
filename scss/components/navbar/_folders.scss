@@ -9,11 +9,13 @@
     li a.folder{
         display: flex;
         align-items: center;
-        padding: 0.5em 2em;
+        padding: 1rem 3rem;
+        background: linear-gradient(to left, color(primary) 50%, lighten(color(secondary), 15%) 50%) right;
+        background-size: 200%;
 
         .icon-folder{
             margin-right: 1em;
-            color: color(prim-mod)
+            color: color(prim-mod);
         }
 
         form{
@@ -21,34 +23,32 @@
             visibility: hidden;
 
             button{
-                background: none;
-                border: none;
-                cursor: pointer;
                 font-size: 1.5em;
                 margin-left: auto;
 
                 &:hover{
                     animation:spin 0.25s linear;
-                    color:rgba(255, 0, 0, 0.85);
+                    color:darken(color(primary), 20%);
                 }
             }
+
+            @include response(md){ visibility: visible; }
         }
         
-        &:hover form{
-            visibility: visible;
-        }
+        &:hover{
+            background-position: left;
+            form{ visibility: visible; }
+        } 
     }
 
     .create{
         cursor:auto;
         padding: 1em 2em;
+        background-color: lighten(color(primary), 5%);
 
         &:hover input:not(:focus){
             color: white;
-
-            &::placeholder{
-                color: white;
-            }
+            &::placeholder{ color: white; }
         }
 
         form{
@@ -69,17 +69,11 @@
 
                 &:focus{
                     background-color: color(tertiary);
-
-                    & + button{
-                        visibility: visible;
-                    }
+                    & + button{ visibility: visible; }
                 }
             }
 
             button{
-                background: none;
-                border: none;
-                cursor: pointer;
                 font-size: 1.5em;
                 margin-left: auto;
 
@@ -88,11 +82,12 @@
                     background-color: color(prim-mod);
                     padding: 0.25rem 0.75rem;
                     border-radius: 50%;
+                    transition: all 0.3s ease;
 
                     &:hover{
                         color: color(prim-mod);
                         background-color: color(primary);
-                        box-shadow: 0 0 10px color(tertiary);
+                        box-shadow: 0 0 15px 10px color(tertiary);
                     }
                 }
             }
@@ -102,8 +97,4 @@
 
 }
 
-@keyframes spin {
-    100% { 
-        transform:rotate(90deg);
-    }
-}
+@keyframes spin { 100% { transform:rotate(90deg); } }

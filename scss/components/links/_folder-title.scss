@@ -1,19 +1,45 @@
 .folder-title{
     width: 100%;
     margin-right: auto;
-    margin-left: 3em;
+    margin-left: 3rem;
     display:flex;
     flex-flow: row wrap;
 
     .icon-folder-open{
-        font-size: 2.5em;
+        font-size: 3rem;
         color: color(primary);
-        margin-right: 0.5em;
+        margin-right: 1rem;
     }
 
     h3{
-        font-size: 2em;
+        font-size: 2.5rem;
         width: fit-content;
         margin: 0;
+
+        &:hover + .delete{
+            visibility: visible;
+        }
+    }
+
+    .delete{
+        visibility: hidden;
+        margin-left: 1.5rem;
+        padding-top: 0.5rem;
+
+        .icon-trash{
+            width: 100%;
+            font-size: 1.75rem;
+            color: darken(color(aux2), 5%);
+            cursor: pointer;
+            transition: all 0.2s;
+    
+            &:hover{
+                color: darken(color(primary), 15%);
+                font-size: 2rem;
+            }
+        }
+
+        &:hover{ visibility: visible; }
+        @include response(md){ visibility: visible; }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "videos": [
+    "videos":[ "Vídeos", [
         "youtube.com",
         "vimeo.com",
         "dailymotion.com",
@@ -7,9 +7,9 @@
         "veoh.com",
         "vevo.com",
         "vidlii.com"
-    ],
+    ]],
 
-    "news": [
+    "news": [ "Noticias", [
         "elpais.com",
         "elmundo.es",
         "clarin.com",
@@ -22,11 +22,19 @@
         "as.com",
         "espanadiario.net",
         "marca.com"
-    ],
+    ]],
 
-    "academics": [
+    "academics": [ "Artículos académicos", [
         "dialnet.unirioja.es",
         "academia.edu",
         "researchgate.net"
-    ]
+    ]],
+
+    "social": [ "Redes sociales", [
+        "twitter.com",
+        "instagram.com",
+        "facebook.com",
+        "tiktok.com",
+        "pinterest.es"
+    ]]
 }

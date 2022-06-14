@@ -1,13 +1,20 @@
 .functions{
     width:100%;
     border-top: 1px dashed color(aux2);
-    padding-top: 0.5em;
+    padding-top: 0.5rem;
 
     display: grid;
     grid-template-columns: 10% 70% 10%;
-    grid-gap: 1em;
+    grid-gap: 1rem;
 
     text-decoration: none;
+
+    .icon-edit,
+    .icon-delete{
+        font-size: 2.75rem;
+        margin: 0.5rem;
+        transition: all 0.3s;
+    }
 
     .edit{
         grid-column: 1/2;
@@ -15,22 +22,8 @@
 
         .icon-edit{
             color: lighten(color(aux2), 20%);
-            font-size: 2em;
-            margin: 0.25em;
-
-            &:hover{
-                color:color(secondary);
-            }
+            &:hover{ color:color(secondary); }
         }
-    }
-    
-    div.desc{
-        grid-column: 2/3;
-        text-align: center;
-        margin: auto;
-        padding: 0 1em;
-        height: 3em;
-        overflow-y: scroll;
     }
 
     .delete{
@@ -40,12 +33,17 @@
 
         .icon-delete{
             color: color(quaternary);
-            font-size: 2em;
-            margin: 0.25em;
-
-            &:hover{
-                color:rgba(255, 0, 0, 0.85);
-            }
+            &:hover{ color: darken(color(primary),15%) }
+            @include response(md){ color: darken(color(primary),15%); }
         }
+    }
+    
+    .desc{
+        grid-column: 2/3;
+        margin: auto;
+        padding: 0 1rem;
+        height: 3rem;
+        overflow-y: scroll;
+        word-break: break-all;
     }
 }

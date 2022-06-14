@@ -8,16 +8,12 @@
         overflow-x: auto;
         white-space: nowrap;
         width: 75vw;
-
-        @include response(md){
-            width: 100vw;
-        }
+        @include response(md){ width: 100vw; }
     }
 
     .inline{
         display: inline-block;
         width: 25rem;
-
-        @import "../components/links/item";
+        @import "./link";
     }
 }

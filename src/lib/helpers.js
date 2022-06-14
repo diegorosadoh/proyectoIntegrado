@@ -42,37 +42,41 @@ helpers.dateFormat = (links) => {
 };
 
 helpers.linkOrganizer = (links) => {
-    let cats=[], videos=[], news=[], academics=[], other=[];
+    let cats=[];
+
+    Object.keys(categories).forEach((key) => {
+        cats.push({
+            "cat": categories[key][0],
+            "links": []
+        });
+    });
+
+    cats.push({
+        "cat": "Otros",
+        "links": []
+    });
 
     links.forEach(link => {
-        if(categories.videos.some(x => link.enlace.includes(x))){
-            videos.push(link);
-        } else if (categories.news.some(x => link.enlace.includes(x))){
-            news.push(link);
-        } else if(categories.academics.some(x => link.enlace.includes(x))){
-            academics.push(link);
-        } else {
-            other.push(link);
-        }
-    });
+        let asignado = false;
 
-    if(videos.length > 0) cats.push({
-        "cat": "Vídeos",
-        "links": videos
-    });
-    if(news.length > 0) cats.push({
-        "cat": "Noticias",
-        "links": news
-    });
-    if(academics.length > 0) cats.push({
-        "cat": "Artículos académicos",
-        "links": academics
-    });
-    if(other.length > 0) cats.push({
-        "cat": "Otros",
-        "links": other
-    });
+        Object.keys(categories).forEach((key) => {
+            let nombre = categories[key][0];
+            let lista = categories[key][1];
+            for (const i in cats) { if(cats[i].cat == nombre){ var array = i }; }
+            
+            if(!asignado){
+                lista.forEach(pagina => {
+                    if (link.enlace.includes(pagina)){
+                        cats[array].links.push(link);
+                        asignado = true;
+                    };
+                });
+            }
+        });
 
+        if(!asignado){ cats.at(-1).links.push(link); }
+    });
+    
     return cats;
 };
 

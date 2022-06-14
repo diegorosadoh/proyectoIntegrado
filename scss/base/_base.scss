@@ -19,7 +19,7 @@ html{
 
 body{
     background-color: color(aux1);
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 a:link,
@@ -46,8 +46,11 @@ a:visited {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    
-    & *{
-        transition: all 0.5s;
-    }
+}
+
+button{
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
 }

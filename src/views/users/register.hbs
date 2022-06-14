@@ -21,19 +21,27 @@
     </h3>
     <form action="/register" method="POST">
         <div class="input">
-            <input type="text" name="nombre" placeholder="Nombre" required autofocus>
+            <input type="text" name="nombre" placeholder="Nombre *" required autofocus
+                {{#if data}}
+                    value={{data.nombre}}
+                {{/if}}
+            >
         </div>
 
         <div class="input">
-            <input type="email" name="email" placeholder="Email" required>
+            <input type="email" name="email" placeholder="Email *" required
+                {{#if data}}
+                    value={{data.email}}
+                {{/if}}
+            >
         </div>
 
         <div class="input">
-            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="password" name="password" placeholder="Contraseña *" required>
         </div>
 
         <div class="input">
-            <input type="password" name="password2" placeholder="Repite la contraseña" required>
+            <input type="password" name="password2" placeholder="Repite la contraseña *" required>
         </div>
 
         <div class="btn">

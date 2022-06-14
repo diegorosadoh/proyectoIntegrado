@@ -25,7 +25,7 @@
                                 
                                 {{nombre}}
 
-                                <form action="/links/folders/delete/{{id}}" method="POST">
+                                <form action="/links/folders/modal1/{{id}}" method="POST">
                                     <button>
                                         <span class="icon-xmark">
                                             <i class="fa-solid fa-xmark"></i>
@@ -59,6 +59,8 @@
     <div class="logout">
         {{#if user }}
             <a href="/logout">Cerrar sesión</a>
+        {{else}}
+            <div></div>
         {{/if }}
     </div>
 </nav>
