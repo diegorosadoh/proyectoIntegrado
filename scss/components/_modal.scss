@@ -28,7 +28,11 @@
         .cancel{
             margin: 0 2rem;
             width: 30%;
-            @include response(md){ width: 50%; margin-bottom: 1rem; }
+            
+            @include response(md){ 
+                width: 70%; 
+                margin-bottom: 1rem; 
+            }
 
             button{
                 width: 100%;

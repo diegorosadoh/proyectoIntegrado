@@ -883,7 +883,7 @@ nav {
       @media (max-widtH: 920px) {
         .modal div .delete,
         .modal div .cancel {
-          width: 50%;
+          width: 70%;
           margin-bottom: 1rem; } }
       .modal div .delete button,
       .modal div .cancel button {
