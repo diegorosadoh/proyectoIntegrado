@@ -12,7 +12,6 @@ module.exports = {
     // Propiedades para el envío del correo de verificación de usuarios
     emailOptions: {
         from: 'linkinapp.confirmation@gmail.com',
-        subject: 'Confirma tu correo electrónico - LINKIN',
         auth: 'zzqwsmqpegpkgyzu'
     }
 }

@@ -624,7 +624,9 @@ nav {
 .register h3,
 .addlink h3,
 .editlink h3,
-.profile h3 {
+.profile h3,
+.forgot h3,
+.repassword h3 {
   width: 50%;
   text-align: left;
   margin-left: 8rem;
@@ -634,7 +636,9 @@ nav {
     .register h3,
     .addlink h3,
     .editlink h3,
-    .profile h3 {
+    .profile h3,
+    .forgot h3,
+    .repassword h3 {
       width: 70%;
       margin: 0;
       text-align: center;
@@ -643,7 +647,9 @@ nav {
   .register h3 .msg-side,
   .addlink h3 .msg-side,
   .editlink h3 .msg-side,
-  .profile h3 .msg-side {
+  .profile h3 .msg-side,
+  .forgot h3 .msg-side,
+  .repassword h3 .msg-side {
     display: inline-block;
     font-weight: 300;
     font-size: 2rem;
@@ -652,13 +658,17 @@ nav {
     .register h3 .msg-side.ok,
     .addlink h3 .msg-side.ok,
     .editlink h3 .msg-side.ok,
-    .profile h3 .msg-side.ok {
+    .profile h3 .msg-side.ok,
+    .forgot h3 .msg-side.ok,
+    .repassword h3 .msg-side.ok {
       color: rgba(51, 194, 29, 0.75); }
     .login h3 .msg-side.fail,
     .register h3 .msg-side.fail,
     .addlink h3 .msg-side.fail,
     .editlink h3 .msg-side.fail,
-    .profile h3 .msg-side.fail {
+    .profile h3 .msg-side.fail,
+    .forgot h3 .msg-side.fail,
+    .repassword h3 .msg-side.fail {
       color: rgba(194, 29, 29, 0.75); }
     .login h3 .msg-side .icon-exclamation, .login h3 .msg-side .icon-check,
     .register h3 .msg-side .icon-exclamation,
@@ -668,26 +678,36 @@ nav {
     .editlink h3 .msg-side .icon-exclamation,
     .editlink h3 .msg-side .icon-check,
     .profile h3 .msg-side .icon-exclamation,
-    .profile h3 .msg-side .icon-check {
+    .profile h3 .msg-side .icon-check,
+    .forgot h3 .msg-side .icon-exclamation,
+    .forgot h3 .msg-side .icon-check,
+    .repassword h3 .msg-side .icon-exclamation,
+    .repassword h3 .msg-side .icon-check {
       font-size: 1.5rem; }
     .login h3 .msg-side .icon-exclamation,
     .register h3 .msg-side .icon-exclamation,
     .addlink h3 .msg-side .icon-exclamation,
     .editlink h3 .msg-side .icon-exclamation,
-    .profile h3 .msg-side .icon-exclamation {
+    .profile h3 .msg-side .icon-exclamation,
+    .forgot h3 .msg-side .icon-exclamation,
+    .repassword h3 .msg-side .icon-exclamation {
       color: rgba(105, 16, 16, 0.75); }
     .login h3 .msg-side .icon-check,
     .register h3 .msg-side .icon-check,
     .addlink h3 .msg-side .icon-check,
     .editlink h3 .msg-side .icon-check,
-    .profile h3 .msg-side .icon-check {
+    .profile h3 .msg-side .icon-check,
+    .forgot h3 .msg-side .icon-check,
+    .repassword h3 .msg-side .icon-check {
       color: rgba(28, 105, 16, 0.75); }
 
 .login form,
 .register form,
 .addlink form,
 .editlink form,
-.profile form {
+.profile form,
+.forgot form,
+.repassword form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -698,14 +718,18 @@ nav {
   .register form .input,
   .addlink form .input,
   .editlink form .input,
-  .profile form .input {
+  .profile form .input,
+  .forgot form .input,
+  .repassword form .input {
     display: block;
     width: 50%; }
     .login form .input input,
     .register form .input input,
     .addlink form .input input,
     .editlink form .input input,
-    .profile form .input input {
+    .profile form .input input,
+    .forgot form .input input,
+    .repassword form .input input {
       border: 2px solid black;
       border-radius: 8rem;
       padding: 0 6rem;
@@ -720,14 +744,18 @@ nav {
       .register form .input input::placeholder,
       .addlink form .input input::placeholder,
       .editlink form .input input::placeholder,
-      .profile form .input input::placeholder {
+      .profile form .input input::placeholder,
+      .forgot form .input input::placeholder,
+      .repassword form .input input::placeholder {
         font-size: 2.5rem;
         color: #754547; }
       .login form .input input:focus,
       .register form .input input:focus,
       .addlink form .input input:focus,
       .editlink form .input input:focus,
-      .profile form .input input:focus {
+      .profile form .input input:focus,
+      .forgot form .input input:focus,
+      .repassword form .input input:focus {
         outline: 1rem solid #d2b4b5;
         border-color: #756869;
         background-color: #fcf0f0; }
@@ -735,7 +763,9 @@ nav {
         .register form .input input:focus::placeholder,
         .addlink form .input input:focus::placeholder,
         .editlink form .input input:focus::placeholder,
-        .profile form .input input:focus::placeholder {
+        .profile form .input input:focus::placeholder,
+        .forgot form .input input:focus::placeholder,
+        .repassword form .input input:focus::placeholder {
           font-size: 2rem;
           text-shadow: none;
           color: #756869; }
@@ -744,13 +774,17 @@ nav {
       .register form .input,
       .addlink form .input,
       .editlink form .input,
-      .profile form .input {
+      .profile form .input,
+      .forgot form .input,
+      .repassword form .input {
         width: 75%; } }
   .login form .btn,
   .register form .btn,
   .addlink form .btn,
   .editlink form .btn,
-  .profile form .btn {
+  .profile form .btn,
+  .forgot form .btn,
+  .repassword form .btn {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -763,13 +797,17 @@ nav {
       .register form .btn,
       .addlink form .btn,
       .editlink form .btn,
-      .profile form .btn {
+      .profile form .btn,
+      .forgot form .btn,
+      .repassword form .btn {
         flex-flow: column; } }
     .login form .btn .select,
     .register form .btn .select,
     .addlink form .btn .select,
     .editlink form .btn .select,
-    .profile form .btn .select {
+    .profile form .btn .select,
+    .forgot form .btn .select,
+    .repassword form .btn .select {
       border-radius: 1.5rem;
       border: none;
       background-color: #d8d8d8;
@@ -785,7 +823,9 @@ nav {
         .register form .btn .select,
         .addlink form .btn .select,
         .editlink form .btn .select,
-        .profile form .btn .select {
+        .profile form .btn .select,
+        .forgot form .btn .select,
+        .repassword form .btn .select {
           margin: 0 auto 1rem auto;
           padding: 2rem;
           width: 50%; } }
@@ -793,7 +833,9 @@ nav {
     .register form .btn button,
     .addlink form .btn button,
     .editlink form .btn button,
-    .profile form .btn button {
+    .profile form .btn button,
+    .forgot form .btn button,
+    .repassword form .btn button {
       position: relative;
       margin: auto;
       padding: 1.5rem 2rem;
@@ -802,7 +844,9 @@ nav {
       .register form .btn button:before,
       .addlink form .btn button:before,
       .editlink form .btn button:before,
-      .profile form .btn button:before {
+      .profile form .btn button:before,
+      .forgot form .btn button:before,
+      .repassword form .btn button:before {
         content: "";
         position: absolute;
         top: 0.75rem;
@@ -818,13 +862,17 @@ nav {
           .register form .btn button:before,
           .addlink form .btn button:before,
           .editlink form .btn button:before,
-          .profile form .btn button:before {
+          .profile form .btn button:before,
+          .forgot form .btn button:before,
+          .repassword form .btn button:before {
             width: 100%; } }
       .login form .btn button span,
       .register form .btn button span,
       .addlink form .btn button span,
       .editlink form .btn button span,
-      .profile form .btn button span {
+      .profile form .btn button span,
+      .forgot form .btn button span,
+      .repassword form .btn button span {
         text-transform: uppercase;
         position: relative;
         font-size: 2.5rem;
@@ -834,13 +882,17 @@ nav {
           .register form .btn button span,
           .addlink form .btn button span,
           .editlink form .btn button span,
-          .profile form .btn button span {
+          .profile form .btn button span,
+          .forgot form .btn button span,
+          .repassword form .btn button span {
             color: white; } }
       .login form .btn button svg,
       .register form .btn button svg,
       .addlink form .btn button svg,
       .editlink form .btn button svg,
-      .profile form .btn button svg {
+      .profile form .btn button svg,
+      .forgot form .btn button svg,
+      .repassword form .btn button svg {
         position: relative;
         top: -0.4rem;
         margin-left: 2rem;
@@ -856,41 +908,71 @@ nav {
           .register form .btn button svg,
           .addlink form .btn button svg,
           .editlink form .btn button svg,
-          .profile form .btn button svg {
+          .profile form .btn button svg,
+          .forgot form .btn button svg,
+          .repassword form .btn button svg {
             transform: translateX(0);
             stroke: #F7DBDC; } }
       .login form .btn button:hover::before,
       .register form .btn button:hover::before,
       .addlink form .btn button:hover::before,
       .editlink form .btn button:hover::before,
-      .profile form .btn button:hover::before {
+      .profile form .btn button:hover::before,
+      .forgot form .btn button:hover::before,
+      .repassword form .btn button:hover::before {
         width: 100%; }
       .login form .btn button:hover span,
       .register form .btn button:hover span,
       .addlink form .btn button:hover span,
       .editlink form .btn button:hover span,
-      .profile form .btn button:hover span {
+      .profile form .btn button:hover span,
+      .forgot form .btn button:hover span,
+      .repassword form .btn button:hover span {
         color: white; }
       .login form .btn button:hover svg,
       .register form .btn button:hover svg,
       .addlink form .btn button:hover svg,
       .editlink form .btn button:hover svg,
-      .profile form .btn button:hover svg {
+      .profile form .btn button:hover svg,
+      .forgot form .btn button:hover svg,
+      .repassword form .btn button:hover svg {
         transform: translateX(0);
         stroke: #F7DBDC; }
       .login form .btn button:active,
       .register form .btn button:active,
       .addlink form .btn button:active,
       .editlink form .btn button:active,
-      .profile form .btn button:active {
+      .profile form .btn button:active,
+      .forgot form .btn button:active,
+      .repassword form .btn button:active {
         transform: scale(0.9); }
     @media (max-width: 920px) {
       .login form .btn,
       .register form .btn,
       .addlink form .btn,
       .editlink form .btn,
-      .profile form .btn {
+      .profile form .btn,
+      .forgot form .btn,
+      .repassword form .btn {
         width: 75%; } }
+  .login form a.forgot,
+  .register form a.forgot,
+  .addlink form a.forgot,
+  .editlink form a.forgot,
+  .profile form a.forgot,
+  .forgot form a.forgot,
+  .repassword form a.forgot {
+    font-size: 1.5rem;
+    text-decoration: underline;
+    color: #754547; }
+    .login form a.forgot:hover,
+    .register form a.forgot:hover,
+    .addlink form a.forgot:hover,
+    .editlink form a.forgot:hover,
+    .profile form a.forgot:hover,
+    .forgot form a.forgot:hover,
+    .repassword form a.forgot:hover {
+      color: #F69094; }
 
 .modal {
   display: flex;

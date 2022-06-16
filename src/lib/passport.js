@@ -84,7 +84,7 @@ passport.use('register', new Strategy({
     var mailOptions = {
         from: emailOptions.from,
         to: email,
-        subject: emailOptions.subject,
+        subject: 'Confirma tu correo electrónico - LINKIN',
         html: `
             <h1 style="
                 text-align:center; 
@@ -99,7 +99,7 @@ passport.use('register', new Strategy({
                 LINKIN
             </h1>
             <div style="
-                width: 50%;
+                width: 80%;
                 border: 1px solid black;
                 padding: 20px 15px;
                 font-size: 16px;
