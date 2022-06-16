@@ -28,7 +28,13 @@ const db = require('../database');
 
     // Añadir link
     router.get('/add', helpers.userLog, (req, res) => {
-        res.render('./links/add', { data: req.cookies.newLink, title: 'Nuevo link'});
+        res.render('./links/add', { data: req.cookies.newLink, title: 'Nuevo link', helpers: {
+            select: function (selected, options) { 
+                return options.fn(this).replace(
+                    new RegExp(' value=\"' + selected + '\"'), '$& selected="selected"'
+                );
+             }
+        }});
     }); 
 
     // Añadir link a una carpeta
