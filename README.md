@@ -18,7 +18,7 @@ Junio de 2022
 
 [Aplicación en producción](https://link-organizer-proyecto.herokuapp.com)
 
-[Memoria completa del proyecto](https://docdro.id/e9DjbiW)
+[Memoria completa del proyecto](https://docdro.id/JVQhjPS)
 
 ## Resumen
 
