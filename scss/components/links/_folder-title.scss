@@ -1,18 +1,19 @@
+// Nombre de la carpeta
+
 .folder-title{
     width: 100%;
+    @include flexbox($wrap: wrap);
     margin-right: auto;
-    margin-left: 3rem;
-    display:flex;
-    flex-flow: row wrap;
+    margin-left: size(xl);
 
     .icon-folder-open{
-        font-size: 3rem;
+        font-size: size(xl);
         color: color(primary);
-        margin-right: 1rem;
+        margin-right: size(s);
     }
 
     h3{
-        font-size: 2.5rem;
+        font-size: size(l);
         width: fit-content;
         margin: 0;
 
@@ -23,8 +24,8 @@
 
     .delete{
         visibility: hidden;
-        margin-left: 1.5rem;
-        padding-top: 0.5rem;
+        margin-left: size(m);
+        padding-top: size(xs);
 
         .icon-trash{
             width: 100%;
@@ -35,7 +36,7 @@
     
             &:hover{
                 color: darken(color(primary), 15%);
-                font-size: 2rem;
+                font-size: size(ml);
             }
         }
 

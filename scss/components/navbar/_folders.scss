@@ -1,20 +1,21 @@
+// Sección para las carpetas del menú de navegación
+
 .folders{
     border-top: 2px solid color(secondary);
     border-bottom: 2px solid color(secondary);
-    padding: 0.5em 0;
+    padding: size(xs) 0;
     background-color: color(primary);
     box-shadow: 0 0 15px 5px white;
     color: white;
 
     li a.folder{
-        display: flex;
-        align-items: center;
-        padding: 1rem 3rem;
+        @include flexbox($align: center);
+        padding: size(s) size(xl);
         background: linear-gradient(to left, color(primary) 50%, lighten(color(secondary), 15%) 50%) right;
         background-size: 200%;
 
         .icon-folder{
-            margin-right: 1em;
+            margin-right: size(ml);
             color: color(prim-mod);
         }
 
@@ -23,7 +24,7 @@
             visibility: hidden;
 
             button{
-                font-size: 1.5em;
+                font-size: size(xl);
                 margin-left: auto;
 
                 &:hover{
@@ -43,7 +44,7 @@
 
     .create{
         cursor:auto;
-        padding: 1em 2em;
+        padding: size(ml) size(xxxl);
         background-color: lighten(color(primary), 5%);
 
         &:hover input:not(:focus){
@@ -53,10 +54,8 @@
 
         form{
             width: 100%;
-            height: 2em;
-            display: flex;
-            flex-flow: row wrap;
-            align-items: center;
+            height: size(xxl);
+            @include flexbox($wrap:wrap, $align:center);
 
             input{
                 width: 75%;
@@ -64,7 +63,7 @@
                 outline: none;
                 height: 100%;
                 background-color: inherit;
-                padding: 0.5em;
+                padding: size(xs);
                 font-size: inherit;
 
                 &:focus{
@@ -74,7 +73,7 @@
             }
 
             button{
-                font-size: 1.5em;
+                font-size: size(xl);
                 margin-left: auto;
 
                 .icon-check{

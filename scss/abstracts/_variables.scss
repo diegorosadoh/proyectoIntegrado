@@ -1,21 +1,56 @@
+// Variables
+
+// Importación de la fuente Montserrat
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* paleta de colores */
+// Paleta de colores
 $colors: (
     primary: #F69094,
     secondary: #754547,
     tertiary: #F7DBDC,
-    quaternary: #ff000066,
+    prim-mod: #ffd5d6,
 
     aux1: #f1f1f1,
     aux2: #756869,
 
     msgok: rgba($color: #33c21d, $alpha: 0.75),
-    msgfail: rgba($color: #c21d1d, $alpha: 0.75),
-
-    prim-mod: #ffd5d6
+    msgfail: rgba($color: #c21d1d, $alpha: 0.75)
 );
 
+// Función que devuelve el color según el nombre
 @function color($color-name){
     @return map-get($colors, $color-name);
+}
+
+// Tamaños principales
+$sizes: (
+    xs: 0.5rem,
+    s: 1rem,
+    m: 1.5rem,
+    ml: 2rem,
+    l: 2.5rem,
+    xl: 3rem,
+    xxl: 3.5rem,
+    xxxl: 4rem,
+);
+
+// Función que devuelve el tamaño según el nombre
+@function size($size){
+    @return map-get($sizes, $size);
+}
+
+// Grosores de fuente
+$widths: (
+    thin: 100,
+    extralight: 200,
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+);
+
+// Función que devuelve el grososr según el nombre
+@function width($width){
+    @return map-get($widths, $width);
 }

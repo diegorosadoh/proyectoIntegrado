@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-/* paleta de colores */
 :root {
   font-size: 62.5%; }
 
@@ -31,15 +30,17 @@ a:visited {
   grid-template-rows: 12rem auto;
   height: 100%;
   overflow-x: hidden; }
-  @media (max-widtH: 920px) {
+  @media (max-width: 920px) {
     .main {
       margin-left: 0; } }
 
 .box {
   width: 100%;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center; }
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; }
 
 button {
   border: none;
@@ -53,10 +54,12 @@ button {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 100;
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  z-index: 100;
   pointer-events: none; }
   .msg .msg-ok::before,
   .msg .msg-fail::before {
@@ -79,7 +82,7 @@ button {
     text-align: center;
     font-size: 8rem;
     animation: fadeinout 3.5s ease-in-out; }
-    @media (max-widtH: 920px) {
+    @media (max-width: 920px) {
       .msg .msg-ok .msg-text,
       .msg .msg-fail .msg-text {
         font-size: 5rem; } }
@@ -136,7 +139,6 @@ header {
       margin-top: 0.5rem;
       color: #754547;
       word-spacing: 1px;
-      font-weight: normal;
       letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 300;
@@ -172,8 +174,8 @@ nav {
     nav ul li div {
       display: block;
       color: #000;
-      font-size: 1.5em;
-      padding: 1em 2em;
+      font-size: 2rem;
+      padding: 2rem 3rem;
       text-decoration: none;
       transition: all 0.5s ease; }
       nav ul li a:hover,
@@ -201,29 +203,32 @@ nav {
     nav ul .folders {
       border-top: 2px solid #754547;
       border-bottom: 2px solid #754547;
-      padding: 0.5em 0;
+      padding: 0.5rem 0;
       background-color: #F69094;
       box-shadow: 0 0 15px 5px white;
       color: white; }
       nav ul .folders li a.folder {
         display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
         align-items: center;
         padding: 1rem 3rem;
         background: linear-gradient(to left, #F69094 50%, #a36366 50%) right;
         background-size: 200%; }
         nav ul .folders li a.folder .icon-folder {
-          margin-right: 1em;
+          margin-right: 2rem;
           color: #ffd5d6; }
         nav ul .folders li a.folder form {
           margin-left: auto;
           visibility: hidden; }
           nav ul .folders li a.folder form button {
-            font-size: 1.5em;
+            font-size: 3rem;
             margin-left: auto; }
             nav ul .folders li a.folder form button:hover {
               animation: spin 0.25s linear;
               color: #ee3239; }
-          @media (max-widtH: 920px) {
+          @media (max-width: 920px) {
             nav ul .folders li a.folder form {
               visibility: visible; } }
         nav ul .folders li a.folder:hover {
@@ -232,7 +237,7 @@ nav {
             visibility: visible; }
       nav ul .folders .create {
         cursor: auto;
-        padding: 1em 2em;
+        padding: 2rem 4rem;
         background-color: #f8a8ab; }
         nav ul .folders .create:hover input:not(:focus) {
           color: white; }
@@ -240,9 +245,11 @@ nav {
             color: white; }
         nav ul .folders .create form {
           width: 100%;
-          height: 2em;
+          height: 3.5rem;
           display: flex;
-          flex-flow: row wrap;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: flex-start;
           align-items: center; }
           nav ul .folders .create form input {
             width: 75%;
@@ -250,14 +257,14 @@ nav {
             outline: none;
             height: 100%;
             background-color: inherit;
-            padding: 0.5em;
+            padding: 0.5rem;
             font-size: inherit; }
             nav ul .folders .create form input:focus {
               background-color: #F7DBDC; }
               nav ul .folders .create form input:focus + button {
                 visibility: visible; }
           nav ul .folders .create form button {
-            font-size: 1.5em;
+            font-size: 3rem;
             margin-left: auto; }
             nav ul .folders .create form button .icon-check {
               color: #754547;
@@ -277,36 +284,37 @@ nav {
     position: fixed;
     bottom: 0;
     width: 25%;
-    z-index: 1000;
-    background: linear-gradient(to left, #ffd5d6 50%, #756869 50%) right;
-    background-size: 200%;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     align-items: flex-end;
+    z-index: 1000;
     transition: all 0.5s ease; }
     nav .logout a {
       width: 100%;
       height: 100%;
       display: block;
       color: #000;
-      font-size: 1.5em;
-      padding: 1em 2em;
+      background: linear-gradient(to left, #ffd5d6 50%, #756869 50%) right;
+      background-size: 200%;
+      font-size: 2rem;
+      padding: 2rem 4rem;
       transition: all 0.5s ease; }
       nav .logout a:hover {
-        color: white; }
+        color: white;
+        background-position: left; }
     nav .logout div {
-      height: 100%;
+      height: 8rem;
       width: 100%;
-      background-color: #F7DBDC;
-      padding: 3em; }
-    nav .logout:hover {
-      background-position: left; }
-    @media (max-widtH: 920px) {
+      background-color: #F7DBDC; }
+    @media (max-width: 920px) {
       nav .logout {
         width: 100vw;
         text-align: center;
         left: -100vw;
         transition: all 0.6s ease; } }
-  @media (max-widtH: 920px) {
+  @media (max-width: 920px) {
     nav {
       width: 100vw;
       text-align: center;
@@ -315,8 +323,10 @@ nav {
       nav ul li.title {
         height: 8rem;
         display: flex;
-        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
         justify-content: center;
+        align-items: center;
         background-color: #754547; }
         nav ul li.title h2 {
           font-size: 3rem;
@@ -327,10 +337,13 @@ nav {
 
 .folder-title {
   width: 100%;
-  margin-right: auto;
-  margin-left: 3rem;
   display: flex;
-  flex-flow: row wrap; }
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin-right: auto;
+  margin-left: 3rem; }
   .folder-title .icon-folder-open {
     font-size: 3rem;
     color: #F69094;
@@ -356,7 +369,7 @@ nav {
         font-size: 2rem; }
     .folder-title .delete:hover {
       visibility: visible; }
-    @media (max-widtH: 920px) {
+    @media (max-width: 920px) {
       .folder-title .delete {
         visibility: visible; } }
 
@@ -367,8 +380,10 @@ nav {
   grid-template-columns: repeat(3, 1fr); }
   .alllinks .link {
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: stretch;
     border: 4px solid white;
     border-radius: 2rem;
     background-color: #ffd5d6;
@@ -386,7 +401,7 @@ nav {
         font-weight: 500;
         text-align: center;
         margin: 0;
-        font-size: 2em;
+        font-size: 2.5rem;
         transition: all 0.2s; }
       .alllinks .link .title:hover {
         color: #F69094; }
@@ -417,7 +432,11 @@ nav {
         transition: all 0.3s; }
       .alllinks .link .functions .edit {
         grid-column: 1/2;
-        display: flex; }
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch; }
         .alllinks .link .functions .edit .icon-edit {
           color: #a79c9d; }
           .alllinks .link .functions .edit .icon-edit:hover {
@@ -425,12 +444,15 @@ nav {
       .alllinks .link .functions .delete {
         grid-column: 3/4;
         display: flex;
-        justify-content: flex-end; }
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-items: stretch; }
         .alllinks .link .functions .delete .icon-delete {
-          color: #ff000066; }
+          color: #f58286; }
           .alllinks .link .functions .delete .icon-delete:hover {
             color: #f04950; }
-          @media (max-widtH: 920px) {
+          @media (max-width: 920px) {
             .alllinks .link .functions .delete .icon-delete {
               color: #f04950; } }
       .alllinks .link .functions .desc {
@@ -445,18 +467,18 @@ nav {
     text-align: center;
     color: #756869; }
     .alllinks .nolinks h4 {
-      font-size: 3em;
+      font-size: 4rem;
       font-weight: 300;
-      margin-bottom: 1em; }
+      margin-bottom: 4rem; }
       .alllinks .nolinks h4 span {
         font-weight: 400;
         color: black; }
     .alllinks .nolinks a {
-      font-size: 2em;
+      font-size: 2.5rem;
       color: #754547;
       background-color: #F7DBDC;
-      padding: 0.5em 1em;
-      border-radius: 1.2em;
+      padding: 1rem 2rem;
+      border-radius: 2.5rem;
       box-shadow: 0 5px 15px #756869;
       cursor: pointer;
       transition: all 0.5s; }
@@ -465,21 +487,24 @@ nav {
         box-shadow: 0 15px 20px #F7DBDC;
         color: #fff;
         transform: translateY(-20px); }
-  @media (max-widtH: 920px) {
+  @media (max-width: 920px) {
     .alllinks {
       display: flex;
-      flex-flow: column; } }
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: stretch; } }
 
 .cat {
   width: 100%;
   height: 20rem;
-  margin: 1rem 0; }
+  margin: 1rem; }
   .cat .cat-links {
     overflow-y: hidden;
     overflow-x: auto;
     white-space: nowrap;
     width: 75vw; }
-    @media (max-widtH: 920px) {
+    @media (max-width: 920px) {
       .cat .cat-links {
         width: 100vw; } }
   .cat .inline {
@@ -487,8 +512,10 @@ nav {
     width: 25rem; }
     .cat .inline .link {
       display: flex;
-      flex-flow: row wrap;
+      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
+      align-items: stretch;
       border: 4px solid white;
       border-radius: 2rem;
       background-color: #ffd5d6;
@@ -506,7 +533,7 @@ nav {
           font-weight: 500;
           text-align: center;
           margin: 0;
-          font-size: 2em;
+          font-size: 2.5rem;
           transition: all 0.2s; }
         .cat .inline .link .title:hover {
           color: #F69094; }
@@ -537,7 +564,11 @@ nav {
           transition: all 0.3s; }
         .cat .inline .link .functions .edit {
           grid-column: 1/2;
-          display: flex; }
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          align-items: stretch; }
           .cat .inline .link .functions .edit .icon-edit {
             color: #a79c9d; }
             .cat .inline .link .functions .edit .icon-edit:hover {
@@ -545,12 +576,15 @@ nav {
         .cat .inline .link .functions .delete {
           grid-column: 3/4;
           display: flex;
-          justify-content: flex-end; }
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: flex-end;
+          align-items: stretch; }
           .cat .inline .link .functions .delete .icon-delete {
-            color: #ff000066; }
+            color: #f58286; }
             .cat .inline .link .functions .delete .icon-delete:hover {
               color: #f04950; }
-            @media (max-widtH: 920px) {
+            @media (max-width: 920px) {
               .cat .inline .link .functions .delete .icon-delete {
                 color: #f04950; } }
         .cat .inline .link .functions .desc {
@@ -566,17 +600,17 @@ nav {
   text-align: center;
   color: #756869; }
   .error h4 {
-    font-size: 3em;
+    font-size: 4rem;
     font-weight: 300;
-    margin-bottom: 1em; }
+    margin-bottom: 3rem; }
     .error h4 .icon-filex {
       color: #756869; }
   .error a {
-    font-size: 2em;
+    font-size: 2.5rem;
     color: #754547;
     background-color: #F7DBDC;
-    padding: 0.5em 1em;
-    border-radius: 1.2em;
+    padding: 1rem 2rem;
+    border-radius: 2.5rem;
     box-shadow: 0 5px 15px #756869;
     cursor: pointer;
     transition: all 0.5s; }
@@ -593,9 +627,9 @@ nav {
 .profile h3 {
   width: 50%;
   text-align: left;
-  margin-left: 3em;
+  margin-left: 8rem;
   font-size: 2.5rem; }
-  @media (max-widtH: 920px) {
+  @media (max-width: 920px) {
     .login h3,
     .register h3,
     .addlink h3,
@@ -612,7 +646,7 @@ nav {
   .profile h3 .msg-side {
     display: inline-block;
     font-weight: 300;
-    font-size: 0.7em;
+    font-size: 2rem;
     margin: 0; }
     .login h3 .msg-side.ok,
     .register h3 .msg-side.ok,
@@ -635,7 +669,7 @@ nav {
     .editlink h3 .msg-side .icon-check,
     .profile h3 .msg-side .icon-exclamation,
     .profile h3 .msg-side .icon-check {
-      font-size: 0.9em; }
+      font-size: 1.5rem; }
     .login h3 .msg-side .icon-exclamation,
     .register h3 .msg-side .icon-exclamation,
     .addlink h3 .msg-side .icon-exclamation,
@@ -656,7 +690,9 @@ nav {
 .profile form {
   width: 100%;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   align-items: center; }
   .login form .input,
   .register form .input,
@@ -671,9 +707,9 @@ nav {
     .editlink form .input input,
     .profile form .input input {
       border: 2px solid black;
-      border-radius: 4em;
-      padding: 0 3em;
-      margin: 0.5em auto;
+      border-radius: 8rem;
+      padding: 0 6rem;
+      margin: 1rem auto;
       width: 100%;
       align-self: center;
       height: 10rem;
@@ -692,7 +728,7 @@ nav {
       .addlink form .input input:focus,
       .editlink form .input input:focus,
       .profile form .input input:focus {
-        outline: 0.5em solid #d2b4b5;
+        outline: 1rem solid #d2b4b5;
         border-color: #756869;
         background-color: #fcf0f0; }
         .login form .input input:focus::placeholder,
@@ -703,7 +739,7 @@ nav {
           font-size: 2rem;
           text-shadow: none;
           color: #756869; }
-    @media (max-widtH: 920px) {
+    @media (max-width: 920px) {
       .login form .input,
       .register form .input,
       .addlink form .input,
@@ -716,11 +752,13 @@ nav {
   .editlink form .btn,
   .profile form .btn {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
     width: 50%;
-    margin: 1em 0; }
-    @media (max-widtH: 920px) {
+    margin: 1.5rem 0; }
+    @media (max-width: 920px) {
       .login form .btn,
       .register form .btn,
       .addlink form .btn,
@@ -739,10 +777,10 @@ nav {
       margin-left: 3rem;
       width: 25%;
       height: 100%;
-      font-size: 1.5em;
+      font-size: 2rem;
       text-align: center;
       cursor: pointer; }
-      @media (max-widtH: 920px) {
+      @media (max-width: 920px) {
         .login form .btn .select,
         .register form .btn .select,
         .addlink form .btn .select,
@@ -775,7 +813,7 @@ nav {
         width: 4.5rem;
         height: 4.5rem;
         transition: all 0.5s ease; }
-        @media (max-widtH: 920px) {
+        @media (max-width: 920px) {
           .login form .btn button:before,
           .register form .btn button:before,
           .addlink form .btn button:before,
@@ -791,7 +829,7 @@ nav {
         position: relative;
         font-size: 2.5rem;
         font-weight: 500; }
-        @media (max-widtH: 920px) {
+        @media (max-width: 920px) {
           .login form .btn button span,
           .register form .btn button span,
           .addlink form .btn button span,
@@ -813,7 +851,7 @@ nav {
         stroke-width: 2;
         transform: translateX(-1.5rem);
         transition: all 0.4s ease; }
-        @media (max-widtH: 920px) {
+        @media (max-width: 920px) {
           .login form .btn button svg,
           .register form .btn button svg,
           .addlink form .btn button svg,
@@ -846,7 +884,7 @@ nav {
       .editlink form .btn button:active,
       .profile form .btn button:active {
         transform: scale(0.9); }
-    @media (max-widtH: 920px) {
+    @media (max-width: 920px) {
       .login form .btn,
       .register form .btn,
       .addlink form .btn,
@@ -855,7 +893,10 @@ nav {
         width: 75%; } }
 
 .modal {
-  flex-flow: column;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   padding: 2rem; }
@@ -872,15 +913,18 @@ nav {
   .modal div {
     width: 100%;
     display: flex;
-    justify-content: center; }
-    @media (max-widtH: 920px) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch; }
+    @media (max-width: 920px) {
       .modal div {
         flex-wrap: wrap; } }
     .modal div .delete,
     .modal div .cancel {
       margin: 0 2rem;
       width: 30%; }
-      @media (max-widtH: 920px) {
+      @media (max-width: 920px) {
         .modal div .delete,
         .modal div .cancel {
           width: 70%;
@@ -894,17 +938,22 @@ nav {
         box-shadow: 1px 1px 3px black;
         border-radius: 1rem; }
     .modal div .delete button {
-      background-color: #f04950;
       display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
       align-items: center;
+      background-color: #f04950;
       color: white;
       transition: all 0.6s ease; }
       .modal div .delete button .icon {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
         margin-left: auto;
         border-left: 1px solid #ac0e14;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         padding-left: 1.5rem;
         transition: all 0.6s ease; }
         .modal div .delete button .icon svg {
@@ -968,7 +1017,7 @@ input#burger {
     background-color: white;
     border-radius: 0.2rem;
     transition: background-color 0.3s ease, transform 0.5s ease-in-out, opacity 0.5s ease-in-out; }
-  @media (max-widtH: 920px) {
+  @media (max-width: 920px) {
     .burger {
       display: flex; } }
 
@@ -985,14 +1034,14 @@ input#burger {
     padding: 2rem;
     display: grid;
     grid-template-columns: 35% 65%; }
-    @media (max-widtH: 920px) {
+    @media (max-width: 920px) {
       .profile .profile-content {
         display: flex;
         flex-flow: column;
         padding-top: 0; } }
     .profile .profile-content .info {
       grid-column: 1/2; }
-      @media (max-widtH: 920px) {
+      @media (max-width: 920px) {
         .profile .profile-content .info {
           margin-bottom: 3rem; } }
       .profile .profile-content .info-content {
@@ -1003,7 +1052,7 @@ input#burger {
         font-size: 1.5rem;
         color: white;
         background-color: #756869; }
-        @media (max-widtH: 920px) {
+        @media (max-width: 920px) {
           .profile .profile-content .info-content {
             width: 90%;
             text-align: center; } }
@@ -1030,7 +1079,7 @@ input#burger {
         width: 70%; }
         .profile .profile-content .form .input input::placeholder {
           font-size: 2rem; }
-        @media (max-widtH: 920px) {
+        @media (max-width: 920px) {
           .profile .profile-content .form .input {
             width: 90%; } }
       .profile .profile-content .form .btn {

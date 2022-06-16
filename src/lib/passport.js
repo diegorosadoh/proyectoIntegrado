@@ -1,25 +1,27 @@
-/**
- * Archivo para la gestión del registro
- * y login de los usuarios.
- */
+// Gestión del registro y login de los usuarios //
 
-// Carga de passport
+// Carga de 'passport'
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 
-// Carga de nodemailer
+// Carga de 'nodemailer'
 const nodemailer = require('nodemailer');
 
 // Conexión con la base de datos
 const db = require('../database');
 
-// Helpers
+// Carga de las funciones auxiliares
 const helpers = require('../lib/helpers');
 
 // Configuración del envío de correo
 const { emailOptions } = require('../utils');
 
-// Registro
+/**
+ * Recibe los datos del formulario de registro, los valida
+ * y envía un correo de confirmación si estos son correctos
+ * @param {String} email - Correo electrónico
+ * @param {String} password - Contraseña
+ */
 passport.use('register', new Strategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -83,10 +85,6 @@ passport.use('register', new Strategy({
         from: emailOptions.from,
         to: email,
         subject: emailOptions.subject,
-        /*
-            http://localhost:4000
-            https://link-organizer-proyecto.herokuapp.com
-        */
         html: `
             <h1 style="
                 text-align:center; 
@@ -134,7 +132,7 @@ passport.use('register', new Strategy({
                     text-decoration: none;
                     text-align: center;
                 " 
-                href="http://localhost:4000/verify/${verifyCode}">
+                href="https://link-organizer-proyecto.herokuapp.com/verify/${verifyCode}">
                     Verificar cuenta
                 </a>
             </div>`
@@ -149,13 +147,17 @@ passport.use('register', new Strategy({
         if (error) {
             console.log(error);
         } else {
-            console.log(info);
             return done(null, false, req.flash('ok', 'Comprueba tu bandeja de correo'));
         }
     });
 }));
 
-// Login
+/**
+ * Recibe los datos del formulario de login, los valida
+ * e inicia la sesión del usuario si estos son correctos
+ * @param {String} email - Correo electrónico
+ * @param {String} password - Contraseña
+ */
 passport.use('login', new Strategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -187,12 +189,19 @@ passport.use('login', new Strategy({
     }
 }));
 
-// Serialización del usuario
+/**
+ * Almacena en la sesión de usuario los datos del
+ * objeto de usuario
+ * @param {Object} user - Objeto de usuario
+ */
 passport.serializeUser((user, done) => {
     done(null, user.email);
 });
 
-// Deserialización del usuario
+/**
+ * Recupera los datos de la sesión de usuario
+ * @param {String} email - Email del usuario
+ */
 passport.deserializeUser(async (email, done) => {
     const users = await db.query('SELECT * FROM usuarios WHERE email = ?', [email]);
     done(null, users[0]);

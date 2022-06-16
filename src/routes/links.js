@@ -1,8 +1,10 @@
-// Carga de módulos
+// Rutas para la gestión de links, carpetas y categorías //
+
+// Carga de 'express' y 'router'
 const express = require('express');
 const router = express.Router();
 
-// Carga de helpers
+// Carga de las funciones auxiliares
 const helpers = require('../lib/helpers');
 
 // Conexión con la base de datos
@@ -66,6 +68,7 @@ const db = require('../database');
             usuario: req.user.email
         }
 
+        // Cookie con los datos del link
         res.clearCookie("newLink");
         res.cookie("newLink", newLink, {maxAge: 5000});
 

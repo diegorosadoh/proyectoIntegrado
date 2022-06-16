@@ -1,13 +1,13 @@
+// Link individual
+
 .link{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    @include flexbox($wrap: wrap, $justify:center);
 
     border: 4px solid white; 
-    border-radius: 2rem;
+    border-radius: size(ml);
     background-color: color(prim-mod);
-    margin: 1rem; 
-    padding: 1rem;
+    margin: size(s); 
+    padding: size(s);
 
     &:hover{
         border: 3px solid color(prim-mod); 

@@ -1,8 +1,10 @@
+// Vista general de links
+
 @import "./links/folder-title";
 
 .alllinks{
     width: 100%;
-    padding: 1rem;
+    padding: size(s);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
@@ -11,7 +13,6 @@
     @import "./links/no-links";
 
     @include response(md){
-        display: flex;
-        flex-flow: column;
+        @include flexbox($direction: column);
     }
 }

@@ -1,11 +1,13 @@
-// Carga de express y router
+// Rutas para la gestión de usuarios //
+
+// Carga de 'express' y 'router'
 const express = require('express');
 const router = express.Router();
 
-// Carga de passport
+// Carga de 'passport'
 const passport = require('passport');
 
-// Helpers
+// Carga de las funciones auxiliares
 const helpers = require('../lib/helpers');
 
 // Conexión con la base de datos
@@ -75,63 +77,69 @@ const db = require('../database');
 
         // Nuevos datos del usuario
         let editUser = {};
+        let errors = false;
 
+        // Cookie con los datos del usuario
         res.clearCookie("editUser");
         res.cookie("editUser", req.body.nombre, {maxAge: 5000});
 
         // Validación del formulario
         if (req.body.nombre.length > 0){
-            if (req.body.nombre.length > 40){
+            if (req.body.nombre.length > 20){
                 req.flash('fail', 'Nombre demasiado largo');
+                errors = true;
                 res.redirect('/profile');
             } else if (! req.body.nombre.match(/([A-Za-zÁÉÍÓÚáéíóú\s])+/g)){
                 req.flash('fail', 'Formato de nombre incorrecto');
+                errors = true;
                 res.redirect('/profile');
             } else {
                 editUser.nombre = req.body.nombre;
-
-                if (editUser.nombre !== undefined || ! req.body.nombre.length > 0){
-                    if (req.body.password.length > 0){
-                        if (req.body.password2.length < 1){
-                            req.flash('fail', 'Repite la contraseña');
-                            res.redirect('/profile');
-                        } else if (req.body.password !== req.body.password2){
-                            req.flash('fail', 'Las contraseñas no coinciden');
-                            res.redirect('/profile');
-                        } else if (req.body.password.length < 8){
-                            req.flash('fail', 'Contraseña demasiado corta');
-                            res.redirect('/profile');
-                        } else {
-                            // Cifrado de la contraseña
-                            editUser.password = await helpers.encrypt(req.body.password);
-
-                            if(editUser.nombre !== undefined){
-                                await db.query('UPDATE usuarios SET nombre = ? WHERE email = ?', [editUser.nombre, req.user.email]);
-                            }
-                    
-                            if(editUser.password !== undefined){
-                                await db.query('UPDATE usuarios SET password = ? WHERE email = ?', [editUser.password, req.user.email]);
-                            }
-                    
-                            if(editUser.nombre !== undefined && editUser.password !== undefined){
-                                req.flash('ok', 'Nombre y contraseña modificados');
-                                res.redirect('/profile');
-                            } else if (editUser.nombre !== undefined) {
-                                req.flash('ok', 'Nombre modificado');
-                                res.redirect('/profile');
-                            } else {
-                                req.flash('ok', 'Contraseña modificada');
-                                res.redirect('/profile');
-                            }
-                        }
-                    }
-                }
             }
         }
 
-        
+        if (req.body.password.length > 0 && !errors){
+            if (req.body.password2.length < 1){
+                req.flash('fail', 'Repite la contraseña');
+                errors = true;
+                res.redirect('/profile');
+            } else if (req.body.password !== req.body.password2){
+                req.flash('fail', 'Las contraseñas no coinciden');
+                errors = true;
+                res.redirect('/profile');
+            } else if (req.body.password.length < 8){
+                req.flash('fail', 'Contraseña demasiado corta');
+                errors = true;
+                res.redirect('/profile');
+            } else {
+                // Cifrado de la contraseña
+                editUser.password = await helpers.encrypt(req.body.password);
+            }
+        }
+      
+        // Modificación del nombre
+        if(editUser.nombre !== undefined && !errors){
+            await db.query('UPDATE usuarios SET nombre = ? WHERE email = ?', [editUser.nombre, req.user.email]);
+        }
 
-        
+        // Modificación de la contraseña
+        if(editUser.password !== undefined && !errors){
+            await db.query('UPDATE usuarios SET password = ? WHERE email = ?', [editUser.password, req.user.email]);
+        }
+
+        // Redirección
+        if(!errors){
+            if(editUser.nombre !== undefined && editUser.password !== undefined) {
+                req.flash('ok', 'Nombre y contraseña modificados');
+                res.redirect('/profile');
+            } else if (editUser.nombre !== undefined) {
+                req.flash('ok', 'Nombre modificado');
+                res.redirect('/profile');
+            } else {
+                req.flash('ok', 'Contraseña modificada');
+                res.redirect('/profile');
+            }
+        } 
     });
 
 module.exports = router;

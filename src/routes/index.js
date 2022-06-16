@@ -1,8 +1,10 @@
-// Carga de módulos
+// Ruta raíz //
+
+// Carga de 'express' y 'router'
 const express = require('express');
 const router = express.Router();
 
-// Página de inicio según el estado de la sesión
+// Renderiza la página de inicio según el estado de la sesión
 router.get('/', (req,res)=>{
     if(req.user){
         res.redirect('/links');

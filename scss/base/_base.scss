@@ -1,3 +1,5 @@
+// Configuración base de los estilos
+
 :root{
     font-size: 62.5%;
 }
@@ -43,9 +45,7 @@ a:visited {
 
 .box{
     width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    @include flexbox($wrap: wrap, $justify:center);
 }
 
 button{

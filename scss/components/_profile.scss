@@ -1,3 +1,5 @@
+// Vista del perfil
+
 .profile{
     width: 100%;
 
@@ -11,7 +13,7 @@
     
     .profile-content{
         width: 100%;
-        padding: 2rem;
+        padding: size(ml);
         display: grid;
         grid-template-columns: 35% 65%;
 
@@ -24,14 +26,14 @@
         .info{
             grid-column: 1/2;
 
-            @include response(md){ margin-bottom: 3rem; }
+            @include response(md){ margin-bottom: size(xl); }
 
             &-content{
                 width: fit-content;
-                margin: 1rem auto;
-                padding: 2.5rem;
-                border-radius: 1.5rem;
-                font-size: 1.5rem;
+                margin: size(s) auto;
+                padding: size(l);
+                border-radius: size(m);
+                font-size: size(m);
                 color: white;
                 background-color: color(aux2);
 
@@ -41,17 +43,17 @@
                 }
 
                 h4{
-                    font-size: 2rem;
+                    font-size: size(ml);
                     border-bottom: 2px solid white;
-                    margin-bottom: 1rem;
+                    margin-bottom: size(s);
                 }
 
                 div{
-                    margin-bottom: 1rem;
+                    margin-bottom: size(s);
 
                     .info-title{
                         color: lighten(color(aux2), 30%);
-                        font-weight: 200;
+                        font-weight: width(extralight);
                     }
 
                     p:not(.info-title){
@@ -62,8 +64,8 @@
 
                 .info-links{
                     border-top: 1px solid color(aux1);
-                    margin-top: 1rem;
-                    padding-top: 0.5rem;
+                    margin-top: size(s);
+                    padding-top: size(xs);
                 }
             }
         }
@@ -73,7 +75,7 @@
 
             .input{
                 width: 70%;
-                & input::placeholder{ font-size: 2rem; }
+                & input::placeholder{ font-size: size(ml); }
                 @include response(md){ width: 90%; }
             }
 

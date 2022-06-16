@@ -1,3 +1,5 @@
+// Menú de navegación
+
 nav{ 
     position: fixed;
     top:0;
@@ -21,8 +23,8 @@ nav{
             div{
                 display: block;
                 color: #000;
-                font-size: 1.5em;
-                padding: 1em 2em;
+                font-size: size(ml);
+                padding: size(ml) size(xl);
                 text-decoration: none;
                 transition: all 0.5s ease;
     
@@ -33,7 +35,7 @@ nav{
                     background-size: 200%;
                     border-bottom: solid 2px color(secondary);
                     box-shadow: 0 0 15px 5px white;
-                    font-weight: 600;
+                    font-weight: width(semibold);
                     transition: all 0.5s ease;
         
                     &:hover{ background-position: left; }
@@ -64,15 +66,13 @@ nav{
 
         ul li.title{
             height: 8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include flexbox($align:center, $justify:center);
             background-color: color(secondary);
             
             h2{
-                font-size: 3rem;
+                font-size: size(xl);
                 letter-spacing:1px;
-                font-weight:500;
+                font-weight: width(medium);
                 color:color(prim-mod);
                 text-shadow: 1px 1px 1px color(primary);
             }

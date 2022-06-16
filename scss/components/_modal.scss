@@ -1,67 +1,64 @@
+// Paneles de confirmación
+
 .modal{
-    flex-flow: column;
-    align-items: center;
+    @include flexbox(column, nowrap, $align:center);
     text-align: center;
-    padding: 2rem;
+    padding: size(ml);
 
     h4{
-        font-size: 3rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
+        font-size: size(xl);
+        font-weight: width(medium);
+        margin-bottom: size(xs);
 
-        strong{ font-weight: 700; }
+        strong{ font-weight: width(bold); }
     }
 
     p{
-        font-size: 1.5rem;
+        font-size: size(m);
         color: color(aux2);
-        margin-bottom: 4rem;
+        margin-bottom: size(xxxl);
     }
 
     div{
         width: 100%;
-        display: flex;
-        justify-content: center;
+        @include flexbox($justify: center);
         @include response(md){ flex-wrap: wrap; }
         
         .delete,
         .cancel{
-            margin: 0 2rem;
+            margin: 0 size(ml);
             width: 30%;
-            
+
             @include response(md){ 
                 width: 70%; 
-                margin-bottom: 1rem; 
+                margin-bottom: size(s); 
             }
 
             button{
                 width: 100%;
                 height: 100%;
-                font-size: 3rem;
-                padding: 2rem;
+                font-size: size(xl);
+                padding: size(ml);
                 box-shadow: 1px 1px 3px black;
-                border-radius: 1rem;
+                border-radius: size(s);
             }
         }
 
         .delete button{
+            @include flexbox($align: center);
             background-color: darken(color(primary), 15%);
-            display: flex;
-            align-items: center;
             color: white;
             transition: all 0.6s ease;
 
             .icon{
+                @include flexbox($justify:center, $align:center);
                 margin-left: auto;
                 border-left: 1px solid darken(color(primary), 40%);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding-left: 1.5rem;
+                padding-left: size(m);
                 transition: all 0.6s ease;
 
                 svg{
-                    width: 1.5rem;
+                    width: size(m);
                     fill: #eee;
                 }
             }

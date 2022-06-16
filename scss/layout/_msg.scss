@@ -1,13 +1,13 @@
+// Mensajes de error/confirmación
+
 .msg{
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    @include flexbox($justify:center, $align:center);
     z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     pointer-events: none;
 
     .msg-ok,
@@ -29,7 +29,7 @@
             opacity: 0;
             z-index: -100;
             color: white;
-            font-weight: 100;
+            font-weight: width(thin);
             text-align: center;
             font-size: 8rem;
             animation: fadeinout 3.5s ease-in-out;

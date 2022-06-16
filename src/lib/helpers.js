@@ -1,8 +1,17 @@
+// Funciones auxiliares //
+
+// Carga de 'bcryptjs'
 const bcrypt = require('bcryptjs');
+
+// Carga del fichero JSON con las categorías
 const categories = require('./categories.json');
 
 const helpers = {};
 
+/**
+ * Continúa la ejecución si el usuario está registrado,
+ * de otro modo le redirige a la pantalla de login
+ */
 helpers.userLog = (req, res, next) => {
     if(req.isAuthenticated()){
         return next();
@@ -11,10 +20,21 @@ helpers.userLog = (req, res, next) => {
     return res.redirect('/login');
 };
 
+/**
+ * Cifra una contraseña mediante una función de hashing
+ * @param {String} password - Contraseña a cifrar
+ * @returns {String} - Contraseña cifrada
+ */
 helpers.encrypt = async (password) => {
     return bcrypt.hash(password, await bcrypt.genSalt(5));
 };
 
+/**
+ * Compara dos contraseñas
+ * @param {String} password - Contraseña 1
+ * @param {String} originalPassword - Contraseña 2
+ * @returns {boolean} - Devuelve true si las contraseñas coinciden
+ */
 helpers.matchPass = async (password, originalPassword) => {
     try{
         return await bcrypt.compare(password, originalPassword);
@@ -23,6 +43,11 @@ helpers.matchPass = async (password, originalPassword) => {
     }
 };
 
+/**
+ * Hace legible la fecha de una lista de links
+ * @param {Array} links - Lista de links a formatear
+ * @returns {Array} - Lista de links con la fecha formateada
+ */
 helpers.dateFormat = (links) => {
     links.forEach(link => {
         let fecha = link.fecha;
@@ -41,6 +66,12 @@ helpers.dateFormat = (links) => {
     return links;
 };
 
+/**
+ * Organiza una lista de links según su URL contenga alguna de
+ * las páginas contenidas en el archivo JSON de categorías
+ * @param {Array} links - Lista de links a organizar
+ * @returns {Array} - Lista de links organizada
+ */
 helpers.linkOrganizer = (links) => {
     let cats=[];
 

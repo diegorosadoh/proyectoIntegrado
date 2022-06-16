@@ -1,25 +1,27 @@
+// Vista en caso de no existir links guardados
+
 .nolinks{
     grid-column: 1/4;
     text-align: center;
     color: color(aux2);
 
     h4{
-        font-size: 3em;
-        font-weight: 300;
-        margin-bottom: 1em;
+        font-size: size(xxxl);
+        font-weight: width(light);
+        margin-bottom: size(xxxl);
         
         span{
-            font-weight: 400;
+            font-weight: width(regular);
             color: darken(color(aux2), 50%);
         }
     }
 
     a{
-        font-size: 2em;
+        font-size: size(l);
         color: color(secondary);
         background-color: color(tertiary);
-        padding: 0.5em 1em;
-        border-radius: 1.2em;
+        padding: size(s) size(ml);
+        border-radius: size(l);
         box-shadow: 0 5px 15px color(aux2);
         cursor: pointer;
         transition: all 0.5s;

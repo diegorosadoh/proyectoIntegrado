@@ -1,12 +1,12 @@
+// Enlace para cerrar sesión del menú de navegación
+
 .logout{
     position: fixed;
     bottom: 0;
     width:25%;
+    @include flexbox($align:flex-end);
+    
     z-index: 1000;
-    background: linear-gradient(to left, color(prim-mod) 50%, color(aux2) 50%) right;
-    background-size: 200%;
-    display: flex;
-    align-items: flex-end;
     transition: all 0.5s ease;
 
     a{
@@ -14,21 +14,20 @@
         height: 100%;
         display: block;
         color: #000;
-        font-size: 1.5em;
-        padding: 1em 2em;
+        background: linear-gradient(to left, color(prim-mod) 50%, color(aux2) 50%) right;
+        background-size: 200%;
+        font-size: size(ml);
+        padding: size(ml) size(xxxl);
         transition: all 0.5s ease;
 
-        &:hover { color: white; }
+        &:hover { color: white; background-position: left; }
     }
 
     div{
-        height: 100%;
+        height: 8rem;
         width: 100%;
         background-color: color(tertiary);
-        padding: 3em;
     }
-
-    &:hover{ background-position: left; }
 
     @include response(md){
         width: 100vw;

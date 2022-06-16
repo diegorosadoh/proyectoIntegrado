@@ -1,6 +1,8 @@
+// Fecha del link
+
 .date{
     color: color(aux2);
-    margin-bottom: 0.5rem;
+    margin-bottom: size(xs);
 
     p{
         span{
@@ -13,7 +15,7 @@
         &:hover{
             & span{
                 display: inline;
-                left: 0.5rem;
+                left: size(xs);
                 opacity: 1;
             }
         }

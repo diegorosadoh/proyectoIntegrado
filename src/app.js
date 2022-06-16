@@ -1,4 +1,6 @@
-// Módulos
+// Fichero base //
+
+// Carga de módulos
 const express = require('express');
 const expsession = require('express-session');
 const sqlsession = require('express-mysql-session');
@@ -8,20 +10,23 @@ const flash = require('connect-flash');
 const path = require('path');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
+
+// Carga del fichero de 'passport'
 require('./lib/passport');
 
+// Carga de la configuración de la base de datos
 const { database } = require('./utils');
 
 // Conexión con la base de datos
 const db = require('./database');
 
-// Inicialización de express
+// Inicialización de 'express'
 const app = express();
 
-// Puerto
+// Configuración del puerto
 app.set('port', process.env.PORT || 4000);
 
-// Configuración de las vistas (handlebars)
+// Configuración de las vistas (mediante 'handlebars')
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs.engine ({
     defaultLayout: 'main',
@@ -61,6 +66,7 @@ app.use(async (req, res, next) => {
     next();
 });
 
+// Función que recupera las carpetas del usuario
 async function getFolders(user){
     return await db.query('SELECT * FROM carpetas WHERE usuario = ?', [user]);
 }
@@ -76,5 +82,5 @@ app.listen(app.get('port'), ()=>{
     console.log('Servidor iniciado en el puerto', app.get('port'));
 });
 
-// Public
+// Directorio public
 app.use(express.static(path.join(__dirname, 'public')));

@@ -1,3 +1,5 @@
+// Menú hamburguesa
+
 input#burger{
     display:none;
 
@@ -20,14 +22,14 @@ input#burger{
     width: 5rem;
     height: 5rem;
     position: fixed;
-    top: 1.5rem;
-    left: 1.5rem;
+    top: size(m);
+    left: size(m);
     cursor: pointer;
     display: none;
     flex-flow: column;
     justify-content: space-around;
     background-color: color(primary);
-    padding: 1rem;
+    padding: size(s);
     border-radius: 50%;
     z-index: 101;
     transition: all 0.3s ease;
