@@ -33,7 +33,13 @@ const db = require('../database');
 
     // Añadir link a una carpeta
     router.get('/add/:id', helpers.userLog, (req, res) => {
-        res.render('./links/add', {carpeta: req.params.id, title: 'Nuevo link'});
+        res.render('./links/add', {carpeta: String(req.params.id), title: 'Nuevo link', helpers: {
+            select: function (selected, options) { 
+                return options.fn(this).replace(
+                    new RegExp(' value=\"' + selected + '\"'), '$& selected="selected"'
+                );
+             }
+        }});
     }); 
 
     // Lista de links de una carpeta
@@ -47,7 +53,13 @@ const db = require('../database');
     // Editar link
     router.get('/edit/:id', helpers.userLog, async (req, res) => {
         const links = await db.query('SELECT * FROM links WHERE id = ?', [req.params.id]);
-        res.render('links/edit', {links: links[0], title: "Editar '"+links[0].titulo+"'"});
+        res.render('links/edit', {links: links[0], title: "Editar '"+links[0].titulo+"'", helpers: {
+            select: function (selected, options) { 
+                return options.fn(this).replace(
+                    new RegExp(' value=\"' + selected + '\"'), '$& selected="selected"'
+                );
+             }
+        }});
     });
 
     // Eliminar link

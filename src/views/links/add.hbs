@@ -40,12 +40,14 @@
 
         <div class="btn">
             <select class="select" name="carpeta" id="carpeta">
-                <option value="" selected>
-                    Carpeta
-                </option>
-                {{#each folders }}
-                    <option value="{{id}}">{{nombre}}</option>
-                {{/each }}
+                {{#select carpeta}}
+                    <option value="">
+                        Carpeta
+                    </option>
+                    {{#each folders }}
+                        <option value="{{id}}">{{nombre}}</option>
+                    {{/each }}
+                {{/select}}
             </select>
 
             <button>
